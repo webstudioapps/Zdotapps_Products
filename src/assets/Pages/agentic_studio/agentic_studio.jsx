@@ -31,7 +31,7 @@ const AgenticStudio = () => {
         <div className={styles.chatsSection}>
           <h2 className={styles.chatsTitle}>Chats</h2>
           <div className={styles.chatList}>
-            <a href="#chat1" className={styles.chatItem}>About Z.Hire</a>
+            <a href="#chat1" className={styles.chatItem}>Z.Hire</a>
             <a href="#chat2" className={styles.chatItem}>About Z.Hire</a>
             <a href="#chat3" className={styles.chatItem}>About Z.Hire</a>
             <a href="#chat4" className={styles.chatItem}>About Z.Hire</a>
