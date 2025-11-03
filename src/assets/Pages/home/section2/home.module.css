@@ -1,0 +1,68 @@
+.section {
+  background-color: #1A1A3B;
+  padding: 6rem 1rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: Add a subtle background glow for more depth */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(76, 111, 255, 0.1), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+}
+
+/* Base Card Style */
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem; /* Softer, larger radius */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(76, 111, 255, 0.5);
+}
+
+/* Icon Wrapper */
+.iconWrapper {
+  font-size: 1.75rem; /* Larger icon size */
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Circular icons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Problem Card Specifics */
+.problemCard .iconWrapper {
+  color: #ff5c5c; /* Bright red for problems */
+  background-color: rgba(255, 92, 92, 0.1);
+  border: 1px solid rgba(255, 92, 92, 0.2);
+}
+
+/* Solution Card Specifics */
+.solutionCard .iconWrapper {
+  color: #4c6fff; /* Vibrant blue for solutions */
+  background-color: rgba(76, 111, 255, 0.1);
+  border: 1px solid rgba(76, 111, 255, 0.2);
+}
+
+.card:hover .iconWrapper {
+    background-color: rgba(76, 111, 255, 0.2);
+}

@@ -1,0 +1,117 @@
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  /* Colors sampled from your image */
+  --card-bg: #110d29;
+  --card-border: #2a2546;
+  --muted-text: #9ca3af;
+}
+
+.pricingSection {
+  background-color: #050014;
+  background-image: linear-gradient(to bottom, #050014, #0a0228);
+  min-height: 100vh;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardSubtitle {
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+.priceText {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.pricePeriod {
+  font-size: 1rem;
+  color: var(--muted-text);
+  margin-left: 4px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--muted-text); /* Muted text for features */
+}
+
+.checkIcon {
+  color: #22c55e; /* Green for standard checkmarks */
+  margin-right: 0.75rem;
+}
+
+/* --- Highlighted Card --- */
+.highlightedCard {
+  border: 1px solid var(--primary);
+  transform: translateY(-1rem); /* Lifts the card up slightly */
+}
+
+.highlightedCheck {
+  color: var(--primary);
+  margin-right: 0.75rem;
+}
+
+.popularBadge {
+  position: absolute;
+  top: 18px;
+  right: -32px;
+  background: var(--primary);
+  color: white;
+  padding: 6px 35px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transform: rotate(45deg);
+  text-transform: uppercase;
+}
+
+/* --- Buttons --- */
+.ghostButton {
+  background-color: transparent;
+  border: 1px solid var(--card-border);
+  color: #e5e7eb;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.ghostButton:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.solidButton {
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.solidButton:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .highlightedCard {
+    transform: translateY(0); /* Remove lift on smaller screens to prevent layout issues */
+  }
+}

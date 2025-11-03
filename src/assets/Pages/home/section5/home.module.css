@@ -1,0 +1,93 @@
+/* Pricing Section Styling */
+.pricingSection {
+  background-color: #1A1A3B;
+  padding: 6rem 1rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base Pricing Card */
+.pricingCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Featured Card Styling */
+.featuredCard {
+  border-color: #4c6fff;
+  transform: scale(1.05); /* Make it stand out */
+  z-index: 2;
+}
+
+.pricingCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.featuredCard:hover {
+  transform: translateY(-8px) scale(1.07); /* Slightly more lift */
+}
+
+/* "Most Popular" Badge */
+.popularBadge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4c6fff;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 15px #4c6fff;
+}
+
+/* Feature list check icon */
+.checkIcon {
+  margin-right: 0.75rem;
+  color: #22c55e; /* Bright green for positive affirmation */
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* CTA Button */
+.pricingCta {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pricingCta:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+/* Featured Card's CTA Button */
+.featuredCard .pricingCta {
+  background: #4c6fff;
+  color: #fff;
+  border-color: #4c6fff;
+  box-shadow: 0 0 12px #4c6fff, 0 0 24px #4c6fff;
+}
+
+.featuredCard .pricingCta:hover {
+  background: #6a80ff;
+  box-shadow: 0 0 16px #6a80ff, 0 0 32px #6a80ff;
+}

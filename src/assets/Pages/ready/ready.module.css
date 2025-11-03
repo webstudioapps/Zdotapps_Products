@@ -1,0 +1,195 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* Space between search bar and template card */
+  min-height: 100vh;
+  background-color: #202124; /* Dark background from your image */
+  color: #e8eaed;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 580px; /* A standard, comfortable width for a search bar */
+  margin-bottom: 11rem;
+
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: #303134;
+  border: 1px solid #303134; /* Start with a subtle border */
+  border-radius: 24px;
+  height: 56px;
+  padding: 0 4px 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+  
+}
+
+.searchBar:hover,
+.searchBar.suggestionsActive {
+  background-color: #3c4043;
+  border-color: transparent;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+}
+
+.input {
+  flex-grow: 1; /* Allows the input to take up all available space */
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.searchIcon {
+  fill: #9aa0a6;
+  width: 20px;
+  height: 20px;
+}
+
+.searchButton {
+  background-color: #fbbc05; /* Yellow color from your image */
+  color: #202124;
+  border: none;
+  border-radius: 22px; /* Make it fit snugly inside the search bar */
+  padding: 0 24px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: filter 0.2s;
+}
+
+.searchButton:hover {
+  filter: brightness(0.95);
+}
+
+
+.suggestions {
+  position: absolute;
+  top: 100%; /* Position right below the search bar */
+  left: 0;
+  right: 0;
+  background-color: #3c4043;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  visibility: hidden; /* Use visibility for accessibility */
+  opacity: 0;
+  transition: opacity 0.1s linear, visibility 0s linear 0.1s; /* Smooth fade */
+  z-index: 1000;
+}
+
+.suggestions.visible {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background-color: #4a4e52;
+}
+
+/* Round the corners of the last item to match the container */
+.suggestionItem:last-child:hover {
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.historyIcon {
+  fill: #9aa0a6;
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+}
+
+.templateDisplay {
+  background-color: #303134;
+  border: 1px solid #5f6368;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 380px; /* A good width for a card */
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* A subtle animation for when the card appears */
+  animation: fadeIn 0.5s ease-in-out;
+  margin-top: -4rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.templateImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.templateTitle {
+  color: #e8eaed;
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: capitalize; /* Makes 'e-commerce' -> 'E-commerce' */
+}
+
+.templateDisplay p {
+  color: #bdc1c6;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.viewButton {
+  background-color: #efc426; /* Blue color from your image */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.viewButton:hover {
+  background-color: #efc426; /* A slightly lighter blue on hover */
+}
+

@@ -1,0 +1,236 @@
+/* Glassmorphism Header */
+.glassmorphismHeader {
+  background: #ffffff !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: none !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  position: fixed;
+  z-index: 1050;
+}
+
+/* Ensure no white background shows through */
+.glassmorphismHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(249, 236, 197, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: -1;
+}
+
+/* Updated background color */
+.header {
+  background-color: #000000;
+}
+
+.navLink {
+  color: #fff !important;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #EFC426 !important;
+}
+
+.navLink.active {
+  color: #EFC426 !important;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Underline for the active link */
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: #EFC426;
+  border-radius: 1px;
+}
+
+.joinNow {
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 0 8px #EFC426, 0 0 16px #EFC426;
+  transition: all 0.3s ease;
+}
+
+.joinNow:hover {
+  background: #111;
+  color: #949090;
+  box-shadow: 0 0 12px #EFC426, 0 0 24px #EFC426;
+}
+
+.joinNow.active {
+  background: #EFC426 !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px #EFC426, 0 0 24px #EFC426;
+}
+
+/* Make the toggler icon white */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 255, 255, 255, 1 %29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Horizontal Dropdown Styles */
+.horizontalDropdown {
+  display: flex !important;
+  flex-direction: row !important;
+  min-width: 300px !important;
+  padding: 0.5rem !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  overflow: hidden !important;
+}
+
+.horizontalDropdownItem {
+  flex: 1 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.yellowHighlight {
+  color: #000 !important;
+  padding: 0.75rem 1rem !important;
+  transition: all 0.3s ease !important;
+  border-radius: 8px !important;
+  margin: 0 0.25rem !important;
+  display: block !important;
+  width: calc(100% - 0.5rem) !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.yellowHighlight:hover {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3) !important;
+}
+
+.yellowHighlight.active {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4) !important;
+}
+
+/* Show class for dropdown visibility */
+.show {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Responsive adjustment for the active link underline */
+@media (max-width: 991.98px) {
+  .navLink.active::after {
+    left: 1%;
+    transform: none;
+  }
+  
+  /* Mobile responsive horizontal dropdown */
+  .horizontalDropdown {
+    flex-direction: column !important;
+    min-width: 200px !important;
+  }
+  
+  .horizontalDropdownItem {
+    flex: none !important;
+  }
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 1920px) and (min-width: 1440px) {
+  .glassmorphismHeader {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1024px) {
+  .glassmorphismHeader {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .glassmorphismHeader {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+  .glassmorphismHeader {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .glassmorphismHeader {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+/* Global body adjustments to prevent white background showing */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+/* Ensure main content doesn't show white background */
+main, .main-content, #root > div {
+  background-color: transparent !important;
+}
+
+/* Fix any Bootstrap container issues */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Additional dropdown positioning */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  z-index: 1000 !important;
+  animation: dropdownFadeIn 0.3s ease-in-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

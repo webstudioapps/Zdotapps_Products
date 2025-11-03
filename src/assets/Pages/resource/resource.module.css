@@ -1,0 +1,81 @@
+:root {
+  --primary: #4f46e5;
+  --card-bg: #110d29;
+  --card-border: #2a2546;
+  --muted-text: #9ca3af;
+}
+
+.resourceSection {
+  background-color: #050014;
+  background-image: linear-gradient(to bottom, #050014, #0a0228);
+  min-height: 100vh;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+}
+
+.cardLink {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden; /* Crucial for rounding the image corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cardLink:hover .card {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.cardBody {
+  padding: 24px;
+  flex-grow: 1; /* Makes the body fill the available space */
+}
+
+.cardCategory {
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+  color: var(--muted-text);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.readMoreLink {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.cardLink:hover .readMoreLink {
+  color: var(--primary);
+}

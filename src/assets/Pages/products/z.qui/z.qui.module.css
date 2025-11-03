@@ -1,0 +1,379 @@
+.quizContainer {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  padding-top: 100px;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(120deg, #fdfdfd 0%, #e8eef7 100%);
+  background-attachment: fixed;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure body also has the background */
+.quizContainer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, #fdfdfd 0%, #e8eef7 100%);
+  z-index: -1;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header h1 {
+  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+  /* color: #2d2d55; */
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+/* Layout: quizzes left, form right */
+.layout {
+  display: grid;
+  grid-template-columns: 2.5fr 1.2fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex: 1;
+}
+
+/* Grid for quizzes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-left: 0;
+}
+
+/* Card Styling */
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2);
+}
+
+.quizTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #efc426;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.4rem;
+}
+
+.question {
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Options */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.option {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #f7f7fb;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.option:hover {
+  background: #ececff;
+  transform: scale(1.02);
+}
+
+.correct {
+  background: #b8f7b8 !important;
+  color: #0a660a;
+  font-weight: bold;
+}
+
+.wrong {
+  background: #f7b8b8 !important;
+  color: #660a0a;
+  font-weight: bold;
+}
+
+.progress {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Result */
+.result {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.restartBtn {
+  margin-top: 0.6rem;
+  padding: 0.6rem 1.3rem;
+  background: #ffc107;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.restartBtn:hover {
+  background: #ffc107;
+}
+
+/* Contact Form */
+.form {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border: 1px solid #eee;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form h2 {
+  margin-bottom: 1rem;
+  color: #ffc107;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #ffc107;
+  outline: none;
+  box-shadow: #ffc107;
+}
+
+.form textarea {
+  resize: none;
+  height: 80px;
+}
+.categoryButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 0.5rem 0 1rem 0;
+  flex-wrap: wrap;
+}
+
+.categoryButtons button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ffc107;
+  background: white;
+  color: #ffc107;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.categoryButtons button:hover {
+  background: #ececff;
+}
+
+.activeBtn {
+  background: #ffc107 !important;
+  color: white !important;
+}
+
+.form button {
+  padding: 0.7rem 1.8rem;
+  background: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.form button:hover {
+  background: #ffc107;
+  transform: translateY(-2px);
+}
+
+.loginBtnTop {
+  width: 50% !important;
+  border-radius: 25px !important;
+  align-self: center !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 📱 Responsive */
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center; /* Align button right */
+  margin-top: 1rem;
+}
+
+.loginBtn {
+  padding: 13px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0; /* center by container, prevent overflow */
+}
+
+/* Additional Responsive Tweaks */
+@media (max-width: 992px) {
+  .quizContainer {
+    padding-top: 110px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quizContainer {
+    padding-top: 100px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .form {
+    width: 100%;
+    max-width: 480px;
+    padding: 1.5rem;
+  }
+  .options {
+    gap: 0.7rem;
+    margin-top: 28px;
+  }
+  .loginBtnTop {
+    width: 60% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .header p {
+    font-size: 1.05rem;
+  }
+  .form {
+    max-width: 440px;
+    padding: 1.25rem;
+  }
+  .form button {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
+  }
+  .loginBtnTop {
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .quizContainer {
+    padding-top: 95px;
+  }
+  .form {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .categoryButtons button {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  .loginBtnTop {
+    width: 80% !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .quizContainer {
+    padding-top: 90px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .header p {
+    font-size: 1rem;
+  }
+  .form {
+    padding: 0.9rem;
+  }
+  .form button {
+    font-size: 0.9rem;
+  }
+}
+

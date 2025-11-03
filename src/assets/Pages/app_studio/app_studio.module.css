@@ -1,0 +1,476 @@
+/* --- GLOBAL & UTILITY STYLES --- */
+:global(body) {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0b0b0b;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.appStudioPage {
+  background-color: #0b0b0b;
+  color: #ffffff;
+}
+
+.textAccent { 
+  color: #F2C94C; 
+}
+
+.bgDarkest { 
+  background-color: #0b0b0b; 
+}
+
+.bgOffBlack { 
+  background-color: #0f0f0f; 
+}
+
+.bgMediumGray { 
+  background-color: #343434; 
+}
+
+.bgDarkGray { 
+  background-color: #424242; 
+}
+
+.sectionTitleLight {
+  font-weight: 700; 
+  color: #ffffff; 
+  font-size: 2.5rem;
+}
+
+.sectionSubtitleLight {
+  font-size: 1.25rem; 
+  max-width: 42rem; 
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* --- HERO SECTION ("Apps for every need") --- */
+.appStudioSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionSubtitle {
+  color: #F2C94C; /* Golden yellow */
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.sectionTitle {
+  font-size: 55px;
+  font-weight: 300;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #1F1F1F;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 450px;
+  flex: 1;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.cardTitle {
+  color: #F2C94C;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.cardDescription {
+  color: #D0D0D0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  flex-grow: 1; 
+}
+
+.appScreensWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  height: 250px;
+}
+
+.appScreen {
+  width: 120px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid #383838;
+  position: absolute;
+  bottom: 0;
+}
+
+.screen1 {
+  transform: translateX(-40%) scale(0.9);
+  z-index: 1;
+}
+
+.screen2 {
+  transform: translateY(-20px);
+  z-index: 10;
+}
+
+.screen3 {
+  transform: translateX(40%) scale(0.9);
+  z-index: 1;
+}
+
+/* --- STUDIO SEARCH COMPONENT --- */
+.studioSearchWrapper { 
+  position: relative; 
+  max-width: 500px; 
+  margin: auto; 
+}
+
+.studioSearchBar { 
+  display: flex; 
+  align-items: center; 
+  background-color: #ffffff; 
+  border-radius: 50px; 
+  padding: 4px; 
+}
+
+.searchIcon { 
+  color: #aaaaaa; 
+  margin: 0 10px; 
+}
+
+.studioSearchInput { 
+  flex-grow: 1; 
+  background: transparent; 
+  border: none; 
+  color: black; 
+  font-size: 1rem; 
+  outline: none; 
+}
+
+.studioSearchButton {
+  background-color: #383838; 
+  color: #ffffff; 
+  border: none; 
+  border-radius: 50px;
+  padding: 10px 24px; 
+  font-weight: bold; 
+  cursor: pointer;
+}
+
+.studioSuggestionsDropdown {
+  background-color: #474642; 
+  border-radius: 14px; 
+  margin-top: 10px; 
+  padding: 10px 0;
+  position: absolute; 
+  width: 100%; 
+  z-index: 10;
+}
+
+.suggestionItem { 
+  padding: 12px 20px; 
+  color: white; 
+  cursor: pointer; 
+  transition: background-color 0.2s ease; 
+}
+
+.suggestionItem:hover { 
+  background-color: #555; 
+}
+
+.studioButtonsContainer { 
+  margin-top: 20px; 
+  display: flex; 
+  gap: 15px; 
+}
+
+.readyToUse { 
+  width: 65%; 
+}
+
+.studioButton {
+  flex: 1; 
+  background-color: #F2C94C; 
+  color: #0b0b0b; 
+  border: 1px solid #666;
+  border-radius: 30px; 
+  padding: 12px; 
+  font-weight: 500; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.studioButton:hover { 
+  background-color: #383838; 
+  color: #ffffff; 
+  transform: translateY(-2px); 
+}
+
+/* --- FEATURE SECTION ("Choose the Website") --- */
+.featureTitle { 
+  color: #ffffff; 
+  font-size: 2.25rem; 
+  font-weight: 300; 
+  line-height: 1.5; 
+}
+
+/* --- SERVICES SECTION --- */
+.serviceCard {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  padding: 1rem;
+  height: 100%; 
+  background-size: cover; 
+  background-position: center; 
+  border-radius: 16px; 
+  min-height: 220px;
+  color: #F2C94C; 
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+  cursor: pointer;
+}
+
+.serviceCard:hover { 
+  transform: scale(1.03); 
+  box-shadow: 0 0px 20px rgba(242, 201, 76, 0.7); 
+}
+
+/* --- INDUSTRY SOLUTIONS SECTION --- */
+.industrySolutions { 
+  background-color: #2a2a2a; 
+}
+
+.industryCard {
+  background-color: #333333; 
+  border-radius: 1rem; 
+  padding: 1.5rem; 
+  height: 100%; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+  cursor: pointer;
+}
+
+.industryCard:hover { 
+  transform: translateY(-5px); 
+  background-color: #444444; 
+  box-shadow: 0 8px 20px rgba(242, 201, 76, 0.5); 
+}
+
+.industryIcon { 
+  width: 60px; 
+  height: 60px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-bottom: 1rem; 
+}
+
+.industryTitle { 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  color: #FFFFFF; 
+}
+
+/* --- "WE DELIVER" SECTION --- */
+.deliverImg { 
+  border-radius: 20px; 
+  height: 420px; 
+  object-fit: cover; 
+}
+
+.scrollContainer { 
+  height: 420px; 
+  overflow-y: hidden; 
+  position: relative; 
+}
+
+.scrollContainer:hover .scrollContent { 
+  animation-play-state: paused; 
+}
+
+.scrollContent { 
+  animation: scroll 10s linear infinite; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+@keyframes scroll { 
+  0% { transform: translateY(0); } 
+  100% { transform: translateY(-50%); } 
+}
+
+.deliverCard {
+  padding: 1.5rem; 
+  background: rgba(21, 21, 21, 0.85); 
+  border-radius: 16px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.textLightEmphasis { 
+  color: rgba(255, 255, 255, 0.8); 
+}
+
+/* --- CASE STUDIES SECTION --- */
+.caseStudyImg { 
+  border-radius: 18px; 
+  height: 240px; 
+  object-fit: cover; 
+  width: 100%; 
+}
+
+.caseStudyMeta { 
+  color: #F2C94C; 
+  font-weight: 600; 
+}
+
+.caseStudyTitle { 
+  color: #ffffff; 
+  font-size: 1.2rem; 
+}
+
+.btnOutlineAccent {
+  border: 2px solid #F2C94C; 
+  color: #F2C94C; 
+  background: transparent; 
+  border-radius: 50px;
+  padding: 10px 20px; 
+  transition: all 0.3s ease;
+}
+
+.btnOutlineAccent:hover { 
+  background-color: #F2C94C; 
+  color: #0b0b0b; 
+}
+
+/* --- TESTIMONIALS SECTION --- */
+.testimonialImg { 
+  width: 230px; 
+  height: 230px; 
+  object-fit: cover; 
+}
+
+.testimonialQuote { 
+  color: rgba(255, 255, 255, 0.85); 
+  max-width: 520px; 
+}
+
+.testimonialAuthor { 
+  font-weight: bold; 
+  color: #ffffff; 
+}
+
+.testimonialNavBtn {
+  width: 44px; 
+  height: 44px; 
+  border: 2px solid #F2C94C; 
+  color: #F2C94C; 
+  border-radius: 50%;
+  background: transparent; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 1.2rem; 
+  transition: all 0.3s ease;
+}
+
+.testimonialNavBtn:hover { 
+  background-color: #F2C94C; 
+  color: #0b0b0b; 
+}
+
+.testimonialDots { 
+  display: flex; 
+}
+
+.dot {
+  display: inline-block; 
+  width: 10px; 
+  height: 10px; 
+  margin: 0 6px; 
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25); 
+  transition: background-color 0.3s ease;
+}
+
+.dot.active { 
+  background-color: #F2C94C; 
+}
+
+/* --- CTA SECTION --- */
+.ctaSection { 
+  background-color: #F2C94C; 
+}
+
+.ctaTitle { 
+  font-weight: 700; 
+  font-size: 42px; 
+  margin-bottom: 1rem; 
+}
+
+.ctaSubtitle { 
+  max-width: 760px; 
+  margin: 0 auto; 
+  font-size: 25px; 
+  margin-bottom: 1.5rem; 
+}
+
+.ctaFeatures { 
+  max-width: 900px; 
+  margin: 0 auto; 
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+  .sectionSubtitle {
+    font-size: 20px;
+  }
+  .card {
+    padding: 30px;
+  }
+  .appScreen {
+    width: 100px;
+  }
+}

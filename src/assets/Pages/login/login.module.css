@@ -1,0 +1,320 @@
+
+
+.imageSection {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: url('../../images/bg_image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.formContainer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 2;
+    margin: 20px;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 32px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Form Labels */
+.formContainer label {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+}
+
+/* Input Fields */
+.inputField {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+.inputField::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.inputField:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* OTP Input Container */
+.otpContainer {
+    display: flex;
+    gap: 0px;
+    justify-content: space-between;
+}
+
+.otpInput {
+    width: 45px !important;
+    height: 45px !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.otpInput:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Icon Container */
+.iconContainer {
+    display: flex;
+    gap: 0px;
+    justify-content: space-between;
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+}
+
+.icon:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Password Toggle */
+.togglePassword {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.togglePassword:hover {
+    color: white;
+}
+
+/* Forgot Password Link */
+.forgotPwdLink {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin: 16px 0;
+}
+
+.forgotPwdLink:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.btn-light {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 24px 0;
+    position: relative;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.divider span {
+    backdrop-filter: blur(10px);
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Form Groups */
+.formGroup {
+    margin-bottom: 24px;
+}
+
+.formGroup:last-child {
+    margin-bottom: 0;
+}
+
+/* Error Messages */
+.errorMessage {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-top: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Toast Container */
+.toastContainer {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1055;
+}
+
+.swal-footer {
+    text-align: center !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .formContainer {
+        margin: 16px;
+        padding: 32px 24px;
+        max-width: calc(100% - 32px);
+    }
+    
+    .otpContainer {
+        gap: 8px;
+    }
+    
+    .otpInput {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 16px;
+    }
+    
+    .icon {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .formContainer {
+        padding: 24px 20px;
+    }
+    
+    .otpInput {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 14px;
+    }
+    
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo {
+        width: 100px;
+    }
+}
+
+/* Animation for form appearance */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formContainer {
+    animation: fadeInUp 0.6s ease-out;
+}

@@ -1,0 +1,243 @@
+/* === Global Styles === */
+body {
+  background-color: #F4F3F3;
+}
+
+/* === Search, Filter, and View Toggle Section === */
+
+/* Search input with icon inside */
+.searchInputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none; /* Allows clicking on the input field through the icon */
+}
+
+.resultsText {
+  color: #292121;
+}
+
+/* --- NEW: Correct View Toggle Switch Styles --- */
+/* This replaces the old, incorrect styles you provided */
+.viewToggleWrapper {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 50px; /* Pill shape */
+  border: 1px solid #e9ecef;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.toggleButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Make them circles */
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* Removes flash on mobile tap */
+}
+
+.toggleButton:focus-visible {
+  outline: 2px solid #ffc107; /* Accessibility outline */
+  outline-offset: 2px;
+}
+
+.toggleButton i {
+  font-size: 1.4rem;
+  color: #6c757d; /* Inactive icon color */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Style for the active button */
+.toggleButton.active {
+  background-color: #ffc107; /* Yellow background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggleButton.active i {
+  color: #212529; /* Active icon color (black) */
+}
+
+
+/* === Grid View Card Styles === */
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #e9ecef;
+  border-radius: 0.6rem;
+  padding: 1.5rem;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: none; /* No shadow by default */
+}
+
+.card:hover {
+  box-shadow: 0 5px 20px rgba(255, 202, 58, 0.938); /* hover shadow for grid */
+  transform: translateY(-2px);
+}
+
+/* Department badge */
+.deptBadge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 10rem;
+}
+
+/* Title */
+.title {
+  color: #212529;
+}
+
+/* Pills */
+.metaWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  border-radius: 10rem;
+}
+
+.pillIcon {
+  font-size: 0.8rem;
+  color: #212529;
+}
+
+/* Actions and Apply button */
+.actions {
+  margin-top: auto; /* Pushes button to the bottom in flex column */
+  padding-top: 4rem; /* Space between content and button */
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the start */
+}
+
+.applyBtn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.applyBtn:hover {
+  background-color: #ffca2c;
+  color: #212529;
+}
+
+
+/* === List View Styles === */
+.listCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row; /* Ensure row direction for list view */
+  min-height: auto; /* Override grid min-height */
+  padding: 1.5rem; /* Consistent padding */
+  border-radius: 8px;
+}
+
+.listCard:hover {
+  box-shadow: 0 8px 25px rgba(239, 196, 38, 0.3), 0 4px 20px rgba(239, 196, 38, 0.2), 0 2px 15px rgba(239, 196, 38, 0.1); /* shadow on hover */
+}
+
+.listContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+}
+
+.listCard .deptBadge {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.listCard .title {
+  flex-grow: 1; /* Title takes available space */
+  margin: 0;
+}
+
+.listCard .metaWrap {
+  margin: 0;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.listCard .actions {
+  margin-top: 0;
+  padding-top: 0;
+  flex-shrink: 0;
+  margin-left: 1.5rem;
+}
+
+.searchInputWrapper input {
+  border-color: #ccc; /* Default border color */
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+.searchInputWrapper input:focus {
+  border-color: #EFC426 !important; /* Focused border color */
+}
+
+
+
+/* === Responsive Styles === */
+@media (max-width: 992px) {
+  .listContent {
+    flex-wrap: wrap; /* Allow wrapping on medium screens */
+  }
+  .listCard .title {
+    min-width: 100%; /* Title takes full width when wrapped */
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .listContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .listCard .metaWrap {
+    margin: 0.75rem 0;
+  }
+  .listCard .actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+}

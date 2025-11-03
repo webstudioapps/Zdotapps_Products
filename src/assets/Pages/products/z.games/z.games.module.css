@@ -1,0 +1,484 @@
+/* ===== PROFESSIONAL Z.GAMES STYLES ===== */
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.engagePage {
+  min-height: 100vh;
+  background: linear-gradient(125deg, #030303, #2e2d23, #535363);
+  color: #f0f0f0;
+  font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ----- Hero Section ----- */
+.hero {
+  padding: 7rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background: white;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 1rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  max-width: 600px;
+  margin: 0 auto;
+  color: #d0d0e0;
+  font-weight: 300;
+  padding: 0 1rem;
+}
+
+.brand {
+  color: #ffc94a;
+  font-weight: 600;
+}
+
+/* ----- Main Layout ----- */
+.mainSection {
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* ----- Swiper Carousel ----- */
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.swiper {
+  width: 390px;
+  height: 550px;
+}
+
+/* Make Swiper navigation arrows white */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;   /* white arrows */
+  fill: #fff !important;    /* in case it’s an SVG */
+  stroke: #fff !important;  /* ensures white outline */
+}
+
+/* Optional: increase visibility with shadow */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 28px;           /* make them a bit larger if needed */
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6); /* glow for visibility */
+}
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #fff !important;
+}
+
+:global(.swiper-button-next::after),
+:global(.swiper-button-prev::after) {
+  font-size: 28px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+
+.slide {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.slide:hover {
+  transform: scale(1.02);
+}
+
+.slideInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(25, 25, 45, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+}
+
+/* ✅ FIXED: Flexible image container for mixed orientations */
+.imageSection {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e; /* fallback for transparent/letterboxed areas */
+  overflow: hidden;
+}
+
+.slideImage {
+  max-width: 100%;
+  max-height: 90%;
+  object-fit: contain; /* Shows full image without cropping */
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.textSection {
+  padding: 1.5rem;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(25, 25, 45, 0.9);
+}
+
+.gameHeader {
+  margin-bottom: 0.8rem;
+}
+
+.gameTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffc94a;
+  margin-bottom: 0.3rem;
+}
+
+.divider {
+  height: 2px;
+  width: 40px;
+  background: linear-gradient(90deg, #ffc94a, #ff9e44);
+  border-radius: 2px;
+}
+
+.gameDesc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #e0e0f0;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* ----- Form Card ----- */
+.formCard {
+  background: rgba(20, 20, 40, 0.7);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 420px;
+  height: fit-content;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.logoWrap {
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 25, 0.5);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #ffc94a;
+  background: rgba(15, 15, 35, 0.7);
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.submitBtn {
+  background: #ffc94a;
+  color: #1a1a2e;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  width: 50%;
+  align-self: center;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitBtn:hover {
+  transform: translateY(-3px);
+  background: #ffb627;
+}
+
+
+.loginBtnWrap {
+  margin-top: 1rem;
+  text-align: center;
+}
+.loginBtn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.loginBtn:hover {
+  background-color: #fbc02d;
+}
+
+
+/* ----- Responsive ----- */
+@media (max-width: 1100px) {
+  .container {
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    padding: 6rem 1rem 2rem;
+  }
+  .container {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  .carousel {
+    order: -1;
+    width: 100%;
+    max-width: 450px;
+  }
+  .formCard {
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 1rem 1.5rem;
+  }
+  .heroTitle {
+    font-size: 2rem;
+    padding: 0 0.5rem;
+  }
+  .heroSubtitle {
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  .container {
+    gap: 2rem;
+    padding: 0 0.75rem;
+  }
+  .swiper {
+    width: 350px;
+    height: 480px;
+  }
+  .formCard {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+  .textSection {
+    padding: 1.2rem;
+  }
+  .gameTitle {
+    font-size: 1.3rem;
+  }
+  .gameDesc {
+    font-size: 0.9rem;
+  }
+  .logo {
+    width: 130px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 4.5rem 0.75rem 1.5rem;
+  }
+  .heroTitle {
+    font-size: 1.8rem;
+    padding: 0 0.5rem;
+  }
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  .container {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  .swiper {
+    width: 320px;
+    height: 450px;
+  }
+  .formCard {
+    padding: 1.3rem;
+  }
+  .form input,
+  .form textarea {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  .submitBtn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    width: 60%;
+  }
+  .logo {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 0.5rem 1.2rem;
+  }
+  .heroTitle {
+    padding: 0 0.5rem;
+    line-height: 1.3;
+    margin-top: 47px;
+  }
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  .container {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  .swiper {
+    width: 290px;
+    height: 400px;
+  }
+  .formCard {
+    padding: 1.2rem;
+  }
+  .textSection {
+    padding: 1rem;
+  }
+  .gameTitle {
+    font-size: 1.2rem;
+  }
+  .gameDesc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .form input,
+  .form textarea {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  .submitBtn {
+    padding: 0.75rem 1.3rem;
+    font-size: 0.95rem;
+    width: 70%;
+  }
+  .logo {
+    width: 110px;
+  }
+  .loginBtn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero {
+    padding: 3.5rem 0.5rem 1rem;
+  }
+  .heroTitle {
+    font-size: 1.4rem;
+    padding: 0 0.3rem;
+  }
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+  .swiper {
+    width: 270px;
+    height: 380px;
+  }
+  .formCard {
+    padding: 1rem;
+  }
+  .gameTitle {
+    font-size: 1.1rem;
+  }
+  .gameDesc {
+    font-size: 0.8rem;
+  }
+  .form input,
+  .form textarea {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.85rem;
+  }
+  .submitBtn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    width: 75%;
+  }
+  .logo {
+    width: 100px;
+  }
+}

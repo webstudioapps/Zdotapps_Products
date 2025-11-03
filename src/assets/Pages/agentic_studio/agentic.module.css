@@ -1,0 +1,288 @@
+/* Using a modern font like Inter is recommended. Import it in your main CSS or index.html */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap'); */
+
+.pageContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #3b3b3b;
+  color: #e0e0e0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background-color: #212121;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  position: relative;
+  margin-top: 85px;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #c5c5c5;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.navItem:hover {
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.chatsSection {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.chatsTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #a0a0a0;
+  margin-bottom: 20px;
+  padding-left: 12px;
+}
+
+.chatList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chatItem {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: #c5c5c5;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.chatItem:hover {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.scrollbar {
+  position: absolute;
+  right: 6px;
+  top: 24px;
+  bottom: 24px;
+  width: 5px;
+  background-color: #424242;
+  border-radius: 3px;
+}
+
+/* --- Main Content --- */
+.mainContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffc700;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin-top: 12px;
+}
+
+.highlight {
+  color: #ffc700;
+}
+
+/* --- Input Area --- */
+
+.inputWrapper { 
+  width: 100%; 
+  max-width: 750px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.inputContainer {
+  width: 100%;
+  min-height: 0px;
+  position: relative;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Glowing animated border */
+.inputContainer::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: 99999px;
+  height: 99999px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0),
+    #b4900b,
+    rgba(0, 0, 0, 0) 25%
+  );
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+}
+
+/* Inner mask to preserve inner layout and border radius */
+.inputContainer::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  background-color: #2d2d2d;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+/* Content elements stay above glow */
+.placeholder,
+.plusButton,
+.sendButton {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.placeholder {
+  /* flex: 1; */
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.plusButton,
+.sendButton {
+  background: transparent;
+  border: none;
+  color: #ffc700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.plusButton:hover,
+.sendButton:hover {
+  transform: scale(1.1);
+}
+
+@keyframes rotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+
+.placeholder {
+  color: #888;
+  font-size: 1rem;
+}
+
+.plusButton {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  background: none;
+  border: none;
+  color: #c5c5c5;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+}
+
+.sendButton {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffc700;
+  color: #212121;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.sendButton:hover {
+  background-color: #ffd633;
+  transform: scale(1.05);
+}
+
+/* --- Suggestions --- */
+.suggestions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.suggestionChip {
+  background-color: transparent;
+  border: 1px solid #555;
+  color: #e0e0e0;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.suggestionChip:hover {
+  background-color: #3a3a3a;
+  border-color: #777;
+}

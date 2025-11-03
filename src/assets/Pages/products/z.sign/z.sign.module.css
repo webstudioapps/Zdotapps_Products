@@ -1,0 +1,122 @@
+/* Z.Sign Mobile Responsive Styles */
+
+.mainContainer {
+  padding-top: 100px;
+  overflow-x: hidden;
+}
+
+.contentWrapper {
+  max-width: 1452px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.layoutContainer {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.phonesSection {
+  display: flex;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  padding-right: 1.5rem;
+}
+
+.formSection {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Desktop - One Screen View */
+@media (min-width: 1200px) {
+  .mainContainer {
+    padding-top: 100px;
+  }
+  .phonesSection {
+    gap: 1.5rem;
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .mainContainer {
+    padding-top: 110px;
+  }
+  .phonesSection {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+  .layoutContainer {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .mainContainer {
+    padding-top: 100px;
+  }
+  .contentWrapper {
+    padding: 2rem 1rem;
+  }
+  .layoutContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .phonesSection {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  .formSection {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding-top: 95px;
+  }
+  .contentWrapper {
+    padding: 1.5rem 0.75rem;
+  }
+  .phonesSection {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .mainContainer {
+    padding-top: 90px;
+  }
+  .contentWrapper {
+    padding: 1rem 0.5rem;
+  }
+  .phonesSection {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContainer {
+    padding-top: 85px;
+  }
+  .contentWrapper {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .mainContainer {
+    padding-top: 80px;
+  }
+  .contentWrapper {
+    padding: 0.75rem 0.5rem;
+  }
+}

@@ -1,0 +1,22 @@
+/* CTA Button Styling */
+.ctaButton {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-4px);
+  background-color: #111;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  color: #969393;
+}
+
+@media (max-width: 768px) {
+  .lightEffect {
+    width: 90%;
+  }
+}
