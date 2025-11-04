@@ -245,7 +245,7 @@ export default function ZQui() {
   return (
     <section className={styles.quizContainer}>
       <div className={`mt-5 ${styles.header}`}>
-        <h1>Z.Qui – Quick Quizzes</h1>
+        <h1 className="text-black">Z.Qui – Quick Quizzes</h1>
         <p>Select a category to see 3 quizzes</p>
 
         {/* Category Buttons */}
@@ -292,7 +292,7 @@ export default function ZQui() {
         {/* RIGHT SIDE: Contact Form */}
         <div className={styles.formContainer}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h5 style={{ textAlign: 'center' }}>Create Engaging Quizzes for Anyone, in Minutes.</h5>
+            <h5 style={{ textAlign: 'center' , color: 'black' }}>Create Engaging Quizzes for Anyone, in Minutes.</h5>
             <img src={quiLogo} alt="logo" className={styles.logo} style={{ width: "150px", alignItems: "center" }} />
             
             <input

@@ -99,6 +99,7 @@ const cardsData = [
 
 const Zengage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   // ---- Chips select state ----
   const [selectedTags, setSelectedTags] = useState([]);
@@ -110,16 +111,33 @@ const Zengage = () => {
     );
   };
 
-  const goToSlide = (index) => setCurrentIndex(index);
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+    // Pause auto-scroll when manually changing slides
+    setIsPaused(true);
+    // Resume auto-scroll after a delay if not already resumed by user interaction
+    setTimeout(() => {
+      if (isPaused) {
+        setIsPaused(false);
+      }
+    }, 5000);
+  };
 
   // Auto-scroll carousel
   useEffect(() => {
+    if (isPaused) return;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cardsData.length);
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
+  
+  // Pause auto-scroll on hover
+  const handleMouseEnter = () => setIsPaused(true);
+  // Resume auto-scroll when mouse leaves
+  const handleMouseLeave = () => setIsPaused(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -153,7 +171,12 @@ const Zengage = () => {
       {/* Side-by-side layout */}
       <div className={styles['side-by-side']}>
         {/* Carousel */}
-        <div className={styles['carousel-container']}>
+        <div 
+          className={styles['carousel-container']}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => setIsPaused(true)}
+        >
           <div
             className={styles['carousel-wrapper']}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}

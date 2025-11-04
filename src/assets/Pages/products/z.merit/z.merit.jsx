@@ -44,7 +44,7 @@ const Zmerit = () => {
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Find Your Next Star Player. Explore</h5>
+          <h5 className="text-black">Find Your Next Star Player. Explore</h5>
           <img src={meritImage} alt="z.merit Logo" className={styles.formLogo} />
           <label>
             First Name

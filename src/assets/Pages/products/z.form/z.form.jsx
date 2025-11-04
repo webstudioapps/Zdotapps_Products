@@ -57,7 +57,7 @@ const Zform = () => {
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5 style={{ textAlign: 'center' }}>Create forms, collect answers, gain insights</h5>
+          <h5 style={{ textAlign: 'center' , color: 'black' }}>Create forms, collect answers, gain insights</h5>
           <img src={formsImage} alt="z.forms Logo" className={styles.formLogo} />
 
           <label>

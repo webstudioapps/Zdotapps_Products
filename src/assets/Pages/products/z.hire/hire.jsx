@@ -49,7 +49,7 @@ const Zhire = () => {
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Smarter Hiring Starts with</h5>
+          <h5 className="text-black">Smarter Hiring Starts with</h5>
           <img src={hireImage} alt="z.hire Logo" className={styles.formLogo} />
           <label>
             First Name
