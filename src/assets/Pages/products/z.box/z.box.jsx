@@ -57,7 +57,7 @@ const ZBox = () => {
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Start securing your documents with</h5>
+          <h5 className="text-black">Start securing your documents with</h5>
           <img src={zboxImage} alt="Z.Box Logo" className={styles.formLogo} />
 
           <label>

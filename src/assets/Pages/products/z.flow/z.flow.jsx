@@ -1,202 +1,114 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate for React Router v6+
-import styles from './z.flow.module.css';
-import flowIllustration from '../../../images/flow.png';
-
-// Content blocks for each slide
-const cardsData = [
-  {
-    title: 'Clickstream Analytics',
-    bgColor: '#EFC426',
-    features: [
-      'Track user clickstreams',
-      'Map user journeys',
-      'View paths in real time',
-      'Detect bottlenecks early',
-    ],
-    image: flowIllustration,
-    alt: 'Journey map (Step 1 → Step 2 → Step 3) with arrows, and a highlighted drop-off at Step 2',
-  },
-  {
-    title: 'Optimization Insights',
-    bgColor: '#EFC426',
-    features: [
-      'Optimize workflows',
-      'Compare performance',
-      'Share insights with teams',
-      'Boost efficiency and growth',
-    ],
-    image: flowIllustration,
-    alt: 'Two workflow diagrams side by side: Before (with red bottleneck marker) vs After (smooth flow with green checkmarks)',
-  },
-  {
-    title: 'Analytics Dashboard',
-    bgColor: '#EFC426',
-    features: [
-      'Centralized clickstream data',
-      'Customizable reports',
-      'Team-friendly sharing',
-      'Real-time metrics',
-    ],
-    image: flowIllustration,
-    alt: 'Dashboard cards with Avg. Drop-off Rate, Most Common Workflow Path, Top Bottleneck Step',
-  },
-];
+import React, { useState } from "react";
+import styles from "./z.flow.module.css";
+import { useNavigate } from "react-router-dom";
+import flowLogo from "../../../images/flow.png";
 
 const ZFlow = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const navigate = useNavigate();  // Initialize navigate for redirection
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
 
-  // ---- Chips select state ----
-  const [selectedTags, setSelectedTags] = useState([]);
-  const chipOptions = [
-    'Clickstream Analytics',
-    'Optimization Insights',
-    'Analytics Dashboard',
-  ];
-
-  const toggleTag = (tag) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
+  const handleButtonClick = () => {
+    navigate("/login"); // Redirects to z.flow login page
   };
 
-  const goToSlide = (index) => setCurrentIndex(index);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Selected tags:', selectedTags);
-    alert(`Form submitted with interests: ${selectedTags.join(', ')}`);
-  };
-
-  // Redirect to the login page
-  const handleLoginRedirect = () => {
-    navigate('/login');  // Replace '/login' with your actual login page path
+    alert('Thank you for your interest! We will get back to you soon.');
+    setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Automate. Track. Optimize your workflows</h1>
+    <section className={styles.hero}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>
+          Simplify. Track. <span className={styles.highlight}>Z.Flow</span>
+        </h1>
 
-      {/* Navigation Tabs */}
-      <div className={styles['nav-tabs']}>
-        {cardsData.map((card, index) => (
-          <button
-            key={index}
-            className={styles['tab-btn']}
-            onClick={() => goToSlide(index)}
-            style={{
-              backgroundColor: currentIndex === index ? card.bgColor : '#fff',
-              color: currentIndex === index ? '#fff' : '#000',
-            }}
-          >
-            {card.title}
-          </button>
-        ))}
+        <p className={styles.subtitle}>Laser-Focused Task Execution Platform</p>
+
+        <p className={styles.description}>
+          Z.Flow helps developers, teams, and managers cut the noise and stay in
+          pure execution mode. Bulk upload tasks, set priority & deadlines, and
+          maintain a crystal-clear view from top to bottom.
+        </p>
+
+        <ul className={styles.features}>
+          <li>Granular Task Breakdown</li>
+          <li>Bulk Upload via CSV</li>
+          <li>Priority, Status & Timeline</li>
+          <li>Z.Box & Z.Notes Integrations</li>
+        </ul>
+
+        <button
+          className={`btn btn-warning btn-lg ${styles.cta}`}
+          onClick={handleButtonClick}
+        >
+          Login to Z.Flow
+        </button>
       </div>
 
-      {/* Bootstrap grid layout */}
-      <div className="container-fluid my-5">
-        <div className="row align-items-stretch">
-          {/* Left Carousel */}
-          <div className="col-md-8 d-flex">
-            <div className={`${styles['carousel-container']} flex-fill`}>
-              <div
-                className={styles['carousel-wrapper']}
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-              >
-                {cardsData.map((card, index) => (
-                  <div
-                    key={index}
-                    className={styles['feature-card']}
-                    style={{
-                      backgroundColor: '#fff',
-                      color: currentIndex === index ? 'black' : '#000',
-                    }}
-                  >
-                    <div className={styles['feature-text']}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginBottom: 30,
-                          marginTop: 20,
-                        }}
-                      >
-                        <h2
-                          className={styles['feature-text-h2']}
-                          style={{ margin: 0 }}
-                        >
-                          {card.title}
-                        </h2>
-                      </div>
-                      <ul>
-                        {card.features.map((feature, i) => (
-                          <li key={i} className={styles['feature-text-li']}>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Extra button only for Clickstream Analytics */}
-                      {card.title === 'Clickstream Analytics' && (
-                        <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '50px', marginBottom: '20px' }} className="ms-5">
-                          <button
-                            className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
-                            onClick={handleLoginRedirect}  // Trigger the redirect
-                          >
-                            Login to Z.flow
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={styles['image-wrapper']}>
-                      <img src={card.image} alt={card.alt} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <div className={styles.formWrapper}>
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+          <h5 className="text-black">Start executing your projects with</h5>
+          <div className={styles.logoContainer}>
+            <img 
+              src={flowLogo} 
+              alt="Z.Flow Logo" 
+              className={styles.logoImage}
+            />
           </div>
 
-          {/* Right Contact Form */}
-          <div className="col-md-4 d-flex">
-            <div className={`${styles.contactFormWrapper} flex-fill`}>
-              <h5 style={{ textAlign: 'center' }}>Onboard your workflows with</h5>
-              <img
-                src={flowIllustration}
-                alt="Z.Flow Logo"
-                className={styles.logo}
-              />
-
-              <form className={styles.contactForm} onSubmit={handleSubmit}>
-                <label>
-                  First Name
-                  <input type="text" name="firstName" placeholder="First Name" required />
-                </label>
-                <label>
-                  Last Name
-                  <input type="text" name="lastName" placeholder="Last Name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" name="email" placeholder="Email ID" required />
-                </label>
-                <label>
-                  Message
-                  <textarea name="message" placeholder="Tell us about your workflow requirements" style={{ height: "90px" }} />
-                </label>
-                <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+          <label>
+            First Name
+            <input 
+              type="text" 
+              name="firstName" 
+              placeholder="First Name" 
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Last Name
+            <input 
+              type="text" 
+              name="lastName" 
+              placeholder="Last Name" 
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Email
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Email ID" 
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              placeholder="Message"
+              value={formData.message}
+              onChange={handleChange}
+              style={{ height: "90px" }}
+            />
+          </label>
+          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
+        </form>
       </div>
-    </div>
+    </section>
   );
 };
 

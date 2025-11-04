@@ -44,8 +44,8 @@ const Ziot = () => {
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5 style={{ textAlign: 'center' }}>Launch Your Digital Store.</h5>
-           <h5 style={{ textAlign: 'center', marginTop: '-10px' }}>Unlock 3X Sales</h5>
+          <h5 style={{ textAlign: 'center' , color: 'black' }}>Launch Your Digital Store.</h5>
+           <h5 style={{ textAlign: 'center', marginTop: '-10px' , color: 'black' }}>Unlock 3X Sales</h5>
           <img src={kirazeeImage} alt="Kirazee Logo" className={styles.formLogo} />
           <label>
             First Name

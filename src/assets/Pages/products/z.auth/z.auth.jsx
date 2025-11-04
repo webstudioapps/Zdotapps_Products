@@ -44,7 +44,7 @@ const Zauth = () => {
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5 style={{ textAlign: 'center' }}>A Frictionless Gateway to a Fortified Enterprise</h5>
+          <h5 style={{ textAlign: 'center' , color: 'black' }}>A Frictionless Gateway to a Fortified Enterprise</h5>
           <img src={authImage} alt="z.auth Logo" className={styles.formLogo} />
           <label>
             First Name

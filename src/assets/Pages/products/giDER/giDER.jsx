@@ -54,7 +54,7 @@ const GiDER = () => {
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Start executing your projects with</h5>
+          <h5 className="text-black">Start executing your projects with</h5>
           <img src={gidERImage} alt="giDER Logo" className={styles.formLogo} />
 
           <label>
