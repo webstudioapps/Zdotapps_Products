@@ -36,10 +36,10 @@ jobs:
 
       - name: Copy Build Folder to EC2
         run: |
-          rsync -avz --delete \
+          rsync -avz \
             --exclude='.git' \
             --exclude='node_modules' \
-            ./dist/ \
+            ./dist \
             ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ec2-user/dev/zdotapps_products/
 
       - name: Restart Web Service (optional)
