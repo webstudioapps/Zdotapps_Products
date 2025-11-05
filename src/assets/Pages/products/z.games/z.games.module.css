@@ -247,6 +247,35 @@
   min-height: 90px;
 }
 
+.storeButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.storeButton {
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.storeButton:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.storeBadge {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.storeBadge:hover {
+  transform: scale(1.05);
+}
+
 .submitBtn {
   background: #ffc94a;
   color: #1a1a2e;

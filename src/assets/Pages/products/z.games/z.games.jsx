@@ -14,6 +14,10 @@ import SpellImg from './images/spell.jpg';
 import SortonymImg from './images/sortonym.png';
 import games_whiteImg from '../../../images/games_wlogo.png';
 
+// App Store Badges - Using the same assets as Z.Engage
+import appstore from '../z.engage/images/appstore.svg';
+import googlePlay from '../z.engage/images/googles_store.svg';
+
 const Zgames = () => {
   const navigate = useNavigate();
 
@@ -119,14 +123,32 @@ const Zgames = () => {
                       </div>
                       <p className={styles.gameDesc}>{game.description}</p>
 
-                      {/* ✅ Updated login button */}
-                      <div className={`d-flex justify-content-start ${styles.loginBtnWrap}`}>
-                        <button
-                          className={`btn btn-warning ${styles.loginBtn}`}
-                          onClick={handleLoginClick}
+                      {/* App Store Buttons - Matched with Z.Engage style */}
+                      <div className={styles.storeButtons}>
+                        <a 
+                          href="https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.storeButton}
                         >
-                          Login to Z.games
-                        </button>
+                          <img 
+                            src={googlePlay} 
+                            alt="Get it on Google Play" 
+                            className={styles.storeBadge}
+                          />
+                        </a>
+                        <a 
+                          href="https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.storeButton}
+                        >
+                          <img 
+                            src={appstore} 
+                            alt="Download on the App Store" 
+                            className={styles.storeBadge}
+                          />
+                        </a>
                       </div>
                     </div>
                   </div>

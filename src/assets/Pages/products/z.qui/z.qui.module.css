@@ -1,88 +1,349 @@
-.quizContainer {
-  max-width: 1700px;
-  margin: 0 auto;
-  padding: 1rem;
-  font-family: "Poppins", sans-serif;
-  padding-top: 100px;
-  overflow-x: hidden;
-  min-height: 100vh;
+:root {
+  --primary: #efc426;
+  --secondary: #1e3a8a;
+  --dark: #111827;
+  --light: #f9fafb;
+}
+
+.hero {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 16%;
+  min-height: 100vh;
   background: linear-gradient(120deg, #fdfdfd 0%, #e8eef7 100%);
-  background-attachment: fixed;
-  width: 100%;
-  position: relative;
+  gap: 4rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-/* Ensure body also has the background */
-.quizContainer::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(120deg, #fdfdfd 0%, #e8eef7 100%);
-  z-index: -1;
+.content {
+  flex: 1;
+  max-width: 600px;
+  color: var(--dark);
 }
 
-/* Header */
-.header {
-  text-align: center;
+.title {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: black;
   margin-bottom: 1rem;
 }
 
-.logo {
-  width: 120px;
-  margin-left: auto;
-  margin-right: auto;
+.highlight {
+  color: var(--primary);
 }
 
-.header h1 {
-  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
-  /* color: #2d2d55; */
-  margin-bottom: 0.3rem;
-  font-weight: 700;
+.subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
 }
 
-.header p {
+.description {
   font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  color: #374151;
 }
 
-/* Layout: quizzes left, form right */
-.layout {
-  display: grid;
-  grid-template-columns: 2.5fr 1.2fr;
-  gap: 1.5rem;
-  align-items: flex-start;
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+}
+
+.features li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 1.8rem;
+}
+
+.features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.cta {
+  border-radius: 50px !important;
+}
+
+.cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Contact Form ---------- */
+.formWrapper {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Grid for quizzes */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-left: 0;
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Card Styling */
-.card {
-  background: white;
-  padding: 1rem;
+.logoImage {
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+.contactForm {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  transition: all 0.3s ease;
-  border: 1px solid #eee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
 }
 
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2);
+.contactForm label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: var(--dark);
+  width: 100%;
+}
+
+.contactForm input,
+.contactForm textarea {
+  margin-top: 0.3rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  border-color: var(--secondary);
+}
+
+.contactForm button {
+  background: var(--primary);
+  color: var(--dark);
+  padding: 0.8rem 1.5rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+.contactForm button:hover {
+  background: #d4aa1f;
+}
+
+/* ---------- Responsive ---------- */
+@media (min-width: 1200px) {
+  .hero {
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    padding-top: 110px;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    padding: 100px 5% 3rem;
+    gap: 2.5rem;
+    min-height: auto;
+  }
+  
+  .content {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .features {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+  
+  .formWrapper {
+    width: 100%;
+  }
+  
+  .contactForm {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 95px 4% 2.5rem;
+    gap: 2rem;
+  }
+  
+  .title {
+    font-size: 2.3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+  }
+  
+  .features li {
+    font-size: 0.95rem;
+  }
+  
+  .contactForm {
+    max-width: 100%;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 90px 3% 2rem;
+    gap: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.9rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .features {
+    margin-bottom: 1.5rem;
+  }
+  
+  .features li {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .contactForm {
+    padding: 1rem;
+    gap: 0.7rem;
+  }
+  
+  .contactForm input,
+  .contactForm textarea {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+  
+  .contactForm button {
+    padding: 0.65rem 1.3rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 85px 2.5% 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.7rem;
+    margin-top: 25px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .description {
+    font-size: 0.85rem;
+  }
+  
+  .features li {
+    font-size: 0.85rem;
+  }
+  
+  .contactForm {
+    padding: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero {
+    padding: 80px 2% 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+  }
+  
+  .features li {
+    font-size: 0.8rem;
+    padding-left: 1.5rem;
+  }
+  
+  .contactForm {
+    padding: 0.75rem;
+  }
+  
+  .contactForm input,
+  .contactForm textarea {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .contactForm button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }
 
 .quizTitle {
