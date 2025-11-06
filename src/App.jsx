@@ -36,6 +36,7 @@ import Zsign from "./assets/Pages/products/z.sign/z.sign";
 import Zform from "./assets/Pages/products/z.form/z.form";
 import Zbox from "./assets/Pages/products/z.box/z.box";
 import ZappsLanding from "./assets/Pages/home/zappsLanding";
+import ContactPage from "./assets/Pages/contact/ContactPage";
 import Kiraaze from "./assets/Pages/home/kiraaze/kiraaze";
 import Ready from "./assets/Pages/ready/ready"
 import WebStudio from "./assets/Pages/web/web";
@@ -99,7 +100,9 @@ function App() {
             <Route path="studios/web" element={<WebStudio />} />
             <Route path="studios/web/custom-build" element={<CustomUse />} />
             <Route path="studios/app_studio" element={<AppStudio />} />
+            <Route path="studios/agentic-studio" element={<AgenticStudio />} />
             <Route path="studios/agentic_studio" element={<AgenticStudio />} />
+            <Route path="contact" element={<ContactPage />} />
           </Routes>
         </LayoutWrapper>
       </div>

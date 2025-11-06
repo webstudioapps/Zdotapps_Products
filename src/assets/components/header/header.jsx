@@ -48,8 +48,10 @@ function Header() {
       ]
     },
     { label: "Products", path: "/products" },
+    { label: "Pricing", path: "/pricing" },
     { label: "Resources", path: "/resource" },
-    { label: "About Us", path: "/about" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
     { label: "Careers", path: "/careers" },
   ];
 
