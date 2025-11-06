@@ -550,7 +550,7 @@ export default function JobDetails() {
               </div>
             </div>
 
-            <ul className="list-unstyled ms-2 fs-5">
+            <ul className="list-unstyled ms-2 fs-5 text-black">
               {(activeTab === "responsibilities" ? job.responsibilities : job.qualifications || ["No specific qualifications listed for this position."]).map((item, i) => (
                 <li key={i} className="mb-3 d-flex align-items-start">
                   <i className="fa-solid fa-circle-check text-warning me-2 mt-1"></i>
@@ -564,30 +564,30 @@ export default function JobDetails() {
           <div className="col-12 col-lg-6 ps-lg-5 border-start d-flex flex-column h-100" style={{borderColor:'#e9ecef'}}>
             <div className="mb-3 text-center">
               <h1 className="fw-bold mb-1 text-warning">Apply for this Position</h1>
-                   <p className="fs-6">Fill out the form below to submit your application</p>
+                   <p className="fs-6 text-black">Fill out the form below to submit your application</p>
             </div>
             <form onSubmit={handleSubmit} className="d-flex flex-column flex-grow-1">
               <div className="row g-4 fs-6">
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">First Name 
+                  <label className="form-label fw-semibold text-black">First Name 
                      <span class="required-asterisk text-danger">*</span>
                   </label>
                   <input className="form-control" name="first-name" placeholder="Enter your first name" required style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Last Name 
+                  <label className="form-label fw-semibold text-black">Last Name 
                      <span class="required-asterisk text-danger">*</span>
                   </label>
                   <input className="form-control" name="last-name" placeholder="Enter your last name" required style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Email 
+                  <label className="form-label fw-semibold text-black">Email 
                      <span class="required-asterisk text-danger">*</span>
                   </label>
                   <input type="email" className="form-control" name="email" placeholder="Enter your email" required style={styles.input} />
                 </div>
              <div className="col-12 col-md-6 ">
-  <label className="form-label fw-semibold">Phone Number 
+  <label className="form-label fw-semibold text-black">Phone Number 
     <span className="required-asterisk text-danger">*</span>
   </label>
   <input 
@@ -601,7 +601,7 @@ export default function JobDetails() {
 </div>
 
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">
+                  <label className="form-label fw-semibold text-black">
                     Upload Resume 
                     <span class="required-asterisk text-danger">*</span>
                   </label>
@@ -610,21 +610,21 @@ export default function JobDetails() {
                 </div>
                 <div className="col-12 col-md-6">
                   <i class="fab fa-github text-warning"></i>&nbsp;
-                  <label className="form-label fw-semibold">GitHub</label>
+                  <label className="form-label fw-semibold text-black">GitHub</label>
                   <input className="form-control" name="github-link" placeholder="Your GitHub profile link" style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
                   <i class="fab fa-linkedin text-warning"></i>&nbsp;
-                  <label className="form-label fw-semibold">LinkedIn</label>
+                  <label className="form-label fw-semibold text-black">LinkedIn</label>
                   <input className="form-control" name="linkedin-link" placeholder="Your LinkedIn profile link" style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
                   <i class="fab fa-figma text-warning"></i>&nbsp;
-                  <label className="form-label fw-semibold">Figma</label>
+                  <label className="form-label fw-semibold text-black">Figma</label>
                   <input className="form-control" name="figma-link" placeholder="Your Figma profile link" style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Years of Experience 
+                  <label className="form-label fw-semibold text-black">Years of Experience 
                      <span class="required-asterisk text-danger">*</span>
                   </label>
                   <select className="form-select" name="years-of-experience" required style={styles.input}>
@@ -636,7 +636,7 @@ export default function JobDetails() {
                   </select>
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">How did you hear about us? 
+                  <label className="form-label fw-semibold text-black">How did you hear about us? 
                      <span class="required-asterisk text-danger">*</span>
                   </label>
                   <select className="form-select" name="how-you-heard-us?" required style={styles.input}>

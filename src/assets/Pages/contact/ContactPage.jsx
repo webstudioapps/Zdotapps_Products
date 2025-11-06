@@ -51,21 +51,6 @@ const ContactPage = () => {
             </p>
           </div>
           
-          <div className={styles.benefits}>
-            <div className={styles.benefitItem}>
-              <FiCheckCircle className={styles.benefitIcon} />
-              <span>Advanced security</span>
-            </div>
-            <div className={styles.benefitItem}>
-              <FiCheckCircle className={styles.benefitIcon} />
-              <span>Custom traffic scaling</span>
-            </div>
-            <div className={styles.benefitItem}>
-              <FiCheckCircle className={styles.benefitIcon} />
-              <span>99.9% uptime guarantee</span>
-            </div>
-          </div>
-
           <div className={styles.logoGrid}>
             <img 
               src={kryonLogo} 
