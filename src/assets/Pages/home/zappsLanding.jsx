@@ -156,7 +156,7 @@ const styles = `
   }
 
   .hero-title {
-    font-size: 3.3rem; /* Larger font size */
+    font-size: 5.3rem; /* Larger font size */
     font-weight: 600;
     line-height: 1;
     color: #ffffffff; /* Yellow for the title */
@@ -620,7 +620,7 @@ const styles = `
   }
 
   #flip {
-    height:60px;
+    height:100px;
     overflow:hidden;
     text-align: center;
   }
@@ -725,6 +725,10 @@ const styles = `
     font-size: 1.1rem;
     font-weight: 600;
     color: #FFFFFF;
+  }
+  @media (min-width: 1200px) {
+  .fs-1 {
+      font-size: 3.8rem !important;
   }
 
    /* -------------Automatic scrolling------------------- */
@@ -1159,8 +1163,8 @@ const HeroSection = () => {
   return (
     <section className="hero-section-main">
       <div className="container">
-        <p className="hero-subtitle" style={{ color: '#ffc94a' }}>We've Got You Covered.</p>
-        <h1 className="hero-title" style={{ color: '#ffffff' }}>Pick a Template or Build Your Own</h1>
+        {/* <p className="hero-subtitle" style={{ color: '#ffc94a' }}>We've Got You Covered.</p> */}
+        <h1 className="hero-title" style={{ color: '#ffffff' }}>Building Today’s</h1>
 
         <div className="text-center fs-1" id="flip">
           <div>
@@ -1329,6 +1333,7 @@ const StudiosSection = () => {
 };
 const IndustryCards = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const industryData = [
     {
@@ -1393,29 +1398,44 @@ const IndustryCards = () => {
     },
   ];
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
   // Split into slides with 8 items each (4 per row x 2 rows)
   const slides = [];
   for (let i = 0; i < industryData.length; i += 8) {
     slides.push(industryData.slice(i, i + 8));
   }
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
   // Auto-advance slides
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide();
+      if (!isHovered) {
+        nextSlide();
+      }
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentSlide]);
+  }, [currentSlide, isHovered]);
 
   return (
-    <section className="industry-solutions" style={{ backgroundColor: '#2a2a2a', minHeight: '700px', display: 'flex', alignItems: 'center' }}>
-      <div className="container mx-auto">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold" style={{ color: '#ffffff', fontSize: 40, marginBottom: '20px' }}>
+    <section 
+      className="industry-solutions" 
+      style={{ 
+        backgroundColor: '#2a2a2a', 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        padding: '4rem 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="fw-bold" style={{ color: '#ffffff', fontSize: '2.5rem', marginBottom: '1.5rem' }}>
             Solutions for Every <span style={{ color: '#F2C94C' }}>Industry</span>
           </h2>
           <p className="mx-auto" style={{ fontSize: '1.25rem', maxWidth: '42rem', color: 'rgba(255, 255, 255, 0.8)' }}>
@@ -1424,67 +1444,81 @@ const IndustryCards = () => {
         </div>
 
         {/* Carousel */}
-        <div className="industry-carousel" style={{ height: '600px' }}>
-          <div className="carousel-inner" style={{ height: '150%' }}>
-            {slides.map((slide, slideIndex) => (
-              <div
-                key={slideIndex}
-                className={`carousel-slide ${currentSlide === slideIndex ? 'active' : ''}`}
-                style={{
-                  display: currentSlide === slideIndex ? 'block' : 'none',
-                }}
-              >
-                <div className="row g-4">
-                  {/* First row */}
-                  {slide.slice(0, 4).map((item, index) => (
-                    <div
-                      key={`${slideIndex}-${index}`}
-                      className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex"
-                    >
-                      <div className="industry-card">
-                        <div className="industry-card-content">
-                          <div className="industry-icon">
-                            <img src={item.icon} alt={`${item.title} Icon`} width="80" />
-                          </div>
-                          <h3 className="industry-title">{item.title}</h3>
+        <div className="industry-carousel" style={{ minHeight: '500px' }}>
+          {slides.map((slide, slideIndex) => (
+            <div
+              key={slideIndex}
+              className={`carousel-slide ${currentSlide === slideIndex ? 'active' : ''}`}
+              style={{
+                display: currentSlide === slideIndex ? 'block' : 'none',
+                transition: 'opacity 0.5s ease-in-out',
+                opacity: currentSlide === slideIndex ? 1 : 0,
+                position: 'absolute',
+                width: '100%',
+                left: 0,
+                top: 0
+              }}
+            >
+              <div className="row g-4">
+                {slide.slice(0, 4).map((item, index) => (
+                  <div key={`${slideIndex}-${index}`} className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex">
+                    <div className="industry-card">
+                      <div className="industry-card-content">
+                        <div className="industry-icon">
+                          <img src={item.icon} alt={`${item.title} Icon`} width="80" />
                         </div>
+                        <h3 className="industry-title">{item.title}</h3>
                       </div>
                     </div>
-                  ))}
-                </div>
-                <div className="row g-4 mt-4">
-                  {/* Second row */}
-                  {slide.slice(4, 8).map((item, index) => (
-                    <div
-                      key={`${slideIndex}-${index + 4}`}
-                      className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex"
-                    >
-                      <div className="industry-card">
-                        <div className="industry-card-content">
-                          <div className="industry-icon">
-                            <img src={item.icon} alt={`${item.title} Icon`} width="80" />
-                          </div>
-                          <h3 className="industry-title">{item.title}</h3>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              <div className="row g-4 mt-4">
+                {slide.slice(4, 8).map((item, index) => (
+                  <div key={`${slideIndex}-${index + 4}`} className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex">
+                    <div className="industry-card">
+                      <div className="industry-card-content">
+                        <div className="industry-icon">
+                          <img src={item.icon} alt={`${item.title} Icon`} width="80" />
+                        </div>
+                        <h3 className="industry-title">{item.title}</h3>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Dots */}
-          <div className="carousel-dots">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                className={`carousel-dot ${currentSlide === index ? 'active' : ''}`}
-                onClick={() => setCurrentSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+        {/* Dots */}
+        <div className="carousel-dots" style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '2rem',
+          gap: '0.75rem',
+          padding: '0 1rem',
+          position: 'relative',
+          zIndex: 10
+        }}>
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+                backgroundColor: currentSlide === index ? '#F2C94C' : 'rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease',
+                outline: 'none'
+              }}
+            />
+          ))}
         </div>
       </div>
 
@@ -1492,28 +1526,132 @@ const IndustryCards = () => {
         .industry-carousel {
           position: relative;
           width: 100%;
-          overflow: hidden;
+          max-width: 1200px;
+          margin: 0 auto;
+          min-height: 500px;
         }
 
-        .carousel-inner {
-          position: relative;
+        .carousel-slide {
+          transition: opacity 0.5s ease-in-out;
+          position: absolute;
           width: 100%;
-          height: 100%;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+          left: 0;
+          top: 0;
+          opacity: 0;
+        }
+
+        .carousel-slide.active {
+          opacity: 1;
+          position: relative;
         }
 
         .industry-card {
-          width: 260px;
-          height: 250px;
+          width: 100%;
+          height: 100%;
+          min-height: 200px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 1.5rem;
           background: #333;
           border-radius: 12px;
-          padding: 10px 5px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .industry-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          border-color: rgba(242, 201, 76, 0.5);
+        }
+
+        .industry-icon {
+          margin-bottom: 1rem;
+          transition: transform 0.3s ease;
+        }
+
+        .industry-card:hover .industry-icon {
+          transform: scale(1.1);
+        }
+
+        .industry-title {
+          color: #fff;
+          font-size: 1.1rem;
+          font-weight: 500;
+          margin: 0.5rem 0 0;
+          text-align: center;
+          transition: color 0.3s ease;
+        }
+
+        .industry-card:hover .industry-title {
+          color: #F2C94C;
+        }
+
+        @media (max-width: 1199px) {
+          .industry-card {
+            min-height: 180px;
+            padding: 1.25rem;
+          }
+          
+          .industry-title {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 991px) {
+          .industry-solutions {
+            padding: 3rem 0;
+          }
+          
+          .industry-card {
+            min-height: 160px;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .industry-solutions h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+          }
+          
+          .industry-solutions p {
+            font-size: 1rem;
+            padding: 0 1rem;
+          }
+          
+          .industry-card {
+            min-height: 140px;
+            padding: 1rem 0.75rem;
+          }
+          
+          .industry-title {
+            font-size: 0.95rem;
+          }
+          
+          .industry-icon img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+        
+        @media (max-width: 575px) {
+          .industry-solutions {
+            padding: 2rem 0;
+          }
+          
+          .industry-solutions h2 {
+            font-size: 1.75rem;
+          }
+          
+          .industry-card {
+            min-height: 120px;
+          }
+          
+          .industry-title {
+            font-size: 0.9rem;
+          }
+          
           position: relative;
           overflow: hidden;
           transition: all 0.3s ease;

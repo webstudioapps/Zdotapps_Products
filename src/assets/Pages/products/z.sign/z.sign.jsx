@@ -499,16 +499,6 @@ export default function App() {
                             </svg>
                           </div>
                         </div>
-                        
-                        {/* Action Buttons */}
-                        <div className="d-flex gap-2">
-                          <button className="btn bg-primary-custom text-primary-foreground flex-fill small">
-                            Sign & Save
-                          </button>
-                          <button className="btn btn-light small">
-                            <Download size={16} />
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
