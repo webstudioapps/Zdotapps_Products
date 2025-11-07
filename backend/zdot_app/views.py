@@ -9,6 +9,8 @@ from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 from django.core.cache import cache
+from .models import ContactRequest
+from .serializers import ContactRequestSerializer
 
 class JobApplicationView(APIView):
     def post(self, request, *args, **kwargs):
@@ -79,3 +81,12 @@ class VerifyOTPView(APIView):
             return Response({'message': 'OTP verified successfully'}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)
+
+class ContactRequestView(APIView):
+    def post(self, request):
+        serializer = ContactRequestSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Form submitted successfully!'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

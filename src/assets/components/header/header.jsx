@@ -48,7 +48,6 @@ function Header() {
       ]
     },
     { label: "Products", path: "/products" },
-    { label: "Pricing", path: "/pricing" },
     { label: "Resources", path: "/resource" },
     { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },

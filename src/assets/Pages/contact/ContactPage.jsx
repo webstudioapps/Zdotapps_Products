@@ -1,270 +1,200 @@
 import React, { useState } from 'react';
-import { FiCheckCircle } from 'react-icons/fi';
+import { FiCheckCircle, FiMail, FiUser, FiMessageSquare, FiPaperclip } from 'react-icons/fi';
 import styles from './ContactPage.module.css';
 
-// Import company logos
-import kryonLogo from '../../../assets/images/Logos/Logos/kryonlogo.png';
-import lifeCyclulLogo from '../../../assets/images/Logos/Logos/life_cykul.png';
-import ontropiLogo from '../../../assets/images/Logos/Logos/Ontropi_Purple_Logo.png';
-import siuLogo from '../../../assets/images/Logos/Logos/SIU.png';
-import stationSLogo from '../../../assets/images/Logos/Logos/Station-S_steel_grey.png';
-import tnsLogo from '../../../assets/images/Logos/Logos/TNS.jpg';
-import campusLifeLogo from '../../../assets/images/Logos/Logos/campuslife_logo 1.png';
-import factOpsLogo from '../../../assets/images/Logos/Logos/Fact-Ops.png';
-import gcvLogo from '../../../assets/images/Logos/Logos/GCV.png';
+
+// ✅ Correct image imports for ContactPage.jsx
+// ✅ Clean & Correct Logo Imports
+// ✅ All Logo Imports — Clean & Complete
+import kryonLogo from '../../images/Logos/Logos/Kryon_Logo.png';
+import tnsLogo from '../../images/Logos/Logos/gnan_circle_ventures.png';
+import ontropiLogo from '../../images/Logos/Logos/eco_mall.png';
+import stationSLogo from '../../images/Logos/Logos/fusion_streat.png';
+import lifeCyclulLogo from '../../images/Logos/Logos/TNS.png';
+
+import campusLifeLogo from '../../images/Logos/Logos/mango_resort.png';
+import factOpsLogo from '../../images/Logos/Logos/factops.png';
+import gcvLogo from '../../images/Logos/Logos/sef.png'; // ✅ Added missing import
+import apexaImg from '../../images/Logos/Logos/apexa_living.png';
+
+
+
+
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
-    attachment: null
+    attachment: null,
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: files ? files[0] : value
+      [name]: files ? files[0] : value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setError(null);
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('full_name', formData.name);
+      formDataToSend.append('work_email', formData.email);
+      formDataToSend.append('message', formData.message);
+      if (formData.attachment) {
+        formDataToSend.append('attachment', formData.attachment);
+      }
+
+      const response = await fetch('http://127.0.0.1:8000/contact/', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Success:', data);
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '', attachment: null });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        const errorData = await response.json();
+        console.error('Error:', errorData);
+        setError('Failed to submit. Please check your input.');
+      }
+    } catch (err) {
+      console.error('Request Error:', err);
+      setError('An error occurred while submitting the form.');
+    }
   };
 
   return (
     <div className={styles.contactPage}>
       <div className={styles.contactContainer}>
-        {/* Left Side - Content */}
-        <div className={styles.contentSection}>
-          <div className={styles.headerContent}>
-            <h1>Schedule a demo</h1>
-            <p className={styles.tagline}>
-              Trusted by leading companies worldwide to deliver exceptional digital experiences.
+        {/* Left Side - Logos */}
+        <div className={styles.logosSection}>
+          <div className={styles.logosContent}>
+            <h1>Trusted by Industry Leaders</h1>
+            <p className={styles.logosSubtitle}>
+              Join hundreds of companies worldwide who trust us to deliver exceptional digital experiences.
             </p>
-          </div>
-          
-          <div className={styles.benefits}>
-            <div className={styles.benefitItem}>
-              <FiCheckCircle className={styles.benefitIcon} />
-              <span>Advanced security</span>
+            
+            <div className={styles.logoGrid}>
+              <div className={styles.logoItem1}><img src={kryonLogo} alt="Kryon" /></div>
+               <div className={styles.logoItem5}><img src={tnsLogo} alt="TNS" /></div>
+              <div className={styles.logoItem3}><img src={ontropiLogo} alt="Ontropi" /></div>
+              <div className={styles.logoItem4}><img src={stationSLogo} alt="Station S" /></div>
+              <div className={styles.logoItem2}><img src={lifeCyclulLogo} alt="Life Cykul" /></div>
+              <div className={styles.logoItem6}><img src={campusLifeLogo} alt="Campus Life" /></div>
+              <div className={styles.logoItem7}><img src={factOpsLogo} alt="Fact-Ops" /></div>
+              <div className={styles.logoItem8}><img src={gcvLogo} alt="GCV" /></div>
+              <div className={styles.logoItem9}><img src={apexaImg} alt="Apexa" /></div>
             </div>
-            <div className={styles.benefitItem}>
-              <FiCheckCircle className={styles.benefitIcon} />
-              <span>Custom traffic scaling</span>
-            </div>
-            <div className={styles.benefitItem}>
-              <FiCheckCircle className={styles.benefitIcon} />
-              <span>99.9% uptime guarantee</span>
-            </div>
-          </div>
 
-          <div className={styles.logoGrid}>
-            <img 
-              src={kryonLogo} 
-              alt="Kryon" 
-              style={{
-                maxWidth: '180px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={lifeCyclulLogo} 
-              alt="Life Cykul" 
-              style={{
-                maxWidth: '170px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={ontropiLogo} 
-              alt="Ontropi" 
-              style={{
-                maxWidth: '155px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={siuLogo} 
-              alt="SIU" 
-              style={{
-                maxWidth: '190px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={stationSLogo} 
-              alt="Station S" 
-              style={{
-                maxWidth: '190px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={tnsLogo} 
-              alt="TNS" 
-              style={{
-                maxWidth: '100px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={campusLifeLogo} 
-              alt="Campus Life" 
-              style={{
-                maxWidth: '220px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={factOpsLogo} 
-              alt="Fact-Ops" 
-              style={{
-                maxWidth: '160px',
-                height: 'auto',
-                opacity: 0.9,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
-            <img 
-              src={gcvLogo} 
-              alt="GCV" 
-              style={{
-                maxWidth: '220px',
-                height: 'auto',
-                opacity: 1.5,
-                transition: 'all 0.3s ease',
-                objectFit: 'contain',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseOut={(e) => e.currentTarget.style.opacity = '0.85'}
-            />
           </div>
-
         </div>
 
-        {/* Right Side - Contact Form */}
+        {/* Right Side - Form */}
         <div className={styles.formSection}>
-          <div className={styles.formContainer}>
-            <h2>Get in touch</h2>
-            <p className={styles.formSubtitle}>Our team will get back to you within 24 hours</p>
-            
-            {isSubmitted ? (
-              <div className={styles.successMessage}>
-                <h3>Thank you for your message!</h3>
-                <p>We'll get back to you soon.</p>
+          <div className={styles.formHeader}>
+            <h2>Start Your Project With Us</h2>
+            <p className={styles.formSubtitle}>
+              Ready to transform your digital experience? Schedule a demo and see how we can help.
+            </p>
+          </div>
+
+          {isSubmitted ? (
+            <div className={styles.successMessage}>
+              <div className={styles.successIcon}>
+                <FiCheckCircle />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className={styles.contactForm}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="name">Full Name</label>
+              <h3>Message Sent Successfully!</h3>
+              <p>Our team will get back to you within 24 hours.</p>
+              <button 
+                onClick={() => setIsSubmitted(false)}
+                className={styles.backButton}
+              >
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className={styles.contactForm}>
+              <div className={styles.formGroup}>
+                <div className={styles.inputContainer}>
+                  <FiUser className={styles.inputIcon} />
                   <input
                     type="text"
-                    id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    placeholder="Full Name"
                     required
+                    className={styles.formInput}
                   />
                 </div>
-                
-                <div className={styles.formGroup}>
-                  <label htmlFor="email">Work Email</label>
+              </div>
+
+              <div className={styles.formGroup}>
+                <div className={styles.inputContainer}>
+                  <FiMail className={styles.inputIcon} />
                   <input
                     type="email"
-                    id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    placeholder="Work Email"
                     required
+                    className={styles.formInput}
                   />
                 </div>
-                
-                <div className={styles.formGroup}>
-                  <label htmlFor="message">Message (Optional)</label>
+              </div>
+
+              <div className={styles.formGroup}>
+                <div className={styles.inputContainer}>
+                  <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
                   <textarea
-                    id="message"
                     name="message"
-                    rows="4"
                     value={formData.message}
                     onChange={handleChange}
+                    placeholder="Your Message (Optional)"
+                    rows="4"
+                    className={styles.formTextarea}
                   />
                 </div>
+              </div>
 
-                <div className={styles.formGroup}>
-                  <label htmlFor="attachment">Attachment (Optional)</label>
-                  <div className={styles.fileInputContainer}>
-                    <input
-                      type="file"
-                      id="attachment"
-                      name="attachment"
-                      onChange={handleChange}
-                      className={styles.fileInput}
-                    />
-                    <label htmlFor="attachment" className={styles.fileInputLabel}>
-                      {formData.attachment ? formData.attachment.name : 'Choose a file...'}
-                    </label>
-                  </div>
+              <div className={styles.formGroup}>
+                <div className={styles.fileUploadContainer}>
+                  <FiPaperclip className={styles.attachmentIcon} />
+                  <label htmlFor="attachment" className={styles.fileUploadLabel}>
+                    {formData.attachment ? formData.attachment.name : 'Add Attachment (Optional)'}
+                  </label>
+                  <input
+                    type="file"
+                    id="attachment"
+                    name="attachment"
+                    onChange={handleChange}
+                    className={styles.fileInput}
+                  />
                 </div>
-                
-                <div className={styles.buttonContainer}>
-                  <button type="submit" className={styles.submitButton}>
-                    Submit
-                    <span className={styles.arrowIcon}>→</span>
-                  </button>
-                </div>
-                
-                <p className={styles.privacyText}>
-                  By submitting this form, you agree to our Privacy Policy and Terms of Service.
-                </p>
-              </form>
-            )}
-          </div>
+              </div>
+
+              <button type="submit" className={styles.submitButton}>
+                <span>Submit</span>
+  
+              </button>
+
+              {error && <div className={styles.errorMessage}>{error}</div>}
+
+             
+            </form>
+          )}
         </div>
       </div>
     </div>

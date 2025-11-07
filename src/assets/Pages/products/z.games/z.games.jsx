@@ -12,7 +12,7 @@ import TambolaImg from './images/Tambola.jpg';
 import SudokuImg from './images/sudoku.jpg';
 import SpellImg from './images/spell.jpg';
 import SortonymImg from './images/sortonym.png';
-import games_whiteImg from '../../../images/games_wlogo.png';
+import games_whiteImg from '../../../images/games.png';
 
 // App Store Badges - Using the same assets as Z.Engage
 import appstore from '../z.engage/images/appstore.svg';

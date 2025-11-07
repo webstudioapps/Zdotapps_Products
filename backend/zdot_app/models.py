@@ -1,6 +1,7 @@
 # models.py
 from django.db import models
 
+
 class JobApplication(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -20,3 +21,17 @@ class JobApplication(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.email_address}"
+
+class ContactRequest(models.Model):
+    full_name = models.CharField(max_length=100)
+    work_email = models.EmailField()
+    message = models.TextField(blank=True, null=True)
+    attachment = models.FileField(upload_to='attachments/', blank=True, null=True)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'contact_request'
+        ordering = ['-submitted_at']
+
+    def __str__(self):
+        return f"{self.full_name} - {self.work_email}"

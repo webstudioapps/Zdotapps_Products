@@ -16,7 +16,7 @@ body {
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #6c757d;
+  color: black;
   pointer-events: none; /* Allows clicking on the input field through the icon */
 }
 
