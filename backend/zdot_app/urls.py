@@ -6,4 +6,6 @@ urlpatterns = [
     path('api/contact/', JobApplicationView.as_view(), name='job-application'),
     path('api/send-otp/', SendOTPView.as_view(), name='send-otp'),
     path('api/verify-otp/', VerifyOTPView.as_view(), name='verify-otp'),
+    path('contact/', ContactRequestView.as_view(), name='contact'),
+
 ]
