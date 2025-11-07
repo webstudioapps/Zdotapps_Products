@@ -20,7 +20,7 @@ import Products from "./assets/Pages/products/products";
 import Login from "./assets/Pages/login/login";
 import ZFlow from "./assets/Pages/products/z.flow/z.flow";
 import Zhire from "./assets/Pages/products/z.hire/hire";
-import Pricing from "./assets/Pages/pricing/pricing";
+
 import Resource from "./assets/Pages/resource/resource";
 import About from "./assets/Pages/about/about";
 import Careers from "./assets/Pages/careers/careers";
@@ -76,7 +76,7 @@ function App() {
             
             <Route path="features" element={<Features />} />
             <Route path="products" element={<Products />} />
-            <Route path="pricing" element={<Pricing />} />
+      
             <Route path="resource" element={<Resource />} />
             <Route path="about" element={<About />} />
             <Route path="careers" element={<Careers />} />
