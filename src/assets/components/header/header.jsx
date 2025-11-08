@@ -18,10 +18,26 @@ function Header() {
   const handleNavigate = (path) => {
     navigate(path);
     setActiveDropdown(null); // Close dropdown after navigation
+    closeNavbar(); // Also close mobile menu
   };
 
   const handleDropdownToggle = (label) => {
     setActiveDropdown(activeDropdown === label ? null : label);
+  };
+
+  // Manually toggle/collapse navbar for mobile (works without Bootstrap JS)
+  const handleToggle = () => {
+    const collapse = document.getElementById('mainNavbar');
+    if (collapse) collapse.classList.toggle('show');
+  };
+
+  const closeNavbar = () => {
+    const collapse = document.getElementById('mainNavbar');
+    if (collapse && collapse.classList.contains('show')) {
+      collapse.classList.remove('show');
+    }
+    const toggler = document.querySelector('.navbar-toggler');
+    if (toggler) toggler.setAttribute('aria-expanded', 'false');
   };
 
   // Close dropdown when clicking outside
@@ -29,6 +45,7 @@ function Header() {
     const handleClickOutside = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
         setActiveDropdown(null);
+        closeNavbar();
       }
     };
 
@@ -37,6 +54,11 @@ function Header() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Close navbar on route change
+  useEffect(() => {
+    closeNavbar();
+  }, [location.pathname]);
 
   const navItems = [
     { 
@@ -48,7 +70,7 @@ function Header() {
       ]
     },
     { label: "Products", path: "/products" },
-    { label: "Resources", path: "/resource" },
+    // { label: "Resources", path: "/resource" },
     { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },
     { label: "Careers", path: "/careers" },
@@ -78,6 +100,7 @@ function Header() {
           aria-controls="mainNavbar"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={handleToggle}
         >
           <span className="navbar-toggler-icon"></span>
         </button>

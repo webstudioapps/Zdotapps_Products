@@ -5,7 +5,7 @@
   padding: 6rem;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,7 +383,8 @@
   
   .formSection {
     max-width: 500px;
-    min-height: 640px;
+    min-height: auto;
+    height: auto;
   }
   
   .logosContent h1 {
@@ -394,37 +395,39 @@
 /* Tablets (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .contactPage {
-    padding: 3rem 2rem;
+    padding: 96px 16px 40px; /* clear fixed header */
     min-height: 100vh;
     display: block;
   }
   
   .contactContainer {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
-    max-width: 800px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem;
+    width: 100%;
+    grid-template-columns: 1fr !important; /* collapse any leftover grid */
   }
-  
-  .logoGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.9rem;
+  .formSection { order: 1 !important; width: 100%; margin: 0 auto; }
+  .logosSection { order: 2 !important; width: 100%; margin-top: 12px; }
+  .logoGrid { 
+    display: grid !important; 
+    grid-template-columns: 1fr !important; 
+    gap: 0.8rem; 
   }
-
-  .logoItem {
-    height: 160px;
-    padding: 0.8rem;
-  }
-
-  .logoItem img {
-    max-width: 70%;
-    max-height: 70%;
-  }
-
+  .logoItem3 img,
+  .logoItem4 img,
+  .logoItem5 img,
+  .logoItem6 img,
+  .logoItem7 img,
+  .logoItem8 img,
+  .logoItem9 img { height: auto !important; max-height: 55% !important; max-width: 65% !important; }
+  .logoItem { width: 100%; overflow: hidden; }
+  .logoItem img { max-width: 100%; height: auto; object-fit: contain; }
   .formSection {
     max-width: 550px;
     margin: 0 auto;
     min-height: auto;
+    height: auto;
     padding: 2rem 2.5rem;
   }
   
@@ -440,23 +443,29 @@
 /* Large Mobile (576px - 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
   .contactPage {
-    padding: 2rem 1.5rem;
+    padding: 88px 12px 32px; /* clear fixed header */
     min-height: 100vh;
     display: block;
   }
   
   .contactContainer {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2.5rem;
+    padding: 0 8px;
+    width: 100%;
   }
+  /* Order: form first, logos second */
+  .formSection { order: 1 !important; }
+  .logosSection { order: 2 !important; }
   
   .logosSection {
     padding: 1rem 0;
   }
   
   .logoGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .logoItem {
@@ -473,6 +482,7 @@
     padding: 1.5rem;
     max-width: 100%;
     min-height: auto;
+    height: auto;
   }
   
   .logosContent h1 {
@@ -503,14 +513,21 @@
 /* Small Mobile (375px - 575px) */
 @media (min-width: 375px) and (max-width: 575px) {
   .contactPage {
-    padding: 1.5rem 1rem;
+    padding: 84px 10px 28px; /* clear fixed header */
     min-height: 100vh;
     display: block;
   }
   
   .contactContainer {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2rem;
+    padding: 0 8px;
+    width: 100%;
   }
+  /* Order: form first, logos second */
+  .formSection { order: 1; }
+  .logosSection { order: 2; }
   
   .logosContent h1 {
     font-size: 1.6rem;
@@ -523,7 +540,7 @@
   }
   
   .logoGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.6rem;
   }
   
@@ -540,6 +557,7 @@
   .formSection {
     padding: 1.5rem;
     min-height: auto;
+    height: auto;
     margin: 0 auto;
   }
   
@@ -577,14 +595,21 @@
 /* Extra Small Mobile (below 375px) */
 @media (max-width: 374px) {
   .contactPage {
-    padding: 1rem 0.5rem;
+    padding: 80px 8px 24px; /* clear fixed header */
     min-height: 100vh;
     display: block;
   }
   
   .contactContainer {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 1.5rem;
+    padding: 0 6px;
+    width: 100%;
   }
+  /* Order: form first, logos second */
+  .formSection { order: 1; }
+  .logosSection { order: 2; }
   
   .logosContent h1 {
     font-size: 1.4rem;
@@ -596,7 +621,7 @@
   }
   
   .logoGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
   }
   
@@ -614,6 +639,8 @@
   
   .formSection {
     padding: 1rem;
+    height: auto;
+    min-height: auto;
   }
   
   .formHeader h2 {
@@ -662,6 +689,8 @@
   
   .formSection {
     padding: 0.8rem;
+    height: auto;
+    min-height: auto;
   }
   
   .submitButton {

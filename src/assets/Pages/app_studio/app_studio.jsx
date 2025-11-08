@@ -365,7 +365,7 @@ const TestimonialsSection = () => {
   const StarRow = () => (<div className="mb-3" style={{ color: '#F2C94C' }}>★★★★★</div>);
 
   return (
-    <section className="py-5" style={{ backgroundColor: '#2b2a2aff', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
+    <section className="testimonial-section" style={{ backgroundColor: '#2b2a2aff', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
       <div className="container">
         <div className="text-center mb-2" style={{ color: '#F2C94C' }}>3940+ Happy Z.apps users</div>
         <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>Don't just take our <span style={{ color: '#F2C94C' }}>words</span></h2>
@@ -373,8 +373,8 @@ const TestimonialsSection = () => {
         <div className="row g-5 align-items-center justify-content-center">
           {[left, right].map((t, i) => (
             <div key={i} className="col-md-6">
-              <div className="d-flex gap-4 align-items-center">
-                <img src={t.img} alt={t.name} className="rounded" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+              <div className="d-flex gap-4 align-items-center testimonial-item">
+                <img src={t.img} alt={t.name} className="rounded testimonial-img" style={{ width: 230, height: 290, objectFit: 'cover' }} />
                 <div className="text-start">
                   <StarRow />
                   <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
