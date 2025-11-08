@@ -1,813 +1,959 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-// Import your existing images
-// import updated_logoImage from '../../images/updated_logo.png';
-// import updated_k_logoImage from '../../images/updated_k_logo.png';
-// import ecomerceImage from '../../images/ecomerce.png';
-import custom_buildImage from '../../images/custom_build.png';
-import ready_to_useImage from '../../images/ready_to_use.png';
-import com_leftImage from '../../images/com_left.jpg';
-import bespokeImage from '../../images/bespoke.png';
-import ui_uxImage from '../../images/ui_ux.png';
-import seoImage from '../../images/seo.png';
-import maintanceImage from '../../images/maintenance.png';
-import digitalImage from '../../images/digital.png';
-import performanceImage from '../../images/performance.png';
-import multi_languageImage from '../../images/multi_language.png';
-import scalingImage from '../../images/scaling.png';
-// --- (ACTION REQUIRED) ---
-// 1. Import the 8 images for your new services section here.
-// Example:
-// import bespokeWebsitesImage from '../../images/services/bespoke-websites.jpg';
-// import uiUxImage from '../../images/services/ui-ux.jpg';
-// import seoImage from '../../images/services/seo.jpg';
-// import maintenanceImage from '../../images/services/maintenance.jpg';
-// import digitalOptimizationImage from '../../images/services/digital-optimization.jpg';
-// import securityImage from '../../images/services/security.jpg';
-// import multiLanguageImage from '../../images/services/multi-language.jpg';
-// import scalingImage from '../../images/services/scaling.jpg';
+import styles from './web.module.css';
 
-// --- (ACTION REQUIRED) ---
-// 2. Import the 12 icon images for the "Solutions for Every Industry" section.
-//    Replace these placeholder paths with your actual image locations.
-import ecomerceIcon from '../../images/ecomerce.png';
-import eventsIcon from '../../images/events.png';
-import hospitalIcon from '../../images/hospital.png';
-import universityIcon from '../../images/university.png';
-import hotelIcon from '../../images/hotel.png';
-import food_courtIcon from '../../images/food_court.png';
-import technologyIcon from '../../images/technology.png';
-import manufacturingIcon from '../../images/manufacturing.png';
-import sportsIcon from '../../images/sports.png';
-import shopIcon from '../../images/shop.png';
-import schoolsIcon from '../../images/schools.png';
-import child_careIcon from '../../images/child_care.png';
+// Import images
+// Import images
+import kiraaze1Img from '../../../assets/images/1.png';
+import kiraaze2Img from '../../../assets/images/2.png';
+import kiraaze3Img from '../../../assets/images/3.png';
+import phaniImg from '../../../assets/images/phani.png';
+import srinivasImg from '../../../assets/images/srinivas.png';
+import techImage from '../../../assets/images/1.webp';
+import experienceImage from '../../../assets/images/2.webp';
+import strategyImage from '../../../assets/images/3.webp';
+import growthImage from '../../../assets/images/4.webp';
+import forFormImg from '../../../assets/images/For_Form1.jpg';
 
-// --- NEW SECTION COMPONENT ---
-const ProcessFlow = () => {
+// App Template Selection Section
+const AppTemplateSection = () => {
+  const [hoveredTemplate, setHoveredTemplate] = useState(null);
+
+  const templates = [
+    { id: 1, title: 'E-Commerce', image: kiraaze1Img },
+    { id: 2, title: 'Health care', image: kiraaze2Img },
+    { id: 3, title: 'Food', image: kiraaze3Img },
+    { id: 4, title: 'Manufacturing', image: kiraaze1Img },
+    { id: 5, title: 'Technology', image: kiraaze2Img },
+    { id: 6, title: 'Edu tech', image: kiraaze3Img },
+    { id: 7, title: 'Finance', image: kiraaze1Img },
+    { id: 8, title: 'Portfolios', image: kiraaze2Img },
+    { id: 9, title: 'Fashion', image: kiraaze3Img }
+  ];
+
   return (
-  <section className="industry-solutions py-5" style={{ backgroundColor: '#2a2a2a' }}>
-      <div className="container mx-auto">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold" style={{ color: '#ffffff', fontSize: 40 }}>Solutions for Every <span style={{ color: '#F2C94C' }}>Industry</span></h2>
-          <p className="mx-auto" style={{ fontSize: '1.25rem', maxWidth: '42rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-            From startups to enterprises, we deliver tailored digital solutions that fit your world.
+    <section className={styles.templateSection}>
+      <div className="container">
+        <div className={styles.templateHeader}>
+          <h2 className={styles.templateTitle}>
+            Choose a App <span className={styles.textAccent}>template</span>
+          </h2>
+          <p className={styles.templateSubtitle}>
+            Explore the best templates, highly-rated amongst users.
           </p>
         </div>
-        <div className="row g-4 industry-cards">
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={ecomerceIcon} alt="E-Commerce Icon" width="60" />
+        
+        <div className={styles.templatesGrid}>
+          {templates.map((template) => (
+            <div 
+              key={template.id}
+              className={`${styles.templateCard} ${hoveredTemplate === template.id ? styles.hovered : ''}`}
+              onMouseEnter={() => setHoveredTemplate(template.id)}
+              onMouseLeave={() => setHoveredTemplate(null)}
+            >
+              <div className={styles.templatePhoneContainer}>
+                <div className={styles.templatePhone}>
+                  <div className={styles.phoneScreen}>
+                    <img 
+                      src={template.image} 
+                      alt={`${template.title} Template`}
+                      className={styles.phoneScreenImage}
+                    />
+                  </div>
+                </div>
               </div>
-              <h3 className="industry-title">E-Commerce</h3>
+              <h3 className={styles.templateCardTitle}>{template.title}</h3>
             </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={eventsIcon} alt="Events Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Events</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={hospitalIcon} alt="Hospital Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Hospital</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={universityIcon} alt="University Icon" width="60" />
-              </div>
-              <h3 className="industry-title">University</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={hotelIcon} alt="Resorts & Hotels Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Resorts & Hotels</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={food_courtIcon} alt="Food-Court Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Food-Court</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={technologyIcon} alt="Technology Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Technology</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={manufacturingIcon} alt="Manufacturing Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Manufacturing</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={sportsIcon} alt="Sports Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Sports</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={shopIcon} alt="Retail Shop Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Retail Shop</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={schoolsIcon} alt="Schools Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Schools</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={child_careIcon} alt="Child Care Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Child Care</h3>
-            </div>
-          </div>
-          
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
+// Two-stage scroll animation section
+const ScrollExpandSection = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const sectionRef = useRef(null);
 
-function App() {
-  const navigate = useNavigate();
-  const [flipReady, setFlipReady] = useState(false);
-  const [flipCustom, setFlipCustom] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add delay to show initial state first
+          setTimeout(() => {
+            setIsExpanded(true);
+          }, 1000);
+        }
+      },
+      { threshold: 0.5 }
+    );
 
-  // --- NEW --- State to control the scrolling animation pause
-  const [isScrollingPaused, setIsScrollingPaused] = useState(false);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-  // --- Data for the new "Services That Power Your Growth" section ---
-  const servicesData = [
-    {
-      title: 'Bespoke Websites',
-      // Replace placeholder with your imported image, e.g., image: bespokeWebsitesImage
-      image: bespokeImage,
-    },
-    {
-      title: 'UI/UX',
-      image: ui_uxImage,
-    },
-    {
-      title: 'SEO',
-      image: seoImage,
-    },
-    {
-      title: 'Maintenance',
-      image: maintanceImage,
-    },
-    {
-      title: 'Digital Optimization',
-      image: digitalImage,
-    },
-    {
-      title: 'Performance & Security',
-      image: performanceImage,
-    },
-    {
-      title: 'Multi Language Support',
-      image: multi_languageImage,
-    },
-    {
-      title: 'Scaling',
-      image: scalingImage,
-    },
-  ];
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <div className="App" style={{ backgroundColor: '#212529', color: '#ffffff' }}>
-
-      {/* Hero: centered title + left text/right flip cards in one section */}
-      <section className="position-relative" style={{ minHeight: '100vh',backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="position-absolute w-100 text-center mt-5 py-5">
-          <h1 className="fw-bold mt-5" style={{ color: '#F2C94C', fontSize: 50, lineHeight: 1.10, marginBottom: 1 }}>
-            Web Studio
-            <br/> <span style={{ fontSize: 40, }}>We Engineer Your Web vision</span>
-          </h1>
-          <p className="mb-0" style={{ color: 'rgba(255,255,255,0.9)', fontSize: 25 }}>
-            We create powerful digital platforms that help you launch faster and grow smarter.
-          </p>
-        </div>
-        <div className="container" style={{ paddingTop: 320 }}>
-          <div className="row align-items-center">
-            {/* Left Column: Text and Button */}
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              <h2 className="fw-bold mt-5 pt-5 py-2" style={{ color: '#ffffff', fontSize: 40 }}>
-                Built for your needs:
-              </h2>
-              <div className="fw-bold" style={{ color: '#F2C94C', fontSize: 30 }}>
-                Quick, reliable, and ready to launch.
-              </div>
-              <p className="mt-3" style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.25rem' }}>
-                Choose a template or get a custom project tailored to your brand.
-              </p>
-              <button className="btn btn-lg rounded-pill px-4" style={{ backgroundColor: '#F2C94C', color: '#0b0b0b', border: 'none' }} onClick={() => navigate('/studios/web/custom-build')}>
-                Start Your Project <FaArrowRight style={{ marginLeft: 6 }} />
-              </button>
+    <section ref={sectionRef} className={styles.scrollExpandSection}>
+      {/* Stage 1: Initial text with small image */}
+      <div className={`${styles.initialStage} ${isExpanded ? styles.stageHidden : ''}`}>
+        <div className={styles.initialContent}>
+          <h2 className={styles.initialTitle}>
+            We are{' '}
+            <div className={styles.smallImageContainer}>
+              <img 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&auto=format&fit=crop&q=80" 
+                alt="Zdotapps" 
+                className={styles.smallImage}
+              />
             </div>
-
-            {/* Right Column: Flipping Cards */}
-            <div className="col-lg-6 mb-5 pb-5 pb-lg-5 mb-lg-5">
-              <div className="row g-4 justify-content-center"> {/* Center cards within the column */}
-                {/* Card 1: Ready to use (Flip) */}
-                <div className="col-12 col-md-6"> {/* Cards take full width on small, half on medium+ */}
-                  <div
-                    className={`flip-card h-100 ${flipReady ? "flipped" : ""}`}
-                    onClick={() => setFlipReady((v) => !v)}
-                    role="button"
-                    aria-label="Ready to use"
-                  >
-                    <div className="flip-card-inner">
-                      <div
-                        className="flip-card-front d-flex flex-column justify-content-end text-white h-100"
-                        style={{
-                          borderRadius: "24px",
-                          padding: "2.5rem",
-                          minHeight: "350px", // Adjusted minHeight for better fit with image
-                          background: `url(${ready_to_useImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          backgroundRepeat: "no-repeat",
-                        }}
-                      >
-                        <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "1.5rem" }}>Ready to use</h3> {/* Adjusted font size */}
-                        <p className="mb-5" style={{ fontSize: "1rem", maxWidth: "480px" }}> {/* Adjusted font size */}
-                          Pick from our library of templates and launch your website in minutes — fully customizable and responsive.
-                        </p>
-                        <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1rem" }}>tap to explore ↺</span> {/* Adjusted font size */}
-                      </div>
-                      <div
-                        className="flip-card-back d-flex flex-column justify-content-center align-items-center text-white h-100"
-                        style={{
-                          borderRadius: "24px",
-                          padding: "2.5rem",
-                          minHeight: "350px", // Adjusted minHeight
-                          background: "#1e1e1e",
-                        }}
-                      >
-                        <h4 className="fw-bold mb-4" style={{ color: "#F2C94C" }}>Explore</h4>
-                        <div className="d-flex gap-3 justify-content-center" style={{ flexWrap: 'nowrap' }}>
-                          <button
-                            className="btn btn-lg rounded-pill px-4"
-                            style={{ backgroundColor: "#F2C94C", color: "#0b0b0b", border: "none", fontSize: "0.9rem" }} // Adjusted font size
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(`/ready?cat=products`);
-                            }}
-                          >
-                            Products
-                          </button>
-                          <button
-                            className="btn btn-outline-light btn-lg rounded-pill px-4"
-                            style={{ borderColor: "#F2C94C", color: "#F2C94C", fontSize: "0.9rem" }} // Adjusted font size
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(`/ready?cat=services`);
-                            }}
-                          >
-                            Services
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: Custom Build (Flip) */}
-                <div className="col-12 col-md-6"> {/* Cards take full width on small, half on medium+ */}
-                  <div
-                    className={`flip-card h-100 ${flipCustom ? "flipped" : ""}`}
-                    onClick={() => setFlipCustom((v) => !v)}
-                    role="button"
-                    aria-label="Custom Build"
-                  >
-                    <div className="flip-card-inner">
-                      <div
-                        className="flip-card-front d-flex flex-column justify-content-end text-white h-100"
-                        style={{
-                          borderRadius: "24px",
-                          padding: "2.5rem",
-                          minHeight: "350px", // Adjusted minHeight
-                          background: `url(${custom_buildImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          backgroundRepeat: "no-repeat",
-                        }}
-                      >
-                        <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "1.5rem" }}>Custom Build</h3> {/* Adjusted font size */}
-                        <p className="mb-4" style={{ fontSize: "1rem", maxWidth: "480px" }}> {/* Adjusted font size */}
-                          We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.
-                        </p>
-                        <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1rem" }}>tap to explore ↺</span> {/* Adjusted font size */}
-                      </div>
-                      <div
-                        className="flip-card-back d-flex flex-column justify-content-center align-items-center text-white h-100"
-                        style={{
-                          borderRadius: "24px",
-                          padding: "2.5rem",
-                          minHeight: "350px", // Adjusted minHeight
-                          background: "#1e1e1e",
-                        }}
-                      >
-                        <h4 className="fw-bold mb-4" style={{ color: "#F2C94C" }}>Explore</h4>
-                        <div className="d-flex gap-3 justify-content-center" style={{ flexWrap: 'nowrap' }}>
-                          <button
-                            className="btn btn-lg rounded-pill px-4"
-                            style={{ backgroundColor: "#F2C94C", color: "#0b0b0b", border: "none", fontSize: "0.9rem" }} // Adjusted font size
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(`/studios/web/custom-build?cat=products`);
-                            }}
-                          >
-                            Products
-                          </button>
-                          <button
-                            className="btn btn-outline-light btn-lg rounded-pill px-4"
-                            style={{ borderColor: "#F2C94C", color: "#F2C94C", fontSize: "0.9rem" }} // Adjusted font size
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(`/studios/web/custom-build?cat=services`);
-                            }}
-                          >
-                            Services
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-     
-
-      {/* Services That Power Your Growth section - UPDATED */}
-      <section className="py-5" style={{ backgroundColor: '#343434' }}>
-        <div className="container">
-          <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>
-            Services That Power <span style={{ color: '#F2C94C' }}>Your Growth</span>
+            {' '}Zdotapps
           </h2>
-          <div className="row g-4">
-            {servicesData.map((service, index) => (
-              <div key={index} className="col-12 col-sm-6 col-lg-3">
-   <div
-  className="d-flex align-items-center justify-content-center text-center p-3 h-100"
-  style={{
-    backgroundImage: `url(${service.image})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    borderRadius: '16px',
-    minHeight: '220px',
-    color: '#F2C94C',
-    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out', // Adding box-shadow transition
-    cursor: 'pointer',
-  }}
-  onMouseOver={(e) => {
-    e.currentTarget.style.transform = 'scale(1.03)';
-    e.currentTarget.style.boxShadow = '0 0px 20px rgba(255, 202, 58, 0.938)'; // Box shadow on hover
-  }}
-  onMouseOut={(e) => {
-    e.currentTarget.style.transform = 'scale(1)';
-    e.currentTarget.style.boxShadow = 'none'; // Remove box shadow when not hovering
-  }}
->
-  <h4 className="fw-bold m-0 mt-5">{service.title}</h4>
-</div>
-
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-      
-      {/* --- NEW SECTION INSERTED HERE --- */}
-      <ProcessFlow />
+      </div>
 
-{/* We Don't Just Say It, We Deliver section -- FULLY CORRECTED */}
-<section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
-  <div className="container">
-    <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
-      We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
-    </h2>
-    <div className="row g-4 align-items-stretch">
-      <div className="col-lg-6">
-        <img
-          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60"
-          alt="Support team"
-          className="img-fluid w-100"
-          style={{ borderRadius: 20, height: 420, objectFit: 'cover' }}
+      {/* Stage 2: Expanded background with new content */}
+      <div className={`${styles.expandedStage} ${isExpanded ? styles.stageVisible : ''}`}>
+        <img 
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop&q=80" 
+          alt="App Development Team" 
+          className={styles.expandedBackgroundImage}
         />
+        <div className={styles.expandOverlay}></div>
+        <div className={`${styles.expandContent} ${isExpanded ? styles.contentVisible : ''}`}>
+          <h2 className={styles.expandTitle}>We Build Apps for your need</h2>
+          <button className={styles.expandButton}>
+            Get Started <FaArrowRight className="ms-2" />
+          </button>
+        </div>
       </div>
-      <div className="col-lg-6 d-flex flex-column gap-3">
-        <div
-          className="scroll-container"
-          style={{
-            height: '410px',
-            overflowY: 'hidden',
-            position: 'relative',
-          }}
-          // --- CHANGE 1: Added event handlers ---
-          onMouseEnter={() => setIsScrollingPaused(true)}
-          onMouseLeave={() => setIsScrollingPaused(false)}
-        >
-          <div
-            className="scroll-content"
-            style={{
-              // --- CHANGE 2: Added animationPlayState controlled by state ---
-              animation: 'scroll 11s linear infinite',
-              animationPlayState: isScrollingPaused ? 'paused' : 'running',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            {/* Original cards */}
-            {[
-              {
-                title: 'Quick around Cycles',
-                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
-              },
-              {
-                title: 'Built for Scale',
-                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
-              },
-              {
-                title: 'Reliable Support',
-                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
-              },
-            ].map((card, idx) => (
-              <div
-                key={idx}
-                className="p-4"
-                style={{
-                  background: 'rgba(21,21,21,0.85)',
-                  borderRadius: 16,
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
-                  marginTop: '20px', // Add margin between cards
-                }}
+    </section>
+  );
+};
+
+// WhatWeDo Component (Copied from your previous input)
+function WhatWeDo() {
+  const sections = [
+    {
+      no: '01',
+      key: 'technology',
+      title: 'Technology',
+      blurb:
+        'We are a leader in building cutting‑edge mobile and web applications that are AI‑driven and intuitive. We push boundaries and solve complex challenges to drive real impact.',
+      services: [
+        'Mobile App Development',
+        'Web Development',
+        'AI & Innovation',
+        'Backend & Infrastructure',
+        'Emerging Technology',
+      ],
+      img: techImage,
+    },
+    {
+      no: '02',
+      key: 'experience',
+      title: 'Experience',
+      blurb:
+        'Our best‑in‑class Product Designers and Strategists create smart, clear product experiences that keep people engaged through carefully crafted UX, UI, and interaction design.',
+      services: [
+        'Product Vision',
+        'User Research',
+        'UX Design',
+        'Visual Design',
+        'Design Systems',
+      ],
+      img: experienceImage,
+    },
+    {
+      no: '03',
+      key: 'strategy',
+      title: 'Strategy',
+      blurb:
+        'We surround clients with leaders from product, design, data, and engineering with relentless focus on product‑market fit, growth potential, monetization, and technical opportunities.',
+      services: [
+        'Digital Transformation',
+        'Product Validation',
+        'AI Strategy',
+        'Planning & Roadmapping',
+        'Technical Audits',
+      ],
+      img: strategyImage,
+    },
+    {
+      no: '04',
+      key: 'growth',
+      title: 'Growth',
+      blurb:
+        'Our PMs, Data Scientists, and Growth Marketers partner to evolve and adopt the product—prioritizing business goals via rapid releases, feedback cycles, and data‑driven experimentation.',
+      services: [
+        'Ongoing Management',
+        'Data & Experimentation',
+        'User Acquisition',
+        'User Retention',
+        'Staff Augmentation',
+      ],
+      img: growthImage,
+    },
+  ]
+
+  const [active, setActive] = useState(0)
+  const activeSection = sections[active]
+
+  // Immediate transitions for smooth, responsive feel
+  const hoverTimer = useRef(null)
+  const onEnter = (i) => {
+    if (hoverTimer.current) window.clearTimeout(hoverTimer.current)
+    setActive(i)
+  }
+  const onLeave = () => {
+    if (hoverTimer.current) window.clearTimeout(hoverTimer.current)
+  }
+  
+  // Touch support for mobile
+  const handleTouchStart = (i) => {
+    setActive(i)
+  }
+
+  return (
+    <section className="relative isolate bg-black text-white min-h-screen flex items-center py-16">
+      <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-8 items-start h-full">
+          <div className="w-full md:w-2/3 pr-0 md:pr-8">
+                    <h2 className="text-center text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
+                      <span className="block">Elegant solutions</span>
+                      <span className="block">built on proven</span>
+                      <span className="block">methodologies.</span>
+                    </h2>
+
+                  <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
+                    {sections.map((s, i) => {
+                      const open = active !== null && i === active
+                      return (
+                        <li
+                          key={s.key}
+                          onMouseEnter={() => onEnter(i)}
+                          onTouchStart={() => handleTouchStart(i)}
+                          onFocus={() => setActive(i)}
+                          className={`rounded-xl border transition-all duration-300 sm:rounded-2xl ${
+                            open ? 'border-white/30 bg-white/[0.02]' : 'border-white/5 hover:border-white/20 active:border-white/20'
+                          }`}
+                          tabIndex={0}
+                        >
+                          {/* Header row */}
+                          <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                            <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
+                            <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
+                              <span>{s.title}</span>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                            </div>
+                          </div>
+        
+                          {/* Inline expanding content */}
+                          <AnimatePresence initial={false}>
+                            {open && (
+                              <motion.div
+                                key="content"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{
+                                  height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
+                                  opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
+                                }}
+                                style={{ overflow: 'hidden' }}
+                                className="px-4 pb-4 sm:px-5 sm:pb-6"
+                              >
+                                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
+                                  <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
+                                  <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
+                                  <ul className="grid gap-2 text-xs text-zinc-300">
+                                    {s.services.map((x) => (
+                                      <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
+                                        {x}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  </div>
+
+        {/* RIGHT: image swaps while left expands inline */}
+        <div className="w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSection.key}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                className="relative"
               >
-                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
-                  {card.title}
-                </h4>
-                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  {card.text}
-                </p>
-              </div>
-            ))}
-            
-            {/* Cloned cards for infinite loop */}
-            {[
-              {
-                title: 'Quick around Cycles',
-                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
-              },
-              {
-                title: 'Built for Scale',
-                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
-              },
-              {
-                title: 'Reliable Support',
-                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
-              },
-            ].map((card, idx) => (
-              <div
-                key={idx + 3} // Ensure unique keys
-                className="p-4"
-                style={{
-                  background: 'rgba(21,21,21,0.85)',
-                  borderRadius: 16,
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
-                  marginTop: '20px', // Add margin between cards
-                }}
-              >
-                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
-                  {card.title}
-                </h4>
-                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  {card.text}
-                </p>
-              </div>
-            ))}
+                <div className="relative w-100 max-w-md ms-5 mx-auto">
+                  <img
+                    src={activeSection.img}
+                    alt={`${activeSection.title} hero`}
+                    className="w-100 h-auto rounded-xl shadow-2xl mt-2"
+                    loading="lazy"
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-{/* Keyframes for scrolling animation */}
-<style>
-  {`
-    @keyframes scroll { 
-      0% { transform: translateY(0); } 
-      100% { transform: translateY(-50%); } 
-    }
-
-    /* --- CHANGE 3: Removed the non-working :hover rule --- */
-    /*
-    .scroll-container:hover .scroll-content { 
-      animation-play-state: paused; 
-    }
-    */
-
-    /* The fade effect remains the same */
-    .scroll-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        to bottom,
-        #0f0f0f 0%,
-        rgba(15, 15, 15, 0) 20%,
-        rgba(15, 15, 15, 0) 80%,
-        #0f0f0f 100%
-      );
-      pointer-events: none;
-    }
-    
-  `}
-</style>
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black md:block"></div>
+    </section>
+  )
+}
 
 
-      {/* Discover How We Deliver Outstanding Results section */}
-      <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
+// Process Flow Component - Solutions for Every Industry
+const ProcessFlow = () => {
+  const [isScrollingPaused, setIsScrollingPaused] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = (path) => {
+    navigate(path);
+  };
+
+  return (
+    <>
+      {/* "Discover How We Deliver Outstanding Results" section */}
+      <section className="d-flex align-items-center" style={{ 
+        backgroundColor: '#222222ff', 
+        minHeight: '100vh',
+        padding: '4rem 0'
+      }}>
         <div className="container">
-          <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>
+          <h2 className="fw-bold text-center mb-5" style={{ 
+            color: '#ffffff',
+            fontSize: '2.5rem',
+            marginBottom: '3rem'
+          }}>
             Discover How We Deliver <span style={{ color: '#F2C94C' }}>Outstanding Results</span>
           </h2>
+          
           <div className="row g-5 justify-content-center">
             {/* Card 1 */}
             <div className="col-md-6 col-lg-4">
-              <div className="h-100">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=60" alt="Case study 1" className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
-                <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
-                  <span>Case study</span><span className="mx-2" style={{ color: '#F2C94C' }}>•</span><span style={{ color: '#F2C94C' }}>E-Commerce</span>
-                </div>
-                <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We Achieved Results for<br />[Project Name]
+              <div className="h-100 d-flex flex-column">
+                <div 
+                  onClick={() => handleClick('/kiraaze')} 
+                  style={{ 
+                    cursor: 'pointer',
+                    flex: '1 0 auto',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={kiraaze_casestudyImg}
+                    alt="E-commerce case study"
+                    className="img-fluid w-100"
+                    style={{ 
+                      borderRadius: '24px', 
+                      height: '320px', 
+                      objectFit: 'cover',
+                      marginBottom: '1.5rem'
+                    }}
+                  />
+                  <div style={{ color: '#F2C94C', fontWeight: 600, fontSize: '1.1rem' }}>
+                    <span>Case study</span>
+                    <span className="mx-2">•</span>
+                    <span>E-commerce</span>
+                  </div>
+                  <h3 className="fw-bold mt-2" style={{ 
+                    color: '#ffffff',
+                    fontSize: '1.5rem',
+                    lineHeight: '1.3'
+                  }}>
+                    How We Achieved Results for<br />
+                    E-commerce Business
+                  </h3>
                 </div>
               </div>
             </div>
+
             {/* Card 2 */}
             <div className="col-md-6 col-lg-4">
-              <div className="h-100">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=60" alt="Case study 2" className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
-                <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
-                  <span>Case study</span><span className="mx-2" style={{ color: '#F2C94C' }}>•</span><span style={{ color: '#F2C94C' }}>Health care</span>
-                </div>
-                <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We really achieved Results for<br />[Project Name]
+              <div className="h-100 d-flex flex-column">
+                <div 
+                  onClick={() => handleClick('/kiraaze')} 
+                  style={{ 
+                    cursor: 'pointer',
+                    flex: '1 0 auto',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={kiraaze_casestudyImg}
+                    alt="NGO case study"
+                    className="img-fluid w-100"
+                    style={{ 
+                      borderRadius: '24px', 
+                      height: '320px', 
+                      objectFit: 'cover',
+                      marginBottom: '1.5rem'
+                    }}
+                  />
+                  <div style={{ color: '#F2C94C', fontWeight: 600, fontSize: '1.1rem' }}>
+                    <span>Case study</span>
+                    <span className="mx-2">•</span>
+                    <span>NGO</span>
+                  </div>
+                  <h3 className="fw-bold mt-2" style={{ 
+                    color: '#ffffff',
+                    fontSize: '1.5rem',
+                    lineHeight: '1.3'
+                  }}>
+                    How We Delivered Impact for<br />
+                    Non-Profit Organization
+                  </h3>
                 </div>
               </div>
             </div>
+
             {/* Card 3 */}
             <div className="col-md-6 col-lg-4">
-              <div className="h-100">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&q=60" alt="Case study 3" className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
-                <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
-                  <span>Case study</span><span className="mx-2" style={{ color: '#F2C94C' }}>•</span><span style={{ color: '#F2C94C' }}>Tech</span>
-                </div>
-                <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We Achieved Results for<br />[Project Name]
+              <div className="h-100 d-flex flex-column">
+                <div 
+                  onClick={() => handleClick('/kiraaze')} 
+                  style={{ 
+                    cursor: 'pointer',
+                    flex: '1 0 auto',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <img
+                    src={kiraaze_casestudyImg}
+                    alt="Manufacturing case study"
+                    className="img-fluid w-100"
+                    style={{ 
+                      borderRadius: '24px', 
+                      height: '320px', 
+                      objectFit: 'cover',
+                      marginBottom: '1.5rem'
+                    }}
+                  />
+                  <div style={{ color: '#F2C94C', fontWeight: 600, fontSize: '1.1rem' }}>
+                    <span>Case study</span>
+                    <span className="mx-2">•</span>
+                    <span>Manufacturing</span>
+                  </div>
+                  <h3 className="fw-bold mt-2" style={{ 
+                    color: '#ffffff',
+                    fontSize: '1.5rem',
+                    lineHeight: '1.3'
+                  }}>
+                    How We Transformed a<br />
+                    Manufacturing Business
+                  </h3>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="d-flex justify-content-end mt-4">
-            <button className="btn rounded-pill px-4 py-2" style={{ borderColor: '#F2C94C', color: '#F2C94C', borderWidth: 2, borderStyle: 'solid', background: 'transparent' }}>
-              View all <FaArrowRight />
-            </button>
           </div>
         </div>
       </section>
 
-      {/* Don't just take our word for it section */}
-      <section className="py-5" style={{ backgroundColor: '#0b0b0b', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
+      {/* Don't just take our words section */}
+      <section className="py-5" style={{ 
+        backgroundColor: '#2b2a2aff',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center'
+      }}>
         <div className="container">
           <div className="text-center mb-2" style={{ color: '#F2C94C' }}>3940+ Happy Z.apps users</div>
           <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>Don't just take our <span style={{ color: '#F2C94C' }}>words</span></h2>
 
-          {(() => {
-            const testimonials = [{ img: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=400&auto=format&fit=crop&q=60', quote: "We love Z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", name: 'Jenny Wilson', company: 'Grower.io', }, { img: 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=400&auto=format&fit=crop&q=60', quote: "We love z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", name: 'Devon Lane', company: 'DLDesign.co', }, { img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60', quote: "Outstanding quality and great flexibility. It helped our team move much faster.", name: 'Courtney Henry', company: 'Stark Ltd', }, ];
-            const [index, setIndex] = useState(0);
-            const left = testimonials[index % testimonials.length];
-            const right = testimonials[(index + 1) % testimonials.length];
-            const StarRow = () => (<div className="mb-3" style={{ color: '#F2C94C' }}>★★★★★</div>);
+          <div className="position-relative" style={{ zIndex: 2 }}>
+            {(() => {
+              const testimonials = [
+                { 
+                  img: phaniImg, 
+                  quote: "We love Z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
+                  name: 'Sri Phani', 
+                  company: 'Ecomall' 
+                },
+                { 
+                  img: srinivasImg, 
+                  quote: "We love z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
+                  name: 'Srinivas', 
+                  company: 'Fusion Street' 
+                },
+                { 
+                  img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60', 
+                  quote: "Outstanding quality and great flexibility. It helped our team move much faster.", 
+                  name: 'Courtney Henry', 
+                  company: 'Stark Ltd' 
+                }
+              ];
 
-            return (
-              <>
-                <div className="row g-5 align-items-center justify-content-center">
-                  {[left, right].map((t, i) => (
-                    <div key={i} className="col-md-6">
-                      <div className="d-flex gap-4 align-items-center">
-                        <img src={t.img} alt={t.name} className="rounded" style={{ width: 230, height: 230, objectFit: 'cover' }} />
-                        <div className="text-start">
-                          <StarRow />
-                          <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
-                            "{t.quote}"
-                          </p>
-                          <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name} <span className="ms-2" style={{ color: '#F2C94C' }}>{t.company}</span></div>
+              const [index, setIndex] = useState(0);
+              const left = testimonials[index % testimonials.length];
+              const right = testimonials[(index + 1) % testimonials.length];
+              const StarRow = () => (
+                <div className="mb-3" style={{ 
+                  color: '#F2C94C',
+                  fontSize: '1.2rem',
+                  letterSpacing: '2px'
+                }}>
+                  ★★★★★
+                </div>
+              );
+
+              return (
+                <>
+                  <div className="row g-5 align-items-center justify-content-center">
+                    {[left, right].map((t, i) => (
+                      <div key={i} className="col-md-5">
+                        <div className="d-flex gap-4 align-items-center">
+                          <img src={t.img} alt={t.name} className="rounded" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+                          <div className="text-start">
+                            <StarRow />
+                            <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
+                              "{t.quote}"
+                            </p>
+                            <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name} <span className="ms-2" style={{ color: '#F2C94C' }}>{t.company}</span></div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="d-flex align-items-center justify-content-between mt-4">
-                  <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Previous">
-                    ←
-                  </button>
-                  <div>
-                    {[0, 1, 2].map((d) => (
-                      <span key={d} style={{ display: 'inline-block', width: 10, height: 10, margin: '0 6px', borderRadius: '50%', backgroundColor: index % testimonials.length === d ? '#F2C94C' : 'rgba(255,255,255,0.25)' }} />
                     ))}
                   </div>
-                  <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev + 1) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Next">
-                    →
-                  </button>
+                  
+                  <div className="d-flex align-items-center justify-content-between mt-4">
+                    <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Previous">
+                      ←
+                    </button>
+                    <div>
+                      {[0, 1, 2].map((d) => (
+                        <span
+                          key={d}
+                          onClick={() => setIndex(d)}
+                          style={{
+                            display: 'inline-block',
+                            width: 10,
+                            height: 10,
+                            margin: '0 6px',
+                            borderRadius: '50%',
+                            backgroundColor: index % testimonials.length === d ? '#F2C94C' : 'rgba(255,255,255,0.25)',
+                            cursor: 'pointer'
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev + 1) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Next">
+                      →
+                    </button>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+          
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Get in Touch Section */}
+      <GetInTouchSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
+    </>
+  );
+};
+
+// Testimonials Section
+const TestimonialsSection = () => {
+  const testimonials = [
+    { 
+      img: phaniImg, 
+      quote: "We love Z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
+      name: 'Sri Phani', 
+      company: 'Ecomall' 
+    },
+    { 
+      img: srinivasImg, 
+      quote: "We love z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
+      name: 'Srinivas', 
+      company: 'Fusion Street' 
+    },
+    { 
+      img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60', 
+      quote: "Outstanding quality and great flexibility. It helped our team move much faster.", 
+      name: 'Courtney Henry', 
+      company: 'Stark Ltd' 
+    }
+  ];
+
+  const [index, setIndex] = useState(0);
+  const left = testimonials[index % testimonials.length];
+  const right = testimonials[(index + 1) % testimonials.length];
+  const StarRow = () => (
+    <div className="mb-3" style={{ 
+      color: '#F2C94C',
+      fontSize: '1.2rem',
+      letterSpacing: '2px'
+    }}>
+      ★★★★★
+    </div>
+  );
+
+  return (
+    <section className="py-5" style={{ 
+      backgroundColor: '#2b2a2aff',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center'
+    }}>
+      <div className="container">
+        <div className="text-center mb-2" style={{ color: '#F2C94C' }}>3940+ Happy Z.apps users</div>
+        <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>Don't just take our <span style={{ color: '#F2C94C' }}>words</span></h2>
+
+        <div className="position-relative" style={{ zIndex: 2 }}>
+          <div className="row g-5 align-items-center justify-content-center">
+            {[left, right].map((t, i) => (
+              <div key={i} className="col-md-5">
+                <div className="d-flex gap-4 align-items-center">
+                  <img src={t.img} alt={t.name} className="rounded" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+                  <div className="text-start">
+                    <StarRow />
+                    <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
+                      "{t.quote}"
+                    </p>
+                    <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name} <span className="ms-2" style={{ color: '#F2C94C' }}>{t.company}</span></div>
+                  </div>
                 </div>
-              </>
-            );
-          })()}
+              </div>
+            ))}
+          </div>
+          
+          <div className="d-flex align-items-center justify-content-between mt-4">
+            <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Previous">
+              ←
+            </button>
+            <div>
+              {[0, 1, 2].map((d) => (
+                <span
+                  key={d}
+                  onClick={() => setIndex(d)}
+                  style={{
+                    display: 'inline-block',
+                    width: 10,
+                    height: 10,
+                    margin: '0 6px',
+                    borderRadius: '50%',
+                    backgroundColor: index % testimonials.length === d ? '#F2C94C' : 'rgba(255,255,255,0.25)',
+                    cursor: 'pointer'
+                  }}
+                />
+              ))}
+            </div>
+            <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev + 1) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Next">
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Get in Touch Section
+const GetInTouchSection = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    email: '',
+    select: '',
+    phone: '',
+    message: '',
+    agreeToPolicy: false
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  return (
+    <section className={`${styles.getInTouchSection} d-flex align-items-center`}>
+      <div className="container">
+        <div className="row align-items-center">
+          {/* Left Side - Contact Form */}
+          <div className="col-lg-6">
+            <div className={styles.contactFormContainer}>
+              <h2 className={styles.contactTitle}>Get in touch</h2>
+              <p className={styles.contactSubtitle}>Our friendly team would love to hear from you.</p>
+              
+              <form onSubmit={handleSubmit}>
+                <div className="row g-3 mb-3">
+                  <div className="col-6">
+                    <label className={styles.formLabel}>First name</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      placeholder="Name"
+                      className={styles.formInput}
+                    />
+                  </div>
+                  <div className="col-6">
+                    <label className={styles.formLabel}>E-mail</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="you@company.com"
+                      className={styles.formInput}
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-3">
+                  <label className={styles.formLabel}>Select</label>
+                  <div className={styles.selectContainer}>
+                    <select
+                      name="select"
+                      value={formData.select}
+                      onChange={handleInputChange}
+                      className={styles.formSelect}
+                    >
+                      <option value="">Tell us what you're looking for</option>
+                      <option value="web-development">Web Development</option>
+                      <option value="app-development">App Development</option>
+                      <option value="ui-ux-design">UI/UX Design</option>
+                      <option value="consultation">Consultation</option>
+                    </select>
+                    <span className={styles.selectIcon}>⌄</span>
+                  </div>
+                </div>
+                
+                <div className="mb-3">
+                  <label className={styles.formLabel}>Phone number</label>
+                  <div className={styles.phoneInputContainer}>
+                    <select className={styles.countryCode}>
+                      <option value="+91">IN</option>
+                      <option value="+1">US</option>
+                      <option value="+44">UK</option>
+                    </select>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+91 (555) 000-0000"
+                      className={styles.phoneInput}
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-4">
+                  <label className={styles.formLabel}>Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows="5"
+                    className={styles.formTextarea}
+                  ></textarea>
+                </div>
+                
+                <div className="mb-4">
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      name="agreeToPolicy"
+                      checked={formData.agreeToPolicy}
+                      onChange={handleInputChange}
+                      className={styles.checkbox}
+                    />
+                    <span className={styles.checkboxText}>You agree to our friendly privacy policy.</span>
+                  </label>
+                </div>
+                
+                <button type="submit" className={styles.submitButton}>
+                  Send message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Right Side - Image */}
+          <div className="col-lg-6">
+            <div className={styles.contactImageContainer}>
+              <div className={styles.contactImageWrapper}>
+                <img 
+                  src={forFormImg}
+                  alt="Contact us" 
+                  className={styles.contactImage}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// FAQ Section
+const FAQSection = () => {
+  const [openFAQ, setOpenFAQ] = useState(null);
+
+  const faqs = [
+    {
+      id: 1,
+      question: "What is Z.DotApps?",
+      answer: "Z.DotApps is a comprehensive digital solutions platform that provides web development, app development, and digital services to help businesses grow and succeed in the digital landscape."
+    },
+    {
+      id: 2,
+      question: "What is Web Studio?",
+      answer: "Web Studio is our web development service that creates modern, responsive websites tailored to your business needs with cutting-edge technology and design principles."
+    },
+    {
+      id: 3,
+      question: "What is App Studio?",
+      answer: "App Studio is our mobile and web application development service that builds custom applications for various platforms including iOS, Android, and web applications."
+    },
+    {
+      id: 4,
+      question: "What is Agentic Studio?",
+      answer: "Agentic Studio is our AI-powered development service that creates intelligent agents and automated solutions to streamline business processes and enhance productivity."
+    },
+    {
+      id: 5,
+      question: "What services does Z.DotApps offer?",
+      answer: "We offer comprehensive digital services including web development, mobile app development, UI/UX design, SEO optimization, digital marketing, maintenance & support, and AI-powered solutions."
+    },
+    {
+      id: 6,
+      question: "How many days does it take to build a website?",
+      answer: "The timeline varies based on project complexity. Simple websites take 1-2 weeks, while complex applications can take 4-12 weeks. We provide detailed timelines during project consultation."
+    }
+  ];
+
+  const toggleFAQ = (id) => {
+    setOpenFAQ(openFAQ === id ? null : id);
+  };
+
+  return (
+    <section className={styles.faqSection}>
+      <div className="container">
+        <div className={styles.faqHeader}>
+          <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
+        </div>
+        
+        <div className={styles.faqGrid}>
+          {faqs.map((faq) => (
+            <div key={faq.id} className={styles.faqItem}>
+              <div 
+                className={styles.faqQuestion}
+                onClick={() => toggleFAQ(faq.id)}
+              >
+                <span className={styles.questionText}>{faq.question}</span>
+                <span className={`${styles.faqIcon} ${openFAQ === faq.id ? styles.faqIconOpen : ''}`}>
+                  +
+                </span>
+              </div>
+              {openFAQ === faq.id && (
+                <div className={styles.faqAnswer}>
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Main App Studio Component
+function AppStudio() {
+  return (
+    <div className={styles.appStudioPage}>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <p className={styles.sectionSubtitle}>App Studio</p>
+            <h1 className={styles.sectionTitle}>Apps for every need</h1>
+          </div>
+          <div className={styles.cardsContainer}>
+            {/* Ready to use Card */}
+            <div className={styles.card}>
+              <h2 className={styles.cardTitle}>Ready to use</h2>
+              <p className={styles.cardDescription}>
+                Pick from our library of App templates and launch your Apps in minutes — fully customizable and responsive.
+              </p>
+              <div className={styles.appScreensWrapper}>
+                <img src={kiraaze1Img} alt="App Screen 1" className={`${styles.appScreen} ${styles.screen1}`} />
+                <img src={kiraaze2Img} alt="App Screen 2" className={`${styles.appScreen} ${styles.screen2}`} />
+                <img src={kiraaze3Img} alt="App Screen 3" className={`${styles.appScreen} ${styles.screen3}`} />
+              </div>
+            </div>
+            
+            {/* Custom build Card */}
+            <div className={styles.card}>
+              <h2 className={styles.cardTitle}>Custom build</h2>
+              <p className={styles.cardDescription}>
+                We craft Apps from scratch to match your exact needs — designed, developed, and optimised for impact.
+              </p>
+              <div className={styles.appScreensWrapper}>
+                <img src={kiraaze1Img} alt="App Screen 1" className={`${styles.appScreen} ${styles.screen1}`} />
+                <img src={kiraaze2Img} alt="App Screen 2" className={`${styles.appScreen} ${styles.screen2}`} />
+                <img src={kiraaze3Img} alt="App Screen 3" className={`${styles.appScreen} ${styles.screen3}`} />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Ready to Build the Future? section */}
-      <section className="py-5 text-dark text-center" style={{ backgroundColor: '#F2C94C' }}>
-        <div className="container py-4">
-   
-          <h2 className="fw-bold mb-3" style={{ fontSize: 42 }}>Ready to Build the Future?</h2>
-          <p className="mb-4" style={{ maxWidth: 760, margin: '0 auto' }}>
-            Let's transform your ideas into powerful applications that drive real business results. Our team is ready to make it happen.
-          </p>
-          <div className="d-flex justify-content-center gap-3 mb-5 flex-wrap">
-            <button className="btn btn-dark rounded-pill px-4 py-2">Get In Touch →</button>
-            {/* <button className="btn btn-outline-dark rounded-pill px-4 py-2" style={{ borderWidth: 2 }}>View Our Work</button> */}
-          </div>
-          <div className="row g-4 justify-content-center text-start" style={{ maxWidth: 900, margin: '0 auto' }}>
-            <div className="col-12 col-md-4">
-              <div className="fw-bold">Free Consultation</div>
-              <div className="text-muted">30–minute strategy call</div>
-            </div>
-            <div className="col-12 col-md-4">
-              <div className="fw-bold">Fast Delivery</div>
-              <div className="text-muted">MVP in 4–8 weeks</div>
-            </div>
-            <div className="col-12 col-md-4">
-              <div className="fw-bold">Full Support</div>
-              <div className="text-muted">Launch & maintenance included</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Scroll Expand Section */}
+      <ScrollExpandSection />
 
-      {/* Added Styles */}
-      <style>{`
-        .flip-card { perspective: 1200px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .7s ease; }
-        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-        .flip-card-back { transform: rotateY(180deg); }
+      <WhatWeDo /> {/* Replaced ScrollingCards with WhatWeDo */}
 
-        /* Remove any dark default shadows */
-        .flip-card, .flip-card-front, .flip-card-back { box-shadow: none !important; }
+      {/* Testimonials Carousel Section */}
+      <TestimonialsSection />
 
-        /* Yellow glow on hover */
-        .flip-card:hover .flip-card-front,
-        .flip-card:hover .flip-card-back {
-          box-shadow: 0 16px 40px rgba(255, 191, 0, 0.35), 0 0 0 1px rgba(242, 201, 76, 0.5) inset;
-          border-radius: 24px;
-        }
-         /* Solutions for Every Industry Section */
-  .industry-solutions {
-    background-color: #1C1A1A;
-    padding: 5rem 1rem;
-    color: #FFFFFF;
-  }
-  
-  .industry-solutions h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #FFFFFF;
-  }
-  
-  .industry-solutions h2 span {
-    color: #FFC94A;
-  }
-  
-  .industry-solutions p {
-    font-size: 1.125rem;
-    text-align: center;
-    max-width: 42rem;
-    margin: 0 auto 2rem;
-    color: #F3F3F3;
-  }
-  
-.industry-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0rem; /* ✅ spacing between cards */
-}
+      {/* Get in Touch Section */}
+      <GetInTouchSection />
 
-  
-.industry-card {
-  background-color: #333333;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  width: 100%; 
-  max-width: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-  
-  .industry-card:hover {
-    transform: translateY(-4px);
-    background-color: #444444;
-     box-shadow: 0 0px 20px rgba(255, 202, 58, 0.938);
-  }
-  
-  .industry-icon {
-    // width: 60rem;
-    height: 60px;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  
-  .industry-icon svg {
-    width: 30px;
-    height: 30px;
-    color: #1C1A1A;
-  }
-  
-  .industry-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #FFFFFF;
-  }
-      `}</style>
-
+      {/* FAQ Section */}
+      <FAQSection />
     </div>
   );
 }
 
-export default App;
+export default AppStudio;
