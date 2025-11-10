@@ -19,7 +19,7 @@ const defaultFirstMessage = {
 const makeNewConversation = () => ({
   id: Date.now(),
   title: "New Chat",
-  messages: [defaultFirstMessage],
+  messages: [],
 });
 
 const AgenticStudio = () => {
@@ -45,6 +45,7 @@ const AgenticStudio = () => {
   const [agentsOpen, setAgentsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   const chatWindowRef = useRef(null);
   const activeConversation = conversations.find((c) => c.id === activeConvId) || conversations[0];
@@ -53,6 +54,23 @@ const AgenticStudio = () => {
   useEffect(() => {
     localStorage.setItem("agentic_conversations", JSON.stringify(conversations));
   }, [conversations]);
+
+  // one-time migration: remove old default AI seed message in saved conversations
+  useEffect(() => {
+    setConversations((prev) =>
+      prev.map((c) => {
+        if (
+          Array.isArray(c.messages) &&
+          c.messages.length === 1 &&
+          c.messages[0]?.sender === "ai" &&
+          c.messages[0]?.text === defaultFirstMessage.text
+        ) {
+          return { ...c, messages: [] };
+        }
+        return c;
+      })
+    );
+  }, []);
 
   // auto-scroll whenever messages change
   useEffect(() => {
@@ -170,6 +188,7 @@ const AgenticStudio = () => {
     setSearchOpen((s) => !s);
     setSearchQuery("");
   };
+  const closeMobileSidebar = () => setMobileSidebarOpen(false);
 
   const filteredConversations = conversations.filter((c) =>
     c.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -222,11 +241,35 @@ const AgenticStudio = () => {
   return (
     <div className={styles.pageContainer}>
       {/* Sidebar */}
-      <aside className={styles.sidebar}>
+      {mobileSidebarOpen && (
+        <div className={styles.mobileBackdrop} onClick={closeMobileSidebar} />
+      )}
+      <aside
+        className={styles.sidebar}
+        style={
+          mobileSidebarOpen
+            ? {
+                display: 'block',
+                position: 'fixed',
+                top: 56,
+                left: 0,
+                bottom: 0,
+                width: '82vw',
+                maxWidth: 320,
+                backgroundColor: '#212121',
+                overflowY: 'auto',
+                zIndex: 60,
+                padding: 24,
+                borderTopRightRadius: 24,
+                borderBottomRightRadius: 24,
+              }
+            : undefined
+        }
+      >
         <nav className={styles.sidebarNav}>
           <button
             className={styles.navItem}
-            onClick={handleNewChat}
+            onClick={() => { handleNewChat(); closeMobileSidebar(); }}
             style={{ background: "transparent", border: "none", display: "flex", alignItems: "center", gap: 8 }}
           >
             <HiOutlineChatBubbleOvalLeft size={20} />
@@ -302,7 +345,7 @@ const AgenticStudio = () => {
           {filteredConversations.map((conv) => (
             <div key={conv.id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <button
-                onClick={() => setActiveConvId(conv.id)}
+                onClick={() => { setActiveConvId(conv.id); closeMobileSidebar(); }}
                 className={styles.chatItem}
                 style={{
                   flex: 1,
@@ -317,12 +360,14 @@ const AgenticStudio = () => {
               >
                 {conv.title}
               </button>
-              <button
-                onClick={() => deleteConversation(conv.id)}
-                style={{ background: "transparent", border: "none", cursor: "pointer", color: "#888", padding: "4px" }}
-              >
-                <HiTrash size={14} />
-              </button>
+              {conv.title !== "New Chat" && (
+                <button
+                  onClick={() => { deleteConversation(conv.id); closeMobileSidebar(); }}
+                  style={{ background: "transparent", border: "none", cursor: "pointer", color: "#888", padding: "4px" }}
+                >
+                  <HiTrash size={14} />
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -330,12 +375,37 @@ const AgenticStudio = () => {
 
       {/* Main content */}
       <main className={styles.mainContent}>
+        {/* Mobile top bar (ChatGPT-like) */}
+        <div className={styles.mobileTopBar}>
+          <button className={styles.topBarBtn} aria-label="Menu" onClick={() => setMobileSidebarOpen(true)}>≡</button>
+          <button className={styles.upgradeBadge}>Upgrade for free</button>
+          <button className={styles.topBarBtn} aria-label="Refresh">↻</button>
+        </div>
         <header className={styles.header}>
           <h1 className={styles.title}>Agentic Studio</h1>
           <p className={styles.subtitle}>
             Discover what our <span className={styles.highlight}>Agents</span> can do
           </p>
         </header>
+
+        {/* Empty state placeholder for new chat */}
+        {!activeConversation?.messages?.length && (
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: 220,
+              color: '#ffffff',
+              fontSize: '1.6rem',
+              textAlign: 'center',
+              marginBottom: 12,
+            }}
+          >
+            What's on your mind today?
+          </div>
+        )}
 
         {/* Centered chat inner column → aligns with input area */}
         <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>

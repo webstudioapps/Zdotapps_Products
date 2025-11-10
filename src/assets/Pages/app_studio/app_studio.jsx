@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import styles from './app_studio.module.css';
+import { useNavigate } from 'react-router-dom';
 
 // Import images
 import kiraaze1Img from '../../images/1.png';
@@ -9,62 +10,127 @@ import kiraaze3Img from '../../images/3.png';
 import phaniImg from '../../images/phani.png';
 import srinivasImg from '../../images/srinivas.png';
 import forFormImg from '../../../assets/images/For_Form1.jpg';
+// placeholders for template grid (logos and previews)
+import mall360Img from '../../images/mall360.jpeg';
+import life_2Img from '../../images/life_2.png';
+import productImg from '../../images/product.png';
+import retailImg from '../../images/retail.png';
+import manufacturingImg from '../../images/manufacturing.png';
+import performanceImg from '../../images/performance.png';
+import scalingImg from '../../images/scaling.png';
+import schoolsImg from '../../images/schools.png';
+import readyToUseImg from '../../images/ready_to_use.png';
+import meritWLogo from '../../images/merit_wlogo.png';
+import quiWLogo from '../../images/qui_wlogo.png';
+import raiseWLogo from '../../images/Raise_wlogo.png';
+// images for category flip tiles
+import apexaImg from '../../images/Logos/Logos/apexa_living.png';
+import factopsImg from '../../images/Logos/Logos/Factops.png';
+import kiraaze_appImg from '../../images/kiraaze_app.png';
+import campusImg from '../../images/campus.png';
+import agentsImg from '../../images/agents.png';
+import agent2Img from '../../images/agent2.jpeg';
+import agent3Img from '../../images/agent3.jpeg';
+const templates = [
+  { name: "E-Commerce", logo: meritWLogo, preview: retailImg },
+  { name: "Health care", logo: raiseWLogo, preview: life_2Img },
+  { name: "Food", logo: quiWLogo, preview: productImg },
+  { name: "Manufacturing", logo: meritWLogo, preview: manufacturingImg },
+  { name: "Technology", logo: raiseWLogo, preview: performanceImg },
+  { name: "Edu tech", logo: quiWLogo, preview: schoolsImg },
+  { name: "Finance", logo: meritWLogo, preview: scalingImg },
+  { name: "Portfolios", logo: raiseWLogo, preview: mall360Img },
+  { name: "Fashion", logo: quiWLogo, preview: readyToUseImg },
+];
 
-// App Template Selection Section
-const AppTemplateSection = () => {
-  const [hoveredTemplate, setHoveredTemplate] = useState(null);
+// CategoryTile Component
+const CategoryTile = ({ title_1, images }) => {
+  const navigate = useNavigate();
 
-  const templates = [
-    { id: 1, title: 'E-Commerce', image: kiraaze1Img },
-    { id: 2, title: 'Health care', image: kiraaze2Img },
-    { id: 3, title: 'Food', image: kiraaze3Img },
-    { id: 4, title: 'Manufacturing', image: kiraaze1Img },
-    { id: 5, title: 'Technology', image: kiraaze2Img },
-    { id: 6, title: 'Edu tech', image: kiraaze3Img },
-    { id: 7, title: 'Finance', image: kiraaze1Img },
-    { id: 8, title: 'Portfolios', image: kiraaze2Img },
-    { id: 9, title: 'Fashion', image: kiraaze3Img }
+  const handleClick = () => {
+    switch (title_1.toLowerCase()) {
+      case 'websites':
+        navigate('/studios/web');
+        break;
+      case 'apps':
+        navigate('/studios/app_studio');
+        break;
+      case 'agents':
+        navigate('/agent');
+        break;
+      default:
+        navigate('/');
+    }
+  };
+
+  return (
+    <div className={styles.catTileTiles} style={{ '--pane-w': '50%', '--tile-h': '10rem', '--n1': '10px', '--n2': '6px', '--n3': '3px' }}>
+      <div className={styles.leftShadeTiles} aria-hidden="true" />
+      <a
+        className={styles.catTitleTiles}
+        onClick={handleClick}
+        style={{ cursor: 'pointer' }}
+      >
+        {title_1}
+      </a>
+      <div className={styles.paneTiles} aria-hidden="true">
+        <div className={styles.paneInnerTiles}>
+          <div className={styles.stackTiles} style={{ '--shot-w': '105px', '--overlap': '40px', '--peek-right': '55px' }}>
+          {/* Leftmost red mobile card */}
+          <div className={`${styles.shotTiles} ${styles.shot1Tiles} ${styles.redShotTiles}`}>
+            <img src={meritWLogo} alt="Logo" className={styles.logoTiles} />
+          </div>
+          {/* Two mobile screenshots to the right */}
+          {images.slice(0, 2).map((image, index) => (
+            <img
+              key={index}
+              className={`${styles.shotTiles} ${index === 0 ? styles.shot2Tiles : styles.shot3Tiles}`}
+              src={image}
+              alt={`Screenshot of ${title_1} project ${index + 1}`}
+            />
+          ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// HeroSection Component
+const HeroSection = () => {
+  const categories = [
+    { title_1: "Ecommerce", images: [mall360Img, apexaImg, factopsImg] },
+    { title_1: "healthcare", images: [life_2Img, kiraaze_appImg, campusImg] },
+    { title_1: "food", images: [productImg, retailImg, readyToUseImg] },
+    { title_1: "Manfacturing", images: [manufacturingImg, performanceImg, scalingImg] },
+    { title_1: "techonology", images: [performanceImg, campusImg, mall360Img] },
+    { title_1: " edu tech", images: [schoolsImg, life_2Img, campusImg] },
+    { title_1: "Finnance", images: [scalingImg, productImg, retailImg] },
+    { title_1: "portfolios", images: [mall360Img, kiraaze_appImg, life_2Img] },
+    { title_1: "Fashion", images: [readyToUseImg, productImg, retailImg] },
   ];
 
   return (
-    <section className={styles.templateSection}>
+    <section className={styles.heroTilesSection}>
       <div className="container">
-        <div className={styles.templateHeader}>
-          <h2 className={styles.templateTitle}>
-            Choose a App <span className={styles.textAccent}>template</span>
-          </h2>
-          <p className={styles.templateSubtitle}>
-            Explore the best templates, highly-rated amongst users.
-          </p>
-        </div>
-        
-        <div className={styles.templatesGrid}>
-          {templates.map((template) => (
-            <div 
-              key={template.id}
-              className={`${styles.templateCard} ${hoveredTemplate === template.id ? styles.hovered : ''}`}
-              onMouseEnter={() => setHoveredTemplate(template.id)}
-              onMouseLeave={() => setHoveredTemplate(null)}
-            >
-              <div className={styles.templatePhoneContainer}>
-                <div className={styles.templatePhone}>
-                  <div className={styles.phoneScreen}>
-                    <img 
-                      src={template.image} 
-                      alt={`${template.title} Template`}
-                      className={styles.phoneScreenImage}
-                    />
-                  </div>
-                </div>
-              </div>
-              <h3 className={styles.templateCardTitle}>{template.title}</h3>
-            </div>
+        <p className={styles.heroTitle} style={{ color: '#fff' }}>Choose a App <span className={styles.heroTitle} style={{ color: '#ffc94a' }}>template</span></p>
+        <h1 className={styles.heroSubtitle} style={{ color: '#ffffff' }}>Explore the best templates, highly rated amongst users.</h1>
+
+        <div className={styles.tilesGridTiles}>
+          {categories.map((category, index) => (
+            <CategoryTile
+              key={index}
+              title_1={category.title_1}
+              images={category.images}
+            />
           ))}
         </div>
       </div>
     </section>
   );
 };
+
+  
 
 // Two-stage scroll animation section
 const ScrollExpandSection = () => {
@@ -75,7 +141,6 @@ const ScrollExpandSection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Add delay to show initial state first
           setTimeout(() => {
             setIsExpanded(true);
           }, 1000);
@@ -190,7 +255,6 @@ const ServicesSection = () => {
             <div className={styles.servicesRight}>
               <div className={styles.autoScrollContainer}>
                 <div className={styles.scrollingContent}>
-                  {/* Duplicate services for seamless loop */}
                   {[...services, ...services].map((service, index) => (
                     <div key={index} className={styles.serviceItem}>
                       <h3 className={styles.serviceTitle}>{service.title}</h3>
@@ -301,7 +365,7 @@ const TestimonialsSection = () => {
   const StarRow = () => (<div className="mb-3" style={{ color: '#F2C94C' }}>★★★★★</div>);
 
   return (
-    <section className="py-5" style={{ backgroundColor: '#2b2a2aff', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
+    <section className="testimonial-section" style={{ backgroundColor: '#2b2a2aff', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
       <div className="container">
         <div className="text-center mb-2" style={{ color: '#F2C94C' }}>3940+ Happy Z.apps users</div>
         <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>Don't just take our <span style={{ color: '#F2C94C' }}>words</span></h2>
@@ -309,8 +373,8 @@ const TestimonialsSection = () => {
         <div className="row g-5 align-items-center justify-content-center">
           {[left, right].map((t, i) => (
             <div key={i} className="col-md-6">
-              <div className="d-flex gap-4 align-items-center">
-                <img src={t.img} alt={t.name} className="rounded" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+              <div className="d-flex gap-4 align-items-center testimonial-item">
+                <img src={t.img} alt={t.name} className="rounded testimonial-img" style={{ width: 230, height: 290, objectFit: 'cover' }} />
                 <div className="text-start">
                   <StarRow />
                   <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
@@ -612,6 +676,9 @@ function AppStudio() {
           </div>
         </div>
       </section>
+
+      {/* Tiles Hero Section with flip-card style */}
+      <HeroSection />
 
       {/* Scroll Expand Section */}
       <ScrollExpandSection />

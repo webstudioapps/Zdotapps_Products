@@ -41,7 +41,7 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-  height: 430px;
+  height: 480px;
 }
 
 .homeTitle {
@@ -390,11 +390,11 @@ body {
     margin-bottom: 1rem;
   }
   .imageContainer {
-    height: 90px;
+    height: 130px;
   }
   .productImage {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 120px;
+    max-height: 100px;
   }
   .description {
     font-size: 0.9rem;
@@ -427,11 +427,11 @@ body {
     font-size: 14px;
   }
   .imageContainer {
-    height: 80px;
+    height: 120px;
   }
   .productImage {
-    max-width: 70px;
-    max-height: 70px;
+    max-width: 110px;
+    max-height: 95px;
   }
   .description {
     font-size: 0.85rem;
@@ -474,11 +474,11 @@ body {
     font-size: 12px;
   }
   .imageContainer {
-    height: 70px;
+    height: 110px;
   }
   .productImage {
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 100px;
+    max-height: 90px;
   }
   .description {
     font-size: 0.8rem;
@@ -515,11 +515,11 @@ body {
     padding-left: 2rem;
   }
   .imageContainer {
-    height: 65px;
+    height: 100px;
   }
   .productImage {
-    max-width: 55px;
-    max-height: 55px;
+    max-width: 90px;
+    max-height: 80px;
   }
   .description {
     font-size: 0.75rem;

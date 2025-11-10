@@ -97,6 +97,8 @@ const styles = `
     box-sizing: border-box;
   }
 
+  html { width: 100%; overflow-x: hidden; }
+
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -105,10 +107,18 @@ const styles = `
     overflow-x: hidden;
   }
 
+  /* Media-safe defaults */
+  img, video { max-width: 100%; height: auto; }
+
   .container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 1rem;
+  }
+
+  /* Tame Bootstrap gutter on small screens to avoid accidental overflow */
+  @media (max-width: 576px) {
+    .row { --bs-gutter-x: 1rem; }
   }
 
 
@@ -129,6 +139,17 @@ const styles = `
 
   .text-center { text-align: center; }
   .text-left { text-align: left; }
+  /* WhatWeDo heading alignment: center on mobile, left on md+ */
+  .wwd-heading { text-align: center; }
+  @media (min-width: 768px) { .wwd-heading { text-align: left; } }
+
+  /* WhatWeDo section: avoid horizontal overflow on mobile */
+  .whatwedo { overflow-x: hidden; }
+  @media (max-width: 768px) {
+    .wwd-right { position: static; top: auto; transform: none; }
+    .wwd-right-inner { margin-left: 0 !important; max-width: 100% !important; }
+    .wwd-right img { width: 100% !important; height: auto !important; display: block; }
+  }
 
   .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
   .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
@@ -407,6 +428,34 @@ const styles = `
     min-height: 600px;
   }
 
+  /* Studios: simplify layout for small screens */
+  @media (max-width: 768px) {
+    .studio-card-container {
+      position: static;
+      height: auto;
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+    .studio-card {
+      position: static;
+      left: auto;
+      top: auto;
+      transform: none !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+    .studio-content { max-width: 100%; text-align: left; }
+    .studio-image { max-width: 100%; height: 220px; }
+  }
+
   a {
     color: #f1efeaff;
     text-decoration: none;
@@ -417,6 +466,7 @@ const styles = `
     background-color: #1C1A1A;
     padding: 10rem 1rem;
     color: #FFFFFF;
+    overflow-x: hidden;
   }
 
   .faq-title {
@@ -424,7 +474,7 @@ const styles = `
     font-weight: 600;
     text-align: center;
     margin-bottom: 3rem;
-    color: #FFFFFF;
+    color: #FFC94A;
   }
 
   .faq-item {
@@ -450,6 +500,12 @@ const styles = `
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
     gap: 20px; /* Adjust the gap between items as needed */
+  }
+  @media (max-width: 768px) {
+    .faq-list {
+      grid-template-columns: 1fr; /* Single column on small screens */
+      gap: 12px;
+    }
   }
 
   .faq-answer {
@@ -498,6 +554,7 @@ const styles = `
     text-align: center;
     background-color: #3f3f3eff; /* Changed to white for category tiles */
     color: #333333ff; /* Changed text color for better contrast on white */
+    overflow-x: hidden;
   }
 
   .hero-text-content {
@@ -591,12 +648,32 @@ const styles = `
     .tiles-grid{ grid-template-columns:repeat(2,1fr); }
   }
   @media (max-width:820px){
-    .tiles-grid{ display:flex; overflow-x:auto; gap:18px; scroll-snap-type:x mandatory;
-            -webkit-overflow-scrolling:touch; padding-bottom:6px; }
-    .cat-tile{ min-width:88vw; scroll-snap-align:center; }
+    /* Use grid to avoid horizontal scroll on tablets/phones */
+    .tiles-grid{ display:grid; grid-template-columns: 1fr; gap:18px; padding-bottom:0; }
+    .cat-tile{ min-width:100%; }
     .pane{ width:52%; }
     .stack{ --shot-w:110px; --overlap:42px; --peek-right:55px; }
     .cat-title{ padding-left:20px; font-size:20px; }
+  }
+  /* Very small screens: remove horizontal scroll, use single column grid */
+  @media (max-width: 640px) {
+    .tiles-grid { display: grid; grid-template-columns: 1fr; gap: 14px; padding-bottom: 0; }
+    .cat-tile { min-width: 100%; }
+    .pane { width: 48%; }
+  }
+  /* Mobile adjustments for hero and tiles */
+  @media (max-width: 768px) {
+    .hero-section-main { padding: 120px 16px; }
+    .hero-title { font-size: 2.6rem; line-height: 1.1; }
+    #flip { height: 60px; }
+    #flip > div > div { height: 30px; margin-bottom: 30px; font-size: 18px; }
+    .tiles-grid { margin-top: 36px; }
+  }
+  @media (max-width: 480px) {
+    .hero-section-main { padding: 96px 14px; }
+    .hero-title { font-size: 2.2rem; }
+    #flip { height: 48px; }
+    #flip > div > div { height: 24px; margin-bottom: 24px; font-size: 16px; }
   }
   /*--------------------------------------------------------------------------------------- */
   @import url('https://fonts.googleapis.com/css?family=Roboto:700');
@@ -653,6 +730,7 @@ const styles = `
     background-color: #1C1A1A;
     padding: 3rem 1rem;
     color: #FFFFFF;
+    overflow-x: hidden;
   }
 
   .industry-solutions h2 {
@@ -661,6 +739,10 @@ const styles = `
     text-align: center;
     margin-bottom: 1rem;
     color: #FFFFFF;
+  }
+  /* Testimonial image responsiveness */
+  @media (max-width: 576px) {
+    .testimonial-img { width: 140px !important; height: 180px !important; }
   }
 
   .industry-solutions h2 span {
@@ -1161,7 +1243,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="hero-section-main">
+    <section className="hero-section-main bg-black">
       <div className="container">
         {/* <p className="hero-subtitle" style={{ color: '#ffc94a' }}>We've Got You Covered.</p> */}
         <h1 className="hero-title" style={{ color: '#ffffff' }}>Building Today’s</h1>
@@ -1230,7 +1312,7 @@ const StudiosSection = () => {
   const studioOrder = ['web', 'app', 'agent']; // Define the order for stacking
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: '#1C1A1A' }}>
+    <section className="py-20 px-4 bg-black" style={{ backgroundColor: '#1C1A1A' }}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mt-5" style={{ color: '#FFFFFF' }}>
@@ -1334,6 +1416,7 @@ const StudiosSection = () => {
 const IndustryCards = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const industryData = [
     {
@@ -1418,11 +1501,19 @@ const IndustryCards = () => {
     return () => clearInterval(timer);
   }, [currentSlide, isHovered]);
 
+  // Detect mobile to switch to grid view (no carousel)
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
     <section 
       className="industry-solutions" 
       style={{ 
-        backgroundColor: '#2a2a2a', 
+        backgroundColor: 'black', 
         minHeight: '100vh', 
         display: 'flex', 
         alignItems: 'center', 
@@ -1443,83 +1534,103 @@ const IndustryCards = () => {
           </p>
         </div>
 
-        {/* Carousel */}
-        <div className="industry-carousel" style={{ minHeight: '500px' }}>
-          {slides.map((slide, slideIndex) => (
-            <div
-              key={slideIndex}
-              className={`carousel-slide ${currentSlide === slideIndex ? 'active' : ''}`}
-              style={{
-                display: currentSlide === slideIndex ? 'block' : 'none',
-                transition: 'opacity 0.5s ease-in-out',
-                opacity: currentSlide === slideIndex ? 1 : 0,
-                position: 'absolute',
-                width: '100%',
-                left: 0,
-                top: 0
-              }}
-            >
-              <div className="row g-4">
-                {slide.slice(0, 4).map((item, index) => (
-                  <div key={`${slideIndex}-${index}`} className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex">
-                    <div className="industry-card">
-                      <div className="industry-card-content">
-                        <div className="industry-icon">
-                          <img src={item.icon} alt={`${item.title} Icon`} width="80" />
-                        </div>
-                        <h3 className="industry-title">{item.title}</h3>
-                      </div>
+        {/* Mobile grid (no carousel) */}
+        {isMobile ? (
+          <div className="row g-3">
+            {industryData.map((item, index) => (
+              <div key={index} className="col-6 col-md-4 col-lg-3 d-flex">
+                <div className="industry-card" style={{ width: '100%' }}>
+                  <div className="industry-card-content">
+                    <div className="industry-icon">
+                      <img src={item.icon} alt={`${item.title} Icon`} width="70" />
                     </div>
+                    <h3 className="industry-title">{item.title}</h3>
                   </div>
-                ))}
+                </div>
               </div>
-              <div className="row g-4 mt-4">
-                {slide.slice(4, 8).map((item, index) => (
-                  <div key={`${slideIndex}-${index + 4}`} className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex">
-                    <div className="industry-card">
-                      <div className="industry-card-content">
-                        <div className="industry-icon">
-                          <img src={item.icon} alt={`${item.title} Icon`} width="80" />
+            ))}
+          </div>
+        ) : (
+          <>
+            {/* Carousel */}
+            <div className="industry-carousel" style={{ minHeight: '500px' }}>
+              {slides.map((slide, slideIndex) => (
+                <div
+                  key={slideIndex}
+                  className={`carousel-slide ${currentSlide === slideIndex ? 'active' : ''}`}
+                  style={{
+                    display: currentSlide === slideIndex ? 'block' : 'none',
+                    transition: 'opacity 0.5s ease-in-out',
+                    opacity: currentSlide === slideIndex ? 1 : 0,
+                    position: 'absolute',
+                    width: '100%',
+                    left: 0,
+                    top: 0
+                  }}
+                >
+                  <div className="row g-4">
+                    {slide.slice(0, 4).map((item, index) => (
+                      <div key={`${slideIndex}-${index}`} className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex">
+                        <div className="industry-card">
+                          <div className="industry-card-content">
+                            <div className="industry-icon">
+                              <img src={item.icon} alt={`${item.title} Icon`} width="80" />
+                            </div>
+                            <h3 className="industry-title">{item.title}</h3>
+                          </div>
                         </div>
-                        <h3 className="industry-title">{item.title}</h3>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                  <div className="row g-4 mt-4">
+                    {slide.slice(4, 8).map((item, index) => (
+                      <div key={`${slideIndex}-${index + 4}`} className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex">
+                        <div className="industry-card">
+                          <div className="industry-card-content">
+                            <div className="industry-icon">
+                              <img src={item.icon} alt={`${item.title} Icon`} width="80" />
+                            </div>
+                            <h3 className="industry-title">{item.title}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Dots */}
-        <div className="carousel-dots" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginTop: '2rem',
-          gap: '0.75rem',
-          padding: '0 1rem',
-          position: 'relative',
-          zIndex: 10
-        }}>
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              style={{
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                border: 'none',
-                padding: 0,
-                cursor: 'pointer',
-                backgroundColor: currentSlide === index ? '#F2C94C' : 'rgba(255, 255, 255, 0.3)',
-                transition: 'all 0.3s ease',
-                outline: 'none'
-              }}
-            />
-          ))}
-        </div>
+            {/* Dots */}
+            <div className="carousel-dots" style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '2rem',
+              gap: '0.75rem',
+              padding: '0 1rem',
+              position: 'relative',
+              zIndex: 10
+            }}>
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  style={{
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    backgroundColor: currentSlide === index ? '#F2C94C' : 'rgba(255, 255, 255, 0.3)',
+                    transition: 'all 0.3s ease',
+                    outline: 'none'
+                  }}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <style jsx>{`
@@ -1921,13 +2032,16 @@ function WhatWeDo() {
   }
 
   return (
-    <section className="relative isolate bg-black text-white min-h-screen flex items-center py-16">
+    <section className="whatwedo relative isolate bg-black text-white min-h-screen flex items-center py-16">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 items-start h-full">
           <div className="w-full md:w-2/3 pr-0 md:pr-8">
-            <h2 className="text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
+            <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
               <span className="block">Elegant solutions</span>
               <span className="block">built on proven</span>
+            <h2 className="text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
+              <span className="block">Elegant solutions </span>
+              <span className="block">built on proven </span>
               <span className="block">methodologies.</span>
             </h2>
 
@@ -1990,7 +2104,7 @@ function WhatWeDo() {
           </div>
 
           {/* Image on the right */}
-          <div className="w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
+          <div className="wwd-right w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection.key}
@@ -2000,7 +2114,7 @@ function WhatWeDo() {
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 className="relative"
               >
-                <div className="relative w-100 max-w-md ms-5 mx-auto">
+                <div className="wwd-right-inner relative w-100 max-w-md ms-5 mx-auto">
                   <img
                     src={activeSection.img}
                     alt={`${activeSection.title} hero`}
@@ -2030,8 +2144,7 @@ const ProcessFlow = () => {
   return (
     <>
       {/* "Discover How We Deliver Outstanding Results" section */}
-      <section className="d-flex align-items-center" style={{ 
-        backgroundColor: '#222222ff', 
+      <section className="d-flex bg-black align-items-center" style={{ 
         minHeight: '100vh',
         padding: '4rem 0'
       }}>
@@ -2170,7 +2283,7 @@ const ProcessFlow = () => {
 
       {/* Don't just take our words section */}
       <section className="py-5" style={{ 
-        backgroundColor: '#2b2a2aff',
+        backgroundColor: 'black',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center'
@@ -2221,7 +2334,7 @@ const ProcessFlow = () => {
                     {[left, right].map((t, i) => (
                       <div key={i} className="col-md-5">
                         <div className="d-flex gap-4 align-items-center">
-                          <img src={t.img} alt={t.name} className="rounded" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+                          <img src={t.img} alt={t.name} className="rounded testimonial-img" style={{ width: 230, height: 290, objectFit: 'cover' }} />
                           <div className="text-start">
                             <StarRow />
                             <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
@@ -2313,7 +2426,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="faq-section">
+    <section className="faq-section bg-black">
       <div className="container">
         <h2 className="faq-title">Frequently Asked Questions</h2>
         <div className="faq-list">
@@ -2467,7 +2580,7 @@ export default function ZappsLanding() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: styles }} />
-      <div style={{ minHeight: '100vh', backgroundColor: 'var(--background)' }}>
+      <div style={{ minHeight: '100vh', backgroundColor: 'var(--background)', overflowX: 'hidden' }}>
         <HeroSection />
         <StudiosSection />
         <IndustryCards />
