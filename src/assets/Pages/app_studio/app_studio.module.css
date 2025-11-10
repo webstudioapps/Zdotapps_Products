@@ -11,6 +11,7 @@
 .appStudioPage {
   background-color: #0b0b0b;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 /* --- HERO SECTION --- */
@@ -397,7 +398,7 @@
 /* --- SERVICES SECTION --- */
 .servicesSection {
   background-color: #1a1a1a;
-  padding: 100px 0;
+  padding: 107px 0;
 }
 
 .servicesLeft {
@@ -489,7 +490,7 @@
 /* --- DISCOVER SECTION --- */
 .discoverSection {
   background-color: #2a2a2a;
-  padding: 100px 0;
+  padding: 300px 0;
 }
 
 .discoverHeader {
@@ -600,6 +601,37 @@
 .testimonialsSection {
   background-color: #1a1a1a;
   padding: 100px 0;
+}
+
+/* Bridge styles for JSX-based testimonial-section (non-module class) */
+:global(.testimonial-section) {
+  padding: 120px 0; /* desktop/tablet default */
+}
+
+@media (max-width: 992px) {
+  :global(.testimonial-section) {
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  :global(.testimonial-section) {
+    padding: 60px 0; /* reduce on mobile */
+  }
+  :global(.testimonial-item) {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  :global(.testimonial-item) :global(.text-start) {
+    text-align: center !important;
+  }
+  :global(.testimonial-img) {
+    width: 160px !important;
+    height: 200px !important;
+    object-fit: cover;
+  }
+  :global(.testimonial-section) p { max-width: 100% !important; }
 }
 
 .testimonialsHeader {
@@ -1089,7 +1121,7 @@
 /* --- SERVICES SECTION --- */
 .servicesSection {
   background-color: #0b0b0b;
-  padding: 80px 0;
+  padding: 108px 0;
 }
 
 .servicesImage {
@@ -1618,7 +1650,233 @@
 }
 
 
-/* --- HERO SECTION ("Apps for every need") --- */
+/* --- HERO SECTION (Tiles) - module scoped classes --- */
+.heroTilesSection {
+  padding: 120px 10px;
+  text-align: center;
+  background-color: #2d2d2d; /* from .template-selector */
+  color: #333333ff;
+  overflow-x: hidden;
+}
+
+.tilesGridTiles {
+  max-width: 900rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  padding: 28px;
+  margin-top: 100px;
+}
+
+.catTileTiles {
+  position: relative;
+  height: var(--tile-h, 20rem);
+  width: 100%;
+  border-radius: var(--radius, 14px);
+  border: 1px solid #333;
+  background: #333;
+  overflow: hidden;
+  box-shadow: 0 2px 14px rgba(0,0,0,.06);
+}
+
+/* White shadow overlay across the full left section */
+.leftShadeTiles {
+  position: absolute;
+
+  pointer-events: none;
+  background: rgba(255,255,255,0.3);
+  z-index: 1;
+}
+
+.catTitleTiles {
+  position: absolute;
+  left: 0;
+  right: var(--pane-w, 50%);
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-left: var(--title-x, 20px);
+  font-size: var(--title-size, 20px);
+  letter-spacing: .2px;
+  color: #fbbf24; /* Tailwind yellow-400 from .highlight */
+  text-decoration: none;
+  z-index: 2;
+}
+
+.catTitleTiles:hover { filter: brightness(0.95); }
+
+.catTitleTiles:focus-visible {
+  outline: 2px solid #6aa9ff;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.paneTiles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--pane-w, 100%);
+
+  overflow: hidden;
+
+}
+
+/* Inner clip area so phones sit inside card borders */
+.paneInnerTiles {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.paneTiles::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 12%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Red overlay stripe + logo inside pane (scoped) */
+.redOverlayTiles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 60px; /* from .red-overlay */
+  background-color: #d31c1c;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .26s cubic-bezier(.22,.61,.36,1);
+}
+
+.logoTiles {
+  border-radius: 50%;
+  background: white;
+  padding: 5px;
+  box-sizing: content-box;
+  width: 60px;
+  height: 60px; /* from .logo */
+}
+
+.stackTiles {
+  --shot-w: 120px; --shot-r: 12px; --overlap: 46px; --peek-right: 60px;
+  position: absolute;
+  top: 50%;
+  right: calc(var(--peek-right) - var(--shot-w));
+  height: 100%;
+  width: calc(3 * var(--shot-w) - 2 * var(--overlap));
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.shotTiles {
+  position: absolute;
+  top: 50%;
+  width: var(--shot-w, 120px);
+  height: 100%;
+  transform: translateY(-50%);
+  object-fit: cover;
+  border-top-right-radius: var(--shot-r, 12px);
+  border-bottom-right-radius: var(--shot-r, 12px);
+  border-top-left-radius: var(--shot-r, 12px);
+  border-bottom-left-radius: var(--shot-r, 12px);
+
+ 
+  transition: transform .26s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+/* Red mobile-shaped card as the leftmost shot */
+.redShotTiles {
+  background: #d31c1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  overflow: hidden;
+  /* flatten the shared edge with the next screenshot */
+border-radius: 10px;
+width: 75px;
+height: 145px;
+}
+.heroTitle{
+font-size: 2.5rem;
+}
+.heroSubtitle{
+font-size: 1rem;
+}
+.heroTitle span{
+font-size: 2.5rem;
+font-weight: 500;
+}
+.shot3Tiles { right: 0; z-index: 1; }
+.shot2Tiles { right: calc(var(--shot-w) - var(--overlap)); z-index: 2; transition-delay: 12ms; }
+.shot1Tiles { right: calc(2 * (var(--shot-w) - var(--overlap))); z-index: 3; }
+
+/* flatten left edge of the first screenshot to attach to red card */
+.shot2Tiles {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.catTileTiles:hover .shot1Tiles,
+.catTileTiles:focus-within .shot1Tiles {
+  transform: translateY(-50%) translateX(calc(-1 * var(--n1, 10px)));
+}
+
+.catTileTiles:hover .shot2Tiles,
+.catTileTiles:focus-within .shot2Tiles {
+  transform: translateY(-50%) translateX(calc(-1 * var(--n2, 6px)));
+}
+
+.catTileTiles:hover .shot3Tiles,
+.catTileTiles:focus-within .shot3Tiles {
+  transform: translateY(-50%) translateX(calc(-1 * var(--n3, 3px)));
+}
+
+/* Make red overlay join the flip/slide motion */
+.catTileTiles:hover .redOverlayTiles,
+.catTileTiles:focus-within .redOverlayTiles {
+  transform: translateX(calc(-1 * var(--n3, 3px)));
+}
+
+@media (max-width: 1024px) {
+  .tilesGridTiles { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .tilesGridTiles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+  .catTileTiles { min-width: 100%; }
+  .paneTiles { width: 50%; }
+  .stackTiles { --shot-w: 100px; --overlap: 40px; --peek-right: 50px; }
+  .catTitleTiles { padding-left: 20px; font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  .paneTiles { width: 48%; }
+  .stackTiles { --shot-w: 90px; --overlap: 36px; --peek-right: 46px; }
+  .catTitleTiles { padding-left: 16px; font-size: 18px; }
+}
 .appStudioSection {
   min-height: 100vh;
   display: flex;
@@ -2237,3 +2495,5 @@
     height: 300px;
   }
 }
+
+

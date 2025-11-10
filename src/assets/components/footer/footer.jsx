@@ -53,35 +53,14 @@ function Footer() {
 
       {/* Footer */}
       <footer className={`${styles.footer} pt-5 pb-4`}>
-        <div className="container px-4 px-md-5">
+        <div className="container">
           <div className="row gy-4 align-items-start">
-            {/* Subscribe */}
-            <div className="col-12 col-lg-6">
-              <h5 className="text-white fw-bold mb-2">Subscribe to updates</h5>
-              <p className="text-white-50 mb-3">
-                Stay informed about our latest features and tools.
-              </p>
-              <form className="d-flex gap-2 mb-2" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  className="form-control bg-transparent text-white border-secondary w-auto"
-                  style={{ width: 260 }}
-                  placeholder="Your Email"
-                  required
-                />
-                <button className="btn btn-light px-3">Subscribe</button>
-              </form>
-              <small className="text-white-50 d-block">
-                By subscribing, you agree to our{" "}
-                <a href="#" className={styles.link}>Privacy Policy</a>.
-              </small>
-              <div className="mt-4">
-                <img
-                  src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png"
-                  alt="Z.apps"
-                  width={120}
-                />
-              </div>
+            <div className="col-12 col-lg-6 d-flex align-items-center">
+              <img
+                src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png"
+                alt="Z.apps"
+                width={140}
+              />
             </div>
 
             {/* Links */}

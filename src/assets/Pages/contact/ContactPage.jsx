@@ -114,7 +114,7 @@ const ContactPage = () => {
               <div className={styles.successIcon}>
                 <FiCheckCircle />
               </div>
-              <h3>Message Sent Successfully!</h3>
+             
               <p>Our team will get back to you within 24 hours.</p>
               <button 
                 onClick={() => setIsSubmitted(false)}
