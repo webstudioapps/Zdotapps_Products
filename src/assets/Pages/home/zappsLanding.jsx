@@ -474,7 +474,7 @@ const styles = `
     font-weight: 600;
     text-align: center;
     margin-bottom: 3rem;
-    color: #FFFFFF;
+    color: #FFC94A;
   }
 
   .faq-item {
@@ -1243,7 +1243,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="hero-section-main">
+    <section className="hero-section-main bg-black">
       <div className="container">
         {/* <p className="hero-subtitle" style={{ color: '#ffc94a' }}>We've Got You Covered.</p> */}
         <h1 className="hero-title" style={{ color: '#ffffff' }}>Building Today’s</h1>
@@ -1312,7 +1312,7 @@ const StudiosSection = () => {
   const studioOrder = ['web', 'app', 'agent']; // Define the order for stacking
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: '#1C1A1A' }}>
+    <section className="py-20 px-4 bg-black" style={{ backgroundColor: '#1C1A1A' }}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mt-5" style={{ color: '#FFFFFF' }}>
@@ -1513,7 +1513,7 @@ const IndustryCards = () => {
     <section 
       className="industry-solutions" 
       style={{ 
-        backgroundColor: '#2a2a2a', 
+        backgroundColor: 'black', 
         minHeight: '100vh', 
         display: 'flex', 
         alignItems: 'center', 
@@ -2039,6 +2039,9 @@ function WhatWeDo() {
             <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
               <span className="block">Elegant solutions</span>
               <span className="block">built on proven</span>
+            <h2 className="text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
+              <span className="block">Elegant solutions </span>
+              <span className="block">built on proven </span>
               <span className="block">methodologies.</span>
             </h2>
 
@@ -2141,8 +2144,7 @@ const ProcessFlow = () => {
   return (
     <>
       {/* "Discover How We Deliver Outstanding Results" section */}
-      <section className="d-flex align-items-center" style={{ 
-        backgroundColor: '#222222ff', 
+      <section className="d-flex bg-black align-items-center" style={{ 
         minHeight: '100vh',
         padding: '4rem 0'
       }}>
@@ -2281,7 +2283,7 @@ const ProcessFlow = () => {
 
       {/* Don't just take our words section */}
       <section className="py-5" style={{ 
-        backgroundColor: '#2b2a2aff',
+        backgroundColor: 'black',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center'
@@ -2424,7 +2426,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="faq-section">
+    <section className="faq-section bg-black">
       <div className="container">
         <h2 className="faq-title">Frequently Asked Questions</h2>
         <div className="faq-list">
