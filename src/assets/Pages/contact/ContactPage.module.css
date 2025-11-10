@@ -11,6 +11,12 @@
   justify-content: center;
 }
 
+/* Marquee animation used on mobile only */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .contactContainer {
   max-width: 1340px;
   margin: 0 auto;
@@ -42,6 +48,14 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 0;
+}
+/* Hide cloned logos by default (desktop/tablet) */
+.clone { display: none; }
+
+/* Marquee wrapper - hides overflow for auto scroll on mobile */
+.logosMarquee {
+  width: 100%;
+  overflow: hidden; /* mask the animated row */
 }
 
 /* -------------------------------
@@ -465,19 +479,35 @@
   
   .logoGrid {
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+    overflow-x: visible !important; /* animation controls movement */
+    -webkit-overflow-scrolling: touch;
+    width: max-content;
+    animation: marqueeScroll 22s linear infinite;
+    will-change: transform;
+    align-items: center;
   }
 
-  .logoItem {
-    height: 140px;
-    padding: 0.7rem;
+  /* Remove card styling on mobile */
+  .logoGrid > div {
+    flex: 0 0 auto;
+    height: 90px;
+    min-width: 130px;
+    padding: 0.25rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
-  .logoItem img {
-    max-width: 75%;
-    max-height: 75%;
+  .logoGrid > div img {
+    max-width: 70%;
+    max-height: 60%;
   }
-
+  /* Show cloned items on mobile for seamless loop */
+  .clone { display: flex !important; }
+  
   .formSection {
     padding: 1.5rem;
     max-width: 100%;
@@ -486,13 +516,17 @@
   }
   
   .logosContent h1 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
   }
   
   .logosSubtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    color: #666666;
+    line-height: 1.6;
   }
   
   .formHeader h2 {
@@ -530,29 +564,47 @@
   .logosSection { order: 2; }
   
   .logosContent h1 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
   }
   
   .logosSubtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
   }
   
   .logoGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.6rem;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.45rem !important;
+    overflow-x: visible !important;
+    -webkit-overflow-scrolling: touch;
+    width: max-content;
+    animation: marqueeScroll 22s linear infinite;
+    will-change: transform;
+    align-items: center;
   }
   
+  /* Remove card styling on mobile */
   .logoItem {
-    height: 120px;
-    padding: 0.6rem;
+    flex: 0 0 auto;
+    height: 80px;
+    min-width: 110px;
+    padding: 0.2rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .logoItem img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 70%;
+    max-height: 55%;
   }
+  /* Show cloned items on mobile for seamless loop */
+  .clone { display: flex !important; }
   
   .formSection {
     padding: 1.5rem;
@@ -612,30 +664,50 @@
   .logosSection { order: 2; }
   
   .logosContent h1 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+    text-align: center;
+    color: black;
+    line-height: 1.6;
   }
   
   .logosSubtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+    text-align: center;
+    color: black;
+    line-height: 1.6;
   }
   
   .logoGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.4rem !important;
+    overflow-x: visible !important;
+    -webkit-overflow-scrolling: touch;
+    width: max-content;
+    animation: marqueeScroll 22s linear infinite;
+    will-change: transform;
+    align-items: center;
   }
   
+  /* Remove card styling on mobile */
   .logoItem {
-    height: 110px;
-    padding: 0.5rem;
-    max-width: 200px;
-    margin: 0 auto;
+    flex: 0 0 auto;
+    height: 72px;
+    min-width: 100px;
+    padding: 0.15rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .logoItem img {
-    max-width: 85%;
-    max-height: 85%;
+    max-width: 70%;
+    max-height: 50%;
   }
+  /* Show cloned items on mobile for seamless loop */
+  .clone { display: flex !important; }
   
   .formSection {
     padding: 1rem;
@@ -648,11 +720,11 @@
   }
   
   .formSubtitle {
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
   
   .submitButton {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.6rem 0.8rem;
   }
   

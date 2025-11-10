@@ -85,17 +85,31 @@ const ContactPage = () => {
               Join hundreds of companies worldwide who trust us to deliver exceptional digital experiences.
             </p>
             
-            <div className={styles.logoGrid}>
-              <div className={styles.logoItem1}><img src={kryonLogo} alt="Kryon" /></div>
-               <div className={styles.logoItem5}><img src={tnsLogo} alt="TNS" /></div>
-              <div className={styles.logoItem3}><img src={ontropiLogo} alt="Ontropi" /></div>
-              <div className={styles.logoItem4}><img src={stationSLogo} alt="Station S" /></div>
-              <div className={styles.logoItem2}><img src={lifeCyclulLogo} alt="Life Cykul" /></div>
-              <div className={styles.logoItem6}><img src={campusLifeLogo} alt="Campus Life" /></div>
-              <div className={styles.logoItem7}><img src={factOpsLogo} alt="Fact-Ops" /></div>
-              <div className={styles.logoItem8}><img src={gcvLogo} alt="GCV" /></div>
-              <div className={styles.logoItem9}><img src={apexaImg} alt="Apexa" /></div>
-            </div>
+            {(() => {
+              const logos = [
+                { key: 'l1', src: kryonLogo, alt: 'Kryon', cls: styles.logoItem1 },
+                { key: 'l5', src: tnsLogo, alt: 'TNS', cls: styles.logoItem5 },
+                { key: 'l3', src: ontropiLogo, alt: 'Ontropi', cls: styles.logoItem3 },
+                { key: 'l4', src: stationSLogo, alt: 'Station S', cls: styles.logoItem4 },
+                { key: 'l2', src: lifeCyclulLogo, alt: 'Life Cykul', cls: styles.logoItem2 },
+                { key: 'l6', src: campusLifeLogo, alt: 'Campus Life', cls: styles.logoItem6 },
+                { key: 'l7', src: factOpsLogo, alt: 'Fact-Ops', cls: styles.logoItem7 },
+                { key: 'l8', src: gcvLogo, alt: 'GCV', cls: styles.logoItem8 },
+                { key: 'l9', src: apexaImg, alt: 'Apexa', cls: styles.logoItem9 },
+              ];
+              return (
+                <div className={styles.logosMarquee}>
+                  <div className={styles.logoGrid}>
+                    {logos.map((l) => (
+                      <div key={l.key} className={l.cls}><img src={l.src} alt={l.alt} /></div>
+                    ))}
+                    {logos.map((l) => (
+                      <div key={`${l.key}-clone`} className={`${l.cls} ${styles.clone}`}><img src={l.src} alt={l.alt} /></div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
 
           </div>
         </div>

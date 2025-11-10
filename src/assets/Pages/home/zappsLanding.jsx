@@ -2039,68 +2039,65 @@ function WhatWeDo() {
             <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
               <span className="block">Elegant solutions</span>
               <span className="block">built on proven</span>
-            <h2 className="text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-              <span className="block">Elegant solutions </span>
-              <span className="block">built on proven </span>
               <span className="block">methodologies.</span>
             </h2>
 
-          <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
-            {sections.map((s, i) => {
-              const open = active !== null && i === active
-              return (
-                <li
-                  key={s.key}
-                  onMouseEnter={() => onEnter(i)}
-                  onTouchStart={() => handleTouchStart(i)}
-                  onFocus={() => setActive(i)}
-                  className={`rounded-xl border transition-all duration-300 sm:rounded-2xl ${
-                    open ? 'border-white/30 bg-white/[0.02]' : 'border-white/5 hover:border-white/20 active:border-white/20'
-                  }`}
-                  tabIndex={0}
-                >
-                  {/* Header row */}
-                  <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
-                    <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
-                    <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
-                      <span>{s.title}</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
+              {sections.map((s, i) => {
+                const open = active !== null && i === active
+                return (
+                  <li
+                    key={s.key}
+                    onMouseEnter={() => onEnter(i)}
+                    onTouchStart={() => handleTouchStart(i)}
+                    onFocus={() => setActive(i)}
+                    className={`rounded-xl border transition-all duration-300 sm:rounded-2xl ${
+                      open ? 'border-white/30 bg-white/[0.02]' : 'border-white/5 hover:border-white/20 active:border-white/20'
+                    }`}
+                    tabIndex={0}
+                  >
+                    {/* Header row */}
+                    <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                      <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
+                      <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
+                        <span>{s.title}</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Inline expanding content */}
-                  <AnimatePresence initial={false}>
-                    {open && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{
-                          height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
-                          opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
-                        }}
-                        style={{ overflow: 'hidden' }}
-                        className="px-4 pb-4 sm:px-5 sm:pb-6"
-                      >
-                        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
-                          <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
-                          <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
-                          <ul className="grid gap-2 text-xs text-zinc-300">
-                            {s.services.map((x) => (
-                              <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
-                                {x}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </li>
-              )
-            })}
-          </ul>
+                    {/* Inline expanding content */}
+                    <AnimatePresence initial={false}>
+                      {open && (
+                        <motion.div
+                          key="content"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
+                            opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
+                          }}
+                          style={{ overflow: 'hidden' }}
+                          className="px-4 pb-4 sm:px-5 sm:pb-6"
+                        >
+                          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
+                            <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
+                            <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
+                            <ul className="grid gap-2 text-xs text-zinc-300">
+                              {s.services.map((x) => (
+                                <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
+                                  {x}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
 
           {/* Image on the right */}
