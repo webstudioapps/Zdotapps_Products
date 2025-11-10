@@ -2039,9 +2039,6 @@ function WhatWeDo() {
             <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
               <span className="block">Elegant solutions</span>
               <span className="block">built on proven</span>
-            <h2 className="text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-              <span className="block">Elegant solutions </span>
-              <span className="block">built on proven </span>
               <span className="block">methodologies.</span>
             </h2>
 
