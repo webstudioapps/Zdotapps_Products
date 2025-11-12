@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import styles from "./z.iot.module.css";
 import kirazeeImage from "../../../images/kirazee_new.png";
-import { useNavigate } from "react-router-dom";
+import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 const Ziot = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    message: '' 
+  });
 
   const handleButtonClick = () => {
-    navigate("/login");
+    window.location.href = "https://kirazee.com/";
   };
 
   const handleChange = (e) => {
@@ -42,28 +46,77 @@ const Ziot = () => {
           Access Kirazee
         </button>
       </div>
+
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5 style={{ textAlign: 'center' , color: 'black' }}>Launch Your Digital Store.</h5>
-           <h5 style={{ textAlign: 'center', marginTop: '-10px' , color: 'black' }}>Unlock 3X Sales</h5>
-          <img src={kirazeeImage} alt="Kirazee Logo" className={styles.formLogo} />
-          <label>
-            First Name
-            <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
-          </label>
-          <label>
-            Last Name
-            <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" placeholder="Email ID" value={formData.email} onChange={handleChange} required />
-          </label>
-          <label>
-            Message
-            <textarea name="message" placeholder="Tell us about your business requirements" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
-          </label>
-          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
+          <h5 className={styles.formTitle}>Launch Your Digital Store.</h5>
+          <h5 className={styles.formSubtitle}>Unlock 3X Sales</h5>
+          <div className={styles.logoContainer}>
+            <img src={kirazeeImage} alt="Kirazee Logo" className={styles.logoImage} />
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="firstName" 
+                placeholder="First Name" 
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="lastName" 
+                placeholder="Last Name" 
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMail className={styles.inputIcon} />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Email ID" 
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
+              <textarea
+                name="message"
+                placeholder="Tell us about your business requirements"
+                value={formData.message}
+                onChange={handleChange}
+                className={styles.formTextarea}
+                rows="4"
+              />
+            </div>
+          </div>
+
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
         </form>
       </div>
     </section>

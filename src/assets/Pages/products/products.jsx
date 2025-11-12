@@ -164,8 +164,8 @@ const Products = () => {
   };
 
   return (
-    <section className={styles.productsSection}>
-      {/* Hero Section */}
+    <>
+      {/* Section 1: Hero Section */}
       <section className={styles.homeSection}>
         <div className="container">
           <div className="row justify-content-center text-center">
@@ -209,87 +209,91 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products Grid */}
-      <div className="container">
-        <div className="row g-4 justify-content-center py-5">
-          <div className="col-12 text-center">
-            <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
-              Explore our <span className={styles.highlightText}>products</span>
-            </h1>
-          </div>
-
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, idx) => (
-              <div
-                className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
-                key={product.name}
-                style={{
-                  animationDelay: `${idx * 0.1}s`,
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(20px)",
-                  transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
-                }}
-                onClick={() => handleClick(product)}
-              >
-                <article
-                  className={`${styles.card} h-100 d-flex flex-column align-items-center text-center`}
-                >
-                  <div className={styles.cardInner}>
-                    {product.img && (
-                      <div className={styles.imageContainer}>
-                        <img
-                          src={product.img}
-                          className={styles.productImage}
-                          alt={product.name}
-                          onError={(e) => {
-                            e.currentTarget.src =
-                              "https://cdn-icons-png.flaticon.com/512/1178/1178475.png";
-                          }}
-                        />
-                      </div>
-                    )}
-                    <p className={styles.description}>{product.desc}</p>
-
-                    <div className={styles.ctaWrapper}>
-                      <button
-                        className={styles.ctaCircle}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleClick(product);
-                        }}
-                      >
-                        <span
-                          style={{ color: "#EFC426" }}
-                          className={`${styles.icon} ${styles.arrow}`}
-                        ></span>
-                      </button>
-
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleClick(product);
-                        }}
-                        className={styles.tryNowTextLink}
-                      >
-                        Try Now
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            ))
-          ) : (
-            <div className="col-12 text-center py-5">
-              <p className={styles.noResults}>
-                No products found matching your criteria.
-              </p>
+      {/* Section 2: Products Grid Section */}
+      <section className={styles.productsSection}>
+        <div className="container">
+          <div className="row g-4 justify-content-center py-5">
+            <div className="col-12 text-center">
+              <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
+                Explore our <span className={styles.highlightText}>products</span>
+              </h1>
             </div>
-          )}
+
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product, idx) => (
+                <div
+                  className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
+                  key={product.name}
+                  style={{
+                    animationDelay: `${idx * 0.1}s`,
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                    transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+                  }}
+                  onClick={() => handleClick(product)}
+                >
+                  <article
+                    className={`${styles.card} h-100 d-flex flex-column align-items-center text-center`}
+                  >
+                    <div className={styles.cardInner}>
+                      {product.img && (
+                        <div className={styles.imageContainer}>
+                          <img
+                            src={product.img}
+                            className={styles.productImage}
+                            alt={product.name}
+                            onError={(e) => {
+                              e.currentTarget.src =
+                                "https://cdn-icons-png.flaticon.com/512/1178/1178475.png";
+                            }}
+                          />
+                        </div>
+                      )}
+                      <p className={styles.description}>{product.desc}</p>
+
+                      <div className={styles.ctaWrapper}>
+                        <button
+                          className={styles.ctaCircle}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleClick(product);
+                          }}
+                        >
+                          <span
+                            style={{ color: "#EFC426" }}
+                            className={`${styles.icon} ${styles.arrow}`}
+                          ></span>
+                        </button>
+
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleClick(product);
+                          }}
+                          className={styles.tryNowTextLink}
+                        >
+                          Try Now
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))
+            ) : (
+              <div className="col-12 text-center py-5">
+                <p className={styles.noResults}>
+                  No products found matching your criteria.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+   
+    </>
   );
 };
 

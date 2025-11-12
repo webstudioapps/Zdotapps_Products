@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import styles from "./giDER.module.css";
 import gidERImage from "../../../images/gider_black.png";
 import { useNavigate } from "react-router-dom";
+import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 const GiDER = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    message: '' 
+  });
 
   const handleButtonClick = () => {
-    navigate("/login"); // Redirects to gidER login page
+    window.location.href = "https://zdotapps.com/gidER/login.php";
   };
 
   const handleChange = (e) => {
@@ -43,7 +49,6 @@ const GiDER = () => {
           <li>gidBOX & gidNOTES Integrations</li>
         </ul>
 
-        {/* Updated Login button */}
         <button
           className={`btn btn-warning btn-lg ${styles.cta}`}
           onClick={handleButtonClick}
@@ -54,53 +59,73 @@ const GiDER = () => {
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5 className="text-black">Start executing your projects with</h5>
-          <img src={gidERImage} alt="giDER Logo" className={styles.formLogo} />
+          <h5 className={styles.formTitle}>Start executing your projects with</h5>
+          <div className={styles.logoContainer}>
+            <img src={gidERImage} alt="giDER Logo" className={styles.logoImage} />
+          </div>
 
-          <label>
-            First Name
-            <input 
-              type="text" 
-              name="firstName" 
-              placeholder="First Name" 
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Last Name
-            <input 
-              type="text" 
-              name="lastName" 
-              placeholder="Last Name" 
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Email
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Email ID" 
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Message
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleChange}
-              style={{ height: "90px" }}
-            />
-          </label>
-          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="firstName" 
+                placeholder="First Name" 
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="lastName" 
+                placeholder="Last Name" 
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMail className={styles.inputIcon} />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Email ID" 
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
+              <textarea
+                name="message"
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
+                className={styles.formTextarea}
+                rows="4"
+              />
+            </div>
+          </div>
+
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
         </form>
       </div>
     </section>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./z.form.module.css";
 import formsImage from "../../../images/forms.png";
 import { useNavigate } from "react-router-dom";
+import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 const Zform = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Zform = () => {
   });
 
   const handleButtonClick = () => {
-    navigate("/login"); // Redirects to z.forms login page
+    navigate("/Coming-soon"); // Redirects to z.forms login page
   };
 
   const handleChange = (e) => {
@@ -57,53 +58,71 @@ const Zform = () => {
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5 style={{ textAlign: 'center' , color: 'black' }}>Create forms, collect answers, gain insights</h5>
-          <img src={formsImage} alt="z.forms Logo" className={styles.formLogo} />
+          <h5 className={styles.formTitle}>Create forms, collect answers, gain insights</h5>
+          <div className={styles.logoContainer}>
+            <img src={formsImage} alt="Z.Forms Logo" className={styles.logoImage} />
+          </div>
 
-          <label>
-            First Name
-            <input 
-              type="text" 
-              name="firstName" 
-              placeholder="First Name" 
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Last Name
-            <input 
-              type="text" 
-              name="lastName" 
-              placeholder="Last Name" 
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Email
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Email ID" 
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Message
-            <textarea
-              name="message"
-              placeholder="Tell us about your form requirements"
-              value={formData.message}
-              onChange={handleChange}
-              style={{ height: "90px" }}
-            />
-          </label>
-          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="firstName" 
+                placeholder="First Name" 
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="lastName" 
+                placeholder="Last Name" 
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMail className={styles.inputIcon} />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Email ID" 
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
+              <textarea
+                name="message"
+                placeholder="Tell us about your form requirements"
+                value={formData.message}
+                onChange={handleChange}
+                className={styles.formTextarea}
+                rows="4"
+              />
+            </div>
+          </div>
+
+          <button type="submit" className={styles.submitButton}>
             Submit
           </button>
         </form>
