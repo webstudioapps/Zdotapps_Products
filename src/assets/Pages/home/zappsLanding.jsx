@@ -34,6 +34,22 @@ import phaniImg from '../../images/phani.png';
 import srinivasImg from '../../images/srinivas.png';
 import kiraaze_casestudyImg from '../../images/kiraaze_casestudy.png';
 import { Link } from 'react-router-dom';
+import group1Img from '../../images/Group 1.jpg';
+import group2Img from '../../images/Group 2.jpg';
+import group3Img from '../../images/Group 3.jpg';
+import web1v2Img from '../../images/web1_v2.jpg';
+import web2v2Img from '../../images/web2v2.jpg';
+import web3v2Img from '../../images/web3_v2.jpg';
+import app1Img from '../../images/app1.jpg';
+import app3Img from '../../images/app2.jpg';
+import app4Img from '../../images/app4.jpg';
+import ai1Img from '../../images/ai1.jpg';
+import ai2Img from '../../images/ai2.jpg';
+import ai3Img from '../../images/ai3.jpg';
+import manufacturingImg from '../../images/manufacturing.avif';
+import ngoImg from '../../images/ngo.avif';
+import lakshminathanImg from '../../images/lakshminathan.jpg';
+import ecommerceImg from '../../images/e-commerce.avif';
 
 // Images for WhatWeDo component - Make sure these paths are correct relative to your project structure
 import techImage from '../../images/1.webp';
@@ -566,7 +582,7 @@ const styles = `
      The .tiles-grid and .cat-tile styles will be used instead. */
 
   :root{
-    --tile-h: 18rem;
+    --tile-h: 12rem;
     --radius: 14px;
     --n1: 10px; --n2: 6px; --n3: 3px;
     --title-x: 24px;
@@ -577,16 +593,16 @@ const styles = `
   /* body styles are already handled globally or by the main body rule */
 
   .tiles-grid { /* Renamed to avoid generic class name conflict */
-    max-width: 1400px; margin:0 auto;
-    display:grid; grid-template-columns: repeat(3, minmax(350px, 1fr)); gap: 20px;
+    max-width: 100%; margin:0 auto;
+    display:grid; grid-template-columns: repeat(3, minmax(300px, 1fr)); gap: 16px;
     padding: 0px; /* Added padding */
     margin-top: 70px; /* Added margin-top for spacing */
   }
 
   .cat-tile{
     position:relative; height:var(--tile-h); width:100%;
-    border-radius:var(--radius); border:1px solid #333;
-    background:#333; overflow:hidden; box-shadow:0 2px 14px rgba(0,0,0,.06);
+    border-radius:var(--radius); border:1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06); overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.12);
   }
 
   /* CLICKABLE title area (covers left side up to the image pane) */
@@ -597,7 +613,7 @@ const styles = `
     top:0; bottom:0;
     display:flex; align-items:center; padding-left:var(--title-x);
     font-size:var(--title-size); letter-spacing:.2px;
-    color:#ffc94a; text-decoration:none; z-index:2;
+    color:#ffffff; text-decoration:none; z-index:2;
   }
   .cat-title:hover{ filter:brightness(0.95); }
   .cat-title:focus-visible{
@@ -623,9 +639,20 @@ const styles = `
     transform:translateY(-50%); z-index:1;
   }
   .shot{
-    position:absolute; top:50%; width:var(--shot-w); height:100%;
-    transform:translateY(-50%); object-fit:cover; border-radius:var(--shot-r);
-    box-shadow:0 6px 18px rgba(0,0,0,.18); background:#ddd;
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:var(--shot-w,120px); height:auto; aspect-ratio:9/16;
+    border-radius:14px; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+  }
+  /* Websites tile should look like desktop windows (no rounded corners on images) */
+  .cat-tile.web .shot{ border-radius:4px; }
+  .cat-tile.web .pane{ background:#e9e9e9; }
+  .shot{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:var(--shot-w,120px); height:auto; aspect-ratio:9/16;
+    border-radius:14px; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+    background:#ddd;
     transition:transform .26s cubic-bezier(.22,.61,.36,1); will-change:transform;
 
   }
@@ -651,15 +678,27 @@ const styles = `
     /* Use grid to avoid horizontal scroll on tablets/phones */
     .tiles-grid{ display:grid; grid-template-columns: 1fr; gap:18px; padding-bottom:0; }
     .cat-tile{ min-width:100%; }
-    .pane{ width:52%; }
-    .stack{ --shot-w:110px; --overlap:42px; --peek-right:55px; }
+    .pane{ width: var(--pane-w, 50%); }
+    .stack{ --shot-w:140px; --overlap:44px; --peek-right:80px; }
     .cat-title{ padding-left:20px; font-size:20px; }
   }
   /* Very small screens: remove horizontal scroll, use single column grid */
   @media (max-width: 640px) {
     .tiles-grid { display: grid; grid-template-columns: 1fr; gap: 14px; padding-bottom: 0; }
     .cat-tile { min-width: 100%; }
-    .pane { width: 48%; }
+    .pane { width: var(--pane-w, 50%); }
+    .stack{ --shot-w:130px; --overlap:40px; --peek-right:70px; }
+  }
+  /* Small phones */
+  @media (max-width: 576px) {
+    .tiles-grid { gap: 12px; }
+    :root{ --tile-h: 11rem; --title-size: 20px; }
+  }
+  /* Extra small phones */
+  @media (max-width: 420px) {
+    :root{ --tile-h: 10rem; --title-size: 18px; }
+    .stack{ --shot-w: 96px; --overlap: 22px; --peek-right: 60px; }
+    .cat-title{ padding-left: 16px; }
   }
   /* Mobile adjustments for hero and tiles */
   @media (max-width: 768px) {
@@ -675,6 +714,10 @@ const styles = `
     #flip { height: 48px; }
     #flip > div > div { height: 24px; margin-bottom: 24px; font-size: 16px; }
   }
+  /* Studios section spacing to avoid header overlap */
+  .studios-section { padding-top: 7.5rem; }
+  @media (max-width: 992px) { .studios-section { padding-top: 9rem; } }
+  @media (max-width: 576px) { .studios-section { padding-top: 10rem; } }
   /*--------------------------------------------------------------------------------------- */
   @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
@@ -867,28 +910,28 @@ const styles = `
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.sm\\:gap-8 {
+.sm\:gap-8 {
   gap: 2rem;
 }
-.sm\\:px-6 {
+.sm\:px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.sm\\:py-16 {
+.sm\:py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
-.md\\:grid-cols-2 {
+.md\:grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.md\\:gap-12 {
+.md\:gap-12 {
   gap: 3rem;
 }
-.md\\:py-20 {
+.md\:py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
-.lg\\:py-24 {
+.lg\:py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
@@ -902,7 +945,7 @@ const styles = `
 .text-zinc-400 {
   color: #a1a1aa;
 }
-.sm\\:text-sm {
+.sm\:text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -916,24 +959,24 @@ const styles = `
 .font-semibold {
   font-weight: 600;
 }
-.leading-\\[1\\.05\\] {
+.leading-\[1\.05\] {
   line-height: 1.05;
 }
 .text-zinc-50 {
   color: #fafafa;
 }
-.sm\\:mt-6 {
+.sm\:mt-6 {
   margin-top: 1.5rem;
 }
-.sm\\:text-4xl {
+.sm\:text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
-.md\\:text-5xl {
+.md\:text-5xl {
   font-size: 3rem;
   line-height: 1;
 }
-.lg\\:text-6xl {
+.lg\:text-6xl {
   font-size: 3.75rem;
   line-height: 1;
 }
@@ -945,10 +988,10 @@ const styles = `
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
-.sm\\:mt-12 {
+.sm\:mt-12 {
   margin-top: 3rem;
 }
-.sm\\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
+.sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
@@ -967,22 +1010,22 @@ const styles = `
 .duration-300 {
   transition-duration: 300ms;
 }
-.sm\\:rounded-2xl {
+.sm\:rounded-2xl {
   border-radius: 1rem;
 }
-.border-white\\/30 {
+.border-white/30 {
   border-color: rgba(255, 255, 255, 0.3);
 }
-.bg-white\\/\\[0\\.02\\] {
+.bg-white/\[0\.02\] {
   background-color: rgba(255, 255, 255, 0.02);
 }
-.border-white\\/5 {
+.border-white/5 {
   border-color: rgba(255, 255, 255, 0.05);
 }
-.hover\\:border-white\\/20:hover {
+.hover\:border-white/20:hover {
   border-color: rgba(255, 255, 255, 0.2);
 }
-.active\\:border-white\\/20:active {
+.active\:border-white/20:active {
   border-color: rgba(255, 255, 255, 0.2);
 }
 .flex {
@@ -997,10 +1040,10 @@ const styles = `
 .p-4 {
   padding: 1rem;
 }
-.sm\\:gap-4 {
+.sm\:gap-4 {
   gap: 1rem;
 }
-.sm\\:p-5 {
+.sm\:p-5 {
   padding: 1.25rem;
 }
 .font-mono {
@@ -1010,21 +1053,21 @@ const styles = `
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.sm\\:text-2xl {
+.sm\:text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
 }
-.md\\:text-3xl {
+.md\:text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 .opacity-70 {
   opacity: 0.7;
 }
-.sm\\:w-4 {
+.sm\:w-4 {
   width: 1rem;
 }
-.sm\\:h-4 {
+.sm\:h-4 {
   height: 1rem;
 }
 .overflow-hidden {
@@ -1037,11 +1080,11 @@ const styles = `
 .pb-4 {
   padding-bottom: 1rem;
 }
-.sm\\:px-5 {
+.sm\:px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.sm\\:pb-6 {
+.sm\:pb-6 {
   padding-bottom: 1.5rem;
 }
 .grid-cols-1 {
@@ -1050,13 +1093,13 @@ const styles = `
 .gap-4 {
   gap: 1rem;
 }
-.sm\\:gap-6 {
+.sm\:gap-6 {
   gap: 1.5rem;
 }
-.md\\:grid-cols-\\[1fr_auto_1fr\\] {
+.md\:grid-cols-\[1fr\_auto\_1fr\] {
   grid-template-columns: 1fr auto 1fr;
 }
-.md\\:items-start {
+.md\:items-start {
   align-items: flex-start;
 }
 .max-w-prose {
@@ -1074,16 +1117,16 @@ const styles = `
 .w-px {
   width: 1px;
 }
-.bg-white\\/10 {
+.bg-white/10 {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.md\\:block {
+.md\:block {
   display: block;
 }
-.gap-1\\.5 {
+.gap-1\.5 {
   gap: 0.375rem;
 }
-.sm\\:gap-2 {
+.sm\:gap-2 {
   gap: 0.5rem;
 }
 .text-zinc-200 {
@@ -1095,37 +1138,37 @@ const styles = `
 .pl-3 {
   padding-left: 0.75rem;
 }
-.sm\\:pl-4 {
+.sm\:pl-4 {
   padding-left: 1rem;
 }
-.before\\:absolute::before {
+.before\:absolute::before {
   position: absolute;
 }
-.before\\:left-0::before {
+.before\:left-0::before {
   left: 0px;
 }
-.before\\:top-1\\.5::before {
+.before\:top-1\.5::before {
   top: 0.375rem;
 }
-.sm\\:before\\:top-2::before {
+.sm\:before\:top-2::before {
   top: 0.5rem;
 }
-.before\\:h-1::before {
+.before\:h-1::before {
   height: 0.25rem;
 }
-.before\\:w-1::before {
+.before\:w-1::before {
   width: 0.25rem;
 }
-.before\\:rounded-full::before {
+.before\:rounded-full::before {
   border-radius: 9999px;
 }
-.before\\:bg-zinc-500\\/70::before {
+.before\:bg-zinc-500/70::before {
   background-color: rgba(113, 113, 122, 0.7);
 }
 .order-first {
   order: -9999;
 }
-.md\\:order-last {
+.md\:order-last {
   order: 9999;
 }
 .h-auto {
@@ -1134,10 +1177,10 @@ const styles = `
 .rounded-2xl {
   border-radius: 1rem;
 }
-.sm\\:rounded-3xl {
+.sm\:rounded-3xl {
   border-radius: 1.5rem;
 }
-.md\\:rounded-\\[48px\\] {
+.md\:rounded-\[48px\] {
   border-radius: 48px;
 }
 .pointer-events-none {
@@ -1172,24 +1215,12 @@ const CategoryTile = ({ title_1, images }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // Define your custom redirects based on the title_1
-    switch (title_1.toLowerCase()) {
-      case 'websites':
-        navigate('/studios/web');
-        break;
-      case 'apps':
-        navigate('/studios/app_studio');
-        break;
-      case 'agents':
-        navigate('/agent');
-        break;
-      default:
-        navigate('/');
-    }
+    navigate('/coming-soon');
   };
 
+  const isWebsite = (title_1 || '').toLowerCase() === 'websites';
   return (
-    <div className="cat-tile" style={{ '--pane-w': '40%', '--n1': '30px', '--n2': '15px', '--n3': '15px' }}>
+    <div className={`cat-tile mt-5 ${isWebsite ? 'web' : ''}`} style={{ '--pane-w': '50%', '--n1': '35px', '--n2': '22px', '--n3': '28px' }}>
       <a
         className="cat-title"
         onClick={handleClick}
@@ -1198,11 +1229,11 @@ const CategoryTile = ({ title_1, images }) => {
         {title_1}
       </a>
       <div className="pane" aria-hidden="true">
-        <div className="stack" style={{ '--shot-w': '110px', '--overlap': '50px', '--peek-right': '100px' }}>
+        <div className="stack" style={{ '--shot-w': '110px', '--overlap': '28px', '--peek-right': '90px' }}>
           {images.map((image, index) => (
             <img
               key={index}
-              className={`shot shot-${index}`}
+              className={`shot shot-${index + 1}`}
               src={image}
               alt={`Screenshot of ${title_1} project ${index + 1}`}
             />
@@ -1219,25 +1250,25 @@ const HeroSection = () => {
     {
       title_1: "Websites",
       images: [
-        mall360Img,
-        apexaImg,
-        factopsImg,
+        web1v2Img,
+        web2v2Img,
+        web3v2Img,
       ]
     },
     {
       title_1: "Apps",
       images: [
-        kiraaze_appImg,
-        life_2Img,
-        campusImg,
+        app1Img,
+        app3Img,
+        app4Img,
       ]
     },
     {
       title_1: "Agents",
       images: [
-        agentsImg,
-        agent2Img,
-        agent3Img,
+        ai1Img,
+        ai2Img,
+        ai3Img,
       ]
     }
   ];
@@ -1312,7 +1343,7 @@ const StudiosSection = () => {
   const studioOrder = ['web', 'app', 'agent']; // Define the order for stacking
 
   return (
-    <section className="py-20 px-4 bg-black" style={{ backgroundColor: '#1C1A1A' }}>
+    <section className="py-20 px-4 bg-black studios-section" style={{ backgroundColor: '#1C1A1A' }}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mt-5" style={{ color: '#FFFFFF' }}>
@@ -1394,10 +1425,10 @@ const StudiosSection = () => {
                   <h3 className="studio-title">{studio.title}</h3>
                   <p className="studio-description">{studio.description}</p>
                   <div className="studio-buttons">
-                    <Link to="/ready" className="studio-button primary">
+                    <Link to="/coming-soon" className="studio-button primary">
                       Ready to use ↗
                     </Link>
-                    <Link to={studio.link} className="studio-button secondary">
+                    <Link to="/coming-soon" className="studio-button secondary">
                       Customize ↗
                     </Link>
                   </div>
@@ -2135,7 +2166,7 @@ const ProcessFlow = () => {
   const navigate = useNavigate();
 
   const handleClick = (path) => {
-    navigate(path);
+    navigate('/coming-soon');
   };
 
   return (
@@ -2159,7 +2190,7 @@ const ProcessFlow = () => {
             <div className="col-md-6 col-lg-4">
               <div className="h-100 d-flex flex-column">
                 <div 
-                  onClick={() => handleClick('/kiraaze')} 
+                  onClick={() => handleClick('/coming-soon')} 
                   style={{ 
                     cursor: 'pointer',
                     flex: '1 0 auto',
@@ -2168,7 +2199,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={kiraaze_casestudyImg}
+                    src={ecommerceImg}
                     alt="E-commerce case study"
                     className="img-fluid w-100"
                     style={{ 
@@ -2208,7 +2239,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={kiraaze_casestudyImg}
+                    src={ngoImg}
                     alt="NGO case study"
                     className="img-fluid w-100"
                     style={{ 
@@ -2248,7 +2279,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={kiraaze_casestudyImg}
+                    src={manufacturingImg}
                     alt="Manufacturing case study"
                     className="img-fluid w-100"
                     style={{ 
@@ -2296,19 +2327,22 @@ const ProcessFlow = () => {
                   img: phaniImg, 
                   quote: "We love Z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
                   name: 'Sri Phani', 
+                  title: 'Managing Director & CEO',
                   company: 'Ecomall' 
                 },
                 { 
                   img: srinivasImg, 
                   quote: "We love z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
                   name: 'Srinivas', 
+                  title: 'Managing Director & CEO',
                   company: 'Fusion Street' 
                 },
                 { 
-                  img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60', 
+                  img: lakshminathanImg, 
                   quote: "Outstanding quality and great flexibility. It helped our team move much faster.", 
-                  name: 'Courtney Henry', 
-                  company: 'Stark Ltd' 
+                  name: 'Mr. Lakshminathan Manickshaw', 
+                  title: 'Managing Director & CEO',
+                  company: 'Kryon' 
                 }
               ];
 
@@ -2331,13 +2365,24 @@ const ProcessFlow = () => {
                     {[left, right].map((t, i) => (
                       <div key={i} className="col-md-5">
                         <div className="d-flex gap-4 align-items-center">
-                          <img src={t.img} alt={t.name} className="rounded testimonial-img" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+                          <img
+                            src={t.img}
+                            alt={t.name}
+                            className="rounded testimonial-img"
+                            style={{
+                              width: t.name === 'Mr. Lakshminathan Manickshaw' ? 210 : 230,
+                              height: 290,
+                              objectFit: 'cover'
+                            }}
+                          />
                           <div className="text-start">
                             <StarRow />
                             <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
                               "{t.quote}"
                             </p>
-                            <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name} <span className="ms-2" style={{ color: '#F2C94C' }}>{t.company}</span></div>
+                            <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name}</div>
+                            {t.title && <div className="small" style={{ color: 'rgba(255,255,255,0.75)' }}>{t.title}</div>}
+                            {t.company && <div className="mt-1" style={{ color: '#F2C94C', fontWeight: 600 }}>{t.company}</div>}
                           </div>
                         </div>
                       </div>
