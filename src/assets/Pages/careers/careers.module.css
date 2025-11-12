@@ -3,6 +3,19 @@ body {
   background-color: #F4F3F3;
 }
 
+/* === Compact variant (used in second section) === */
+.compactCard {
+  padding: 1rem;
+  min-height: 220px;
+}
+.compactCard .actions {
+  padding-top: 2rem;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 160px;
+}
+
 /* === Search, Filter, and View Toggle Section === */
 
 /* Search input with icon inside */
@@ -78,8 +91,6 @@ body {
   border: 1px solid #e9ecef;
   border-radius: 0.6rem;
   padding: 1.5rem;
-  height: 100%;
-  min-height: 300px;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -197,12 +208,29 @@ body {
   justify-content: flex-end;
 }
 
+/* Anchor target element (no offset; JS handles header-aware scroll) */
+.anchorTarget {
+  position: static;
+  height: 0;
+  display: block;
+}
+
+.sectionSpacer {
+  height: 24px; /* small visual gap after jump */
+  display: block;
+}
+
+.secondSection {
+  margin-top: -12px;
+}
+
 .listCard .actions {
   margin-top: 0;
   padding-top: 0;
   flex-shrink: 0;
   margin-left: 1.5rem;
 }
+
 
 .searchInputWrapper input {
   border-color: #ccc; /* Default border color */
@@ -239,5 +267,8 @@ body {
     width: 100%;
     margin-left: 0;
     justify-content: flex-start;
+  }
+  .sectionSpacer {
+    height: 16px;
   }
 }

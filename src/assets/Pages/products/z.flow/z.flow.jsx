@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import styles from "./z.flow.module.css";
-import { useNavigate } from "react-router-dom";
 import flowLogo from "../../../images/flow.png";
+import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 const ZFlow = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    message: '' 
+  });
 
   const handleButtonClick = () => {
-    navigate("/login"); // Redirects to z.flow login page
+    window.location.href = "http://3.7.230.156/dev/zdotflow/";
   };
 
   const handleChange = (e) => {
@@ -62,50 +66,68 @@ const ZFlow = () => {
             />
           </div>
 
-          <label>
-            First Name
-            <input 
-              type="text" 
-              name="firstName" 
-              placeholder="First Name" 
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Last Name
-            <input 
-              type="text" 
-              name="lastName" 
-              placeholder="Last Name" 
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Email
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Email ID" 
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Message
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleChange}
-              style={{ height: "90px" }}
-            />
-          </label>
-          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="firstName" 
+                placeholder="First Name" 
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiUser className={styles.inputIcon} />
+              <input 
+                type="text" 
+                name="lastName" 
+                placeholder="Last Name" 
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMail className={styles.inputIcon} />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Email ID" 
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className={styles.formInput}
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
+              <textarea
+                name="message"
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
+                className={styles.formTextarea}
+                rows="4"
+              />
+            </div>
+          </div>
+
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
         </form>
       </div>
     </section>

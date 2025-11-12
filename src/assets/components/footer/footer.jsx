@@ -59,14 +59,14 @@ function Footer() {
               <img
                 src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png"
                 alt="Z.apps"
-                width={140}
+                width={540}
               />
             </div>
 
             {/* Links */}
             <div className="col-12 col-lg-6">
-              <div className="row">
-                <div className="col-6">
+              <div className="row gx-5">
+                <div className="col-6 text-start">
                   <h6 className="text-white fw-bold mb-3">Quick Links</h6>
                   <ul className="list-unstyled m-0">
                     <li className="mb-2">
@@ -86,7 +86,7 @@ function Footer() {
                     <li className="mb-2"><a href="#" className={styles.link}>Help Center</a></li>
                   </ul>
                 </div>
-                <div className="col-6">
+                <div className="col-6 text-start">
                   <h6 className="text-white fw-bold mb-3">Support</h6>
                   <ul className="list-unstyled m-0">
                     <li className="mb-2"><a href="#" className={styles.link}>FAQ</a></li>
