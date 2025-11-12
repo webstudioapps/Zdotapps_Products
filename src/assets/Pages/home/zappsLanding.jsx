@@ -34,6 +34,9 @@ import phaniImg from '../../images/phani.png';
 import srinivasImg from '../../images/srinivas.png';
 import kiraaze_casestudyImg from '../../images/kiraaze_casestudy.png';
 import { Link } from 'react-router-dom';
+import group1Img from '../../images/Group 1.jpg';
+import group2Img from '../../images/Group 2.jpg';
+import group3Img from '../../images/Group 3.jpg';
 
 // Images for WhatWeDo component - Make sure these paths are correct relative to your project structure
 import techImage from '../../images/1.webp';
@@ -867,28 +870,28 @@ const styles = `
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.sm\\:gap-8 {
+.sm\:gap-8 {
   gap: 2rem;
 }
-.sm\\:px-6 {
+.sm\:px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.sm\\:py-16 {
+.sm\:py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
-.md\\:grid-cols-2 {
+.md\:grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.md\\:gap-12 {
+.md\:gap-12 {
   gap: 3rem;
 }
-.md\\:py-20 {
+.md\:py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
-.lg\\:py-24 {
+.lg\:py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
@@ -902,7 +905,7 @@ const styles = `
 .text-zinc-400 {
   color: #a1a1aa;
 }
-.sm\\:text-sm {
+.sm\:text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -916,24 +919,24 @@ const styles = `
 .font-semibold {
   font-weight: 600;
 }
-.leading-\\[1\\.05\\] {
+.leading-\[1\.05\] {
   line-height: 1.05;
 }
 .text-zinc-50 {
   color: #fafafa;
 }
-.sm\\:mt-6 {
+.sm\:mt-6 {
   margin-top: 1.5rem;
 }
-.sm\\:text-4xl {
+.sm\:text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
-.md\\:text-5xl {
+.md\:text-5xl {
   font-size: 3rem;
   line-height: 1;
 }
-.lg\\:text-6xl {
+.lg\:text-6xl {
   font-size: 3.75rem;
   line-height: 1;
 }
@@ -945,10 +948,10 @@ const styles = `
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
-.sm\\:mt-12 {
+.sm\:mt-12 {
   margin-top: 3rem;
 }
-.sm\\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
+.sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
@@ -967,22 +970,22 @@ const styles = `
 .duration-300 {
   transition-duration: 300ms;
 }
-.sm\\:rounded-2xl {
+.sm\:rounded-2xl {
   border-radius: 1rem;
 }
-.border-white\\/30 {
+.border-white/30 {
   border-color: rgba(255, 255, 255, 0.3);
 }
-.bg-white\\/\\[0\\.02\\] {
+.bg-white/\[0\.02\] {
   background-color: rgba(255, 255, 255, 0.02);
 }
-.border-white\\/5 {
+.border-white/5 {
   border-color: rgba(255, 255, 255, 0.05);
 }
-.hover\\:border-white\\/20:hover {
+.hover\:border-white/20:hover {
   border-color: rgba(255, 255, 255, 0.2);
 }
-.active\\:border-white\\/20:active {
+.active\:border-white/20:active {
   border-color: rgba(255, 255, 255, 0.2);
 }
 .flex {
@@ -997,10 +1000,10 @@ const styles = `
 .p-4 {
   padding: 1rem;
 }
-.sm\\:gap-4 {
+.sm\:gap-4 {
   gap: 1rem;
 }
-.sm\\:p-5 {
+.sm\:p-5 {
   padding: 1.25rem;
 }
 .font-mono {
@@ -1010,21 +1013,21 @@ const styles = `
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.sm\\:text-2xl {
+.sm\:text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
 }
-.md\\:text-3xl {
+.md\:text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 .opacity-70 {
   opacity: 0.7;
 }
-.sm\\:w-4 {
+.sm\:w-4 {
   width: 1rem;
 }
-.sm\\:h-4 {
+.sm\:h-4 {
   height: 1rem;
 }
 .overflow-hidden {
@@ -1037,11 +1040,11 @@ const styles = `
 .pb-4 {
   padding-bottom: 1rem;
 }
-.sm\\:px-5 {
+.sm\:px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.sm\\:pb-6 {
+.sm\:pb-6 {
   padding-bottom: 1.5rem;
 }
 .grid-cols-1 {
@@ -1050,13 +1053,13 @@ const styles = `
 .gap-4 {
   gap: 1rem;
 }
-.sm\\:gap-6 {
+.sm\:gap-6 {
   gap: 1.5rem;
 }
-.md\\:grid-cols-\\[1fr_auto_1fr\\] {
+.md\:grid-cols-\[1fr\_auto\_1fr\] {
   grid-template-columns: 1fr auto 1fr;
 }
-.md\\:items-start {
+.md\:items-start {
   align-items: flex-start;
 }
 .max-w-prose {
@@ -1074,16 +1077,16 @@ const styles = `
 .w-px {
   width: 1px;
 }
-.bg-white\\/10 {
+.bg-white/10 {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.md\\:block {
+.md\:block {
   display: block;
 }
-.gap-1\\.5 {
+.gap-1\.5 {
   gap: 0.375rem;
 }
-.sm\\:gap-2 {
+.sm\:gap-2 {
   gap: 0.5rem;
 }
 .text-zinc-200 {
@@ -1095,37 +1098,37 @@ const styles = `
 .pl-3 {
   padding-left: 0.75rem;
 }
-.sm\\:pl-4 {
+.sm\:pl-4 {
   padding-left: 1rem;
 }
-.before\\:absolute::before {
+.before\:absolute::before {
   position: absolute;
 }
-.before\\:left-0::before {
+.before\:left-0::before {
   left: 0px;
 }
-.before\\:top-1\\.5::before {
+.before\:top-1\.5::before {
   top: 0.375rem;
 }
-.sm\\:before\\:top-2::before {
+.sm\:before\:top-2::before {
   top: 0.5rem;
 }
-.before\\:h-1::before {
+.before\:h-1::before {
   height: 0.25rem;
 }
-.before\\:w-1::before {
+.before\:w-1::before {
   width: 0.25rem;
 }
-.before\\:rounded-full::before {
+.before\:rounded-full::before {
   border-radius: 9999px;
 }
-.before\\:bg-zinc-500\\/70::before {
+.before\:bg-zinc-500/70::before {
   background-color: rgba(113, 113, 122, 0.7);
 }
 .order-first {
   order: -9999;
 }
-.md\\:order-last {
+.md\:order-last {
   order: 9999;
 }
 .h-auto {
@@ -1134,10 +1137,10 @@ const styles = `
 .rounded-2xl {
   border-radius: 1rem;
 }
-.sm\\:rounded-3xl {
+.sm\:rounded-3xl {
   border-radius: 1.5rem;
 }
-.md\\:rounded-\\[48px\\] {
+.md\:rounded-\[48px\] {
   border-radius: 48px;
 }
 .pointer-events-none {
@@ -1219,9 +1222,9 @@ const HeroSection = () => {
     {
       title_1: "Websites",
       images: [
-        mall360Img,
-        apexaImg,
-        factopsImg,
+        group1Img,
+        group2Img,
+        group3Img,
       ]
     },
     {

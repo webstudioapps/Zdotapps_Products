@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./careers.module.css";
 
@@ -46,6 +46,7 @@ export default function Careers() {
   const [selectedDepartment, setSelectedDepartment] = useState("All Departments");
   const [viewMode, setViewMode] = useState("grid"); // Default to "list" to match the image
   const [filteredJobs, setFilteredJobs] = useState(jobData);
+  const moreJobsAnchorRef = useRef(null);
 
   const filteredJobsMemo = useMemo(() => {
     return jobData.filter((job) => {
@@ -73,8 +74,40 @@ export default function Careers() {
     navigate("/careers/details", { state: { job } });
   };
 
+  const scrollToMoreJobs = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const anchorEl = moreJobsAnchorRef.current;
+    if (!anchorEl) return;
+    const selectors = [
+      "header",
+      ".navbar",
+      "nav",
+      ".site-header",
+      ".fixed-top",
+      "[data-header]",
+    ];
+    const candidates = Array.from(document.querySelectorAll(selectors.join(",")));
+    let headerH = 0;
+    candidates.forEach((el) => {
+      const cs = window.getComputedStyle(el);
+      const pos = cs.position;
+      const rect = el.getBoundingClientRect();
+      const isTopBar = rect.top <= 1 && (pos === "fixed" || pos === "sticky");
+      if (isTopBar) {
+        headerH = Math.max(headerH, rect.height);
+      }
+    });
+    if (!headerH) headerH = 180; // fallback
+    const extra = 12; // breathing space
+    const y = anchorEl.getBoundingClientRect().top + window.pageYOffset - (headerH + extra);
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const topJobs = useMemo(() => filteredJobs.slice(0, 6), [filteredJobs]);
+  const otherJobs = useMemo(() => filteredJobs.slice(6), [filteredJobs]);
+
   return (
-    <div className={`container mt-4 py-5 ${styles.page}`}>
+    <div id="top" className={`container mt-4 py-5 ${styles.page}`}>
       {/* Header */}
       <div className="text-center mb-4">
         <h1 className="display-5 fw-bold text-dark mt-5 py-3">Career Opportunities at Z.Apps</h1>
@@ -166,14 +199,11 @@ export default function Careers() {
         </div>
       </div>
 
-      {/* Job Cards */}
-      <div className="row g-4 mb-4">
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <div
-              key={job.id}
-              className={viewMode === "grid" ? "col-12 col-md-6 col-lg-4 mb-4" : "col-12"}
-            >
+      {/* Section 1: top jobs (first 6) */}
+      <div className="row g-4 mb-5">
+        {topJobs.length > 0 ? (
+          topJobs.map((job) => (
+            <div key={job.id} className={viewMode === "grid" ? "col-12 col-md-6 col-lg-3 mb-4" : "col-12"}>
               <div className={`${styles.card} ${viewMode === "list" ? styles.listCard : ""}`}>
                 <div className={viewMode === "list" ? styles.listContent : ""}>
                   <span className={styles.deptBadge}>{job.department.toUpperCase()}</span>
@@ -206,7 +236,56 @@ export default function Careers() {
             <h4 className="text-muted">No jobs found matching your criteria.</h4>
           </div>
         )}
+        {otherJobs.length > 0 && (
+          <div className="col-12 d-flex justify-content-center mt-2">
+            <a href="#more-jobs-anchor" onClick={scrollToMoreJobs} className={`btn fw-semibold ${styles.applyBtn}`}>View more</a>
+          </div>
+        )}
       </div>
+
+      {/* Section 2: remaining jobs */}
+      {otherJobs.length > 0 && (
+        <>
+          <div id="more-jobs-anchor" ref={moreJobsAnchorRef} className={`${styles.anchorTarget} ${styles.sectionSpacer}`} />
+          <div className={`row g-4 mb-4 justify-content-center ${styles.secondSection}`}>
+          {otherJobs.map((job) => (
+            <div key={job.id} className={viewMode === "grid" ? "col-12 col-md-6 col-lg-4 mb-4" : "col-12"}>
+              <div className={`${styles.card} ${viewMode === "list" ? styles.listCard : ""} ${styles.compactCard}`}>
+                <div className={viewMode === "list" ? styles.listContent : ""}>
+                  <span className={styles.deptBadge}>{job.department.toUpperCase()}</span>
+                  <h3 className={`h5 fw-bold ${styles.title}`}>{job.title}</h3>
+                  <div className={styles.metaWrap}>
+                    <span className={styles.pill}>
+                      <i className={`bi bi-briefcase me-1 ${styles.pillIcon}`}></i>
+                      {job.experience}
+                    </span>
+                    <span className={styles.pill}>
+                      <i className={`bi bi-clock me-1 ${styles.pillIcon}`}></i>
+                      {job.availability}
+                    </span>
+                    <span className={styles.pill}>
+                      <i className={`bi bi-people me-1 ${styles.pillIcon}`}></i>
+                      {job.openings}
+                    </span>
+                  </div>
+                  <div className={styles.actions}>
+                    <button className={`btn fw-semibold ${styles.applyBtn}`} onClick={() => handleApplyNow(job.id)}>
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+          </div>
+        </>
+      )}
+      {/* Floating navigation buttons */}
+      {otherJobs.length > 0 && (
+        <a href="#more-jobs-anchor" onClick={scrollToMoreJobs} className={`${styles.fab} ${styles.fabDown}`} aria-label="Go to more jobs">
+          <i className="bi bi-arrow-down"></i>
+        </a>
+      )}
     </div>
   );
 }

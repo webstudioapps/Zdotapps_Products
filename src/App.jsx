@@ -42,7 +42,7 @@ import WebStudio from "./assets/Pages/web/web";
 import CustomUse from "./assets/Pages/customized_use/custom_use";
 import AppStudio from "./assets/Pages/app_studio/app_studio";
 import AgenticStudio from "./assets/Pages/agentic_studio/agentic_studio";
-
+import WelcomeSoon from "./assets/Pages/products/WelcomeSoon/WelcomeSoon";
 
 // ✅ Wrapper to show header/footer everywhere except login page
 const LayoutWrapper = ({ children }) => {
@@ -100,6 +100,7 @@ function App() {
             <Route path="studios/agentic-studio" element={<AgenticStudio />} />
             <Route path="studios/agentic_studio" element={<AgenticStudio />} />
             <Route path="contact" element={<ContactPage />} />
+            <Route path="coming-soon" element={<WelcomeSoon />} />
           </Routes>
         </LayoutWrapper>
       </div>
