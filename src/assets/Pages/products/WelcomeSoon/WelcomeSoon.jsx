@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./welcomeSoon.module.css";
+import styles from "./welcomesoon.module.css";
 import { useNavigate } from "react-router-dom";
 // Import all logos
 import flowLogo from "../../../images/flow.png";
