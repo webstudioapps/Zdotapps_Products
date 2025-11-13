@@ -170,11 +170,11 @@ const Products = () => {
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-lg-10 col-md-11">
-              <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4 mt-4 text-white`}>
+              <h1 className={`${styles.homeTitle} display-4 fw-bold mb-4 mt-4 text-white`}>
                 The AI suite that powers your{" "}
                 <span className={styles.highlightText}>business</span>
               </h1>
-              <div className={styles.underline}></div>
+            
 
               {/* Search + Filter */}
               <div className={styles.controlsContainer}>
@@ -213,11 +213,11 @@ const Products = () => {
       <section className={styles.productsSection}>
         <div className="container">
           <div className="row g-4 justify-content-center py-5">
-            <div className="col-12 text-center">
+            {/* <div className="col-12 text-center">
               <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
                 Explore our <span className={styles.highlightText}>products</span>
               </h1>
-            </div>
+            </div> */}
 
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product, idx) => (

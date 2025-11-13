@@ -28,7 +28,7 @@ export default function ZSign() {
       />
       
       <div className={styles.mainContainer}>
-        <div className={`container-fluid mb-5 mt-5 py-5 ${styles.contentWrapper}`} style={{ maxWidth: '1452px' }}>
+        <div className={`container-fluid mb-5 py-2 ${styles.contentWrapper}`} style={{ maxWidth: '1452px' }}>
           {/* Single centered heading */}
           <div className="text-center">
             <img src={signLogo} alt="z.sign" style={{ height: '80px' }} />

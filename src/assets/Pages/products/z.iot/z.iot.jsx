@@ -50,7 +50,7 @@ const Ziot = () => {
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
           <h5 className={styles.formTitle}>Launch Your Digital Store.</h5>
-          <h5 className={styles.formSubtitle}>Unlock 3X Sales</h5>
+          <h5 className={styles.formTitle}>Unlock 3X Sales</h5>
           <div className={styles.logoContainer}>
             <img src={kirazeeImage} alt="Kirazee Logo" className={styles.logoImage} />
           </div>

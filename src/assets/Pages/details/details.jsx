@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 // Make sure this matches the address where your backend server is running
 const API_BASE_URL = "http://localhost:8000";
 
+
 // Inline styles for modern look (move to CSS file in production)
 const styles = {
 bg: {
