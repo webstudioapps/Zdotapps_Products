@@ -617,7 +617,7 @@
  display: flex;
  justify-content: center;
  flex-wrap: wrap;
- gap: 0rem; /* âœ… spacing between cards */
+ gap: 0rem; /* ✅ spacing between cards */
 }
 
 

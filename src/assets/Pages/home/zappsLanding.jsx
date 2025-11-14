@@ -803,7 +803,7 @@ const styles = `
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0rem; /* âœ… spacing between cards */
+  gap: 0rem; /* ✅ spacing between cards */
 }
 
 
@@ -1376,7 +1376,7 @@ const HeroSection = () => {
     <section className="hero-section-main bg-black">
       <div className="container">
         {/* <p className="hero-subtitle" style={{ color: '#ffc94a' }}>We've Got You Covered.</p> */}
-        <h1 className="hero-title" style={{ color: '#ffffff' }}>Building Todayâ€™s</h1>
+        <h1 className="hero-title" style={{ color: '#ffffff' }}>Building Today’s</h1>
 
         <div className="text-center fs-1" id="flip">
           <div>
@@ -1525,10 +1525,10 @@ const StudiosSection = () => {
                   <p className="studio-description">{studio.description}</p>
                   <div className="studio-buttons">
                     <Link to="/coming-soon" className="studio-button primary">
-                      Ready to use â†—
+                      Ready to use ↗
                     </Link>
                     <Link to="/coming-soon" className="studio-button secondary">
-                      Customize â†—
+                      Customize ↗
                     </Link>
                   </div>
                 </div>
@@ -2109,7 +2109,7 @@ function WhatWeDo() {
       key: 'technology',
       title: 'Technology',
       blurb:
-        'We are a leader in building cuttingâ€‘edge mobile and web applications that are AIâ€‘driven and intuitive. We push boundaries and solve complex challenges to drive real impact.',
+        'We are a leader in building cutting‑edge mobile and web applications that are AI‑driven and intuitive. We push boundaries and solve complex challenges to drive real impact.',
       services: [
         'Mobile App Development',
         'Web Development',
@@ -2124,7 +2124,7 @@ function WhatWeDo() {
       key: 'experience',
       title: 'Experience',
       blurb:
-        'Our bestâ€‘inâ€‘class Product Designers and Strategists create smart, clear product experiences that keep people engaged through carefully crafted UX, UI, and interaction design.',
+        'Our best‑in‑class Product Designers and Strategists create smart, clear product experiences that keep people engaged through carefully crafted UX, UI, and interaction design.',
       services: [
         'Product Vision',
         'User Research',
@@ -2139,7 +2139,7 @@ function WhatWeDo() {
       key: 'strategy',
       title: 'Strategy',
       blurb:
-        'We surround clients with leaders from product, design, data, and engineering with relentless focus on productâ€‘market fit, growth potential, monetization, and technical opportunities.',
+        'We surround clients with leaders from product, design, data, and engineering with relentless focus on product‑market fit, growth potential, monetization, and technical opportunities.',
       services: [
         'Digital Transformation',
         'Product Validation',
@@ -2154,7 +2154,7 @@ function WhatWeDo() {
       key: 'growth',
       title: 'Growth',
       blurb:
-        'Our PMs, Data Scientists, and Growth Marketers partner to evolve and adopt the productâ€”prioritizing business goals via rapid releases, feedback cycles, and dataâ€‘driven experimentation.',
+        'Our PMs, Data Scientists, and Growth Marketers partner to evolve and adopt the product—prioritizing business goals via rapid releases, feedback cycles, and data‑driven experimentation.',
       services: [
         'Ongoing Management',
         'Data & Experimentation',
@@ -2334,7 +2334,7 @@ const ProcessFlow = () => {
                   />
                   <div style={{ color: '#F2C94C', fontWeight: 600, fontSize: '1.1rem' }}>
                     <span>Case study</span>
-                    <span className="mx-2">â€¢</span>
+                    <span className="mx-2">•</span>
                     <span>E-commerce</span>
                   </div>
                   <h3 className="fw-bold mt-2" style={{ 
@@ -2374,7 +2374,7 @@ const ProcessFlow = () => {
                   />
                   <div style={{ color: '#F2C94C', fontWeight: 600, fontSize: '1.1rem' }}>
                     <span>Case study</span>
-                    <span className="mx-2">â€¢</span>
+                    <span className="mx-2">•</span>
                     <span>NGO</span>
                   </div>
                   <h3 className="fw-bold mt-2" style={{ 
@@ -2414,7 +2414,7 @@ const ProcessFlow = () => {
                   />
                   <div style={{ color: '#F2C94C', fontWeight: 600, fontSize: '1.1rem' }}>
                     <span>Case study</span>
-                    <span className="mx-2">â€¢</span>
+                    <span className="mx-2">•</span>
                     <span>Manufacturing</span>
                   </div>
                   <h3 className="fw-bold mt-2" style={{ 
@@ -2478,7 +2478,7 @@ const ProcessFlow = () => {
                   fontSize: '1.2rem',
                   letterSpacing: '2px'
                 }}>
-                  â˜…â˜…â˜…â˜…â˜…
+                  ★★★★★
                 </div>
               );
 
@@ -2514,7 +2514,7 @@ const ProcessFlow = () => {
                   
                   <div className="d-flex align-items-center justify-content-between mt-4">
                     <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Previous">
-                      â†
+                      ←
                     </button>
                     <div>
                       {[0, 1, 2].map((d) => (
@@ -2534,7 +2534,7 @@ const ProcessFlow = () => {
                       ))}
                     </div>
                     <button className="btn rounded-circle" onClick={() => setIndex((prev) => (prev + 1) % testimonials.length)} style={{ width: 44, height: 44, border: '2px solid #F2C94C', color: '#F2C94C' }} aria-label="Next">
-                      â†’
+                      →
                     </button>
                   </div>
                 </>
@@ -2554,11 +2554,11 @@ const FAQSection = () => {
   const faqs = [
     {
       question: 'What is Z.DotApps?',
-      answer: 'Z.DotApps is a digital platform that offers ready-to-use and custom-built solutions for websites, apps, and AI agents â€” helping businesses launch faster with minimal effort.',
+      answer: 'Z.DotApps is a digital platform that offers ready-to-use and custom-built solutions for websites, apps, and AI agents — helping businesses launch faster with minimal effort.',
     },
     {
       question: 'What is Web Studio?',
-      answer: 'Z.DotApps is a digital platform that offers ready-to-use and custom-built solutions for websites, apps, and AI agents â€” helping businesses launch faster with minimal effort.',
+      answer: 'Z.DotApps is a digital platform that offers ready-to-use and custom-built solutions for websites, apps, and AI agents — helping businesses launch faster with minimal effort.',
     },
     {
       question: 'What is App Studio?',
@@ -2595,7 +2595,7 @@ const FAQSection = () => {
               <div className="faq-question" onClick={() => toggleFAQ(index)}>
                 {faq.question}
                 <span className={`faq-icon ${openIndex === index ? 'open' : ''}`}>
-                  {openIndex === index ? 'â†‘' : 'â†‘'}
+                  {openIndex === index ? '↑' : '↑'}
                 </span>
               </div>
               <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
@@ -2714,7 +2714,7 @@ const FinalCTASection = () => {
           onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
           style={primaryButtonStyle}
         >
-          Get In Touch â†’
+          Get In Touch →
         </a>
         {/* <a href="#" style={secondaryButtonStyle}>
           View Our Work
