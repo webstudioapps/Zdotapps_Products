@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './login.module.css'; // Import the CSS module
+import Swal from 'sweetalert2';
 
 // Eye icon component
 const EyeIcon = ({ isVisible }) => (
@@ -118,7 +119,7 @@ const Login = () => {
             message = "Key sent to your registered email address";
         } else if (method === 'Ontropi') {
             message = "Key sent to your registered Ontropi App (simulated)"; // Your HTML had 'Ontropi' but referenced 'zdotapps_icon_v4.png' with alt 'Ontropi Icon' and data-value 'Ontropi'. Let's stick with 'Ontropi' for the value.
-            swal("Note", "Ontropi App integration requires backend logic.", "info"); // Use swal for specific messages
+            Swal.fire('Note', 'Ontropi App integration requires backend logic.', 'info'); // Use SweetAlert2 for specific messages
         }
 
         // Show toast for success (if not Ontropi for now)
@@ -155,13 +156,13 @@ const Login = () => {
         console.log('Login attempt:', { emailMobile, password, otp: fullOtp });
 
         if ((emailMobile === 'lokesh.v@station-s.org' || emailMobile === '9121440767') && (password === '123' || fullOtp === '912144')) {
-            swal("Success", "Logged in successfully!", "success");
+            Swal.fire('Success', 'Logged in successfully!', 'success');
             // Redirect to Z.flow page
             setTimeout(() => {
                 window.location.href = '/z.flow';
             }, 1500); // Wait 1.5 seconds for the success message to show
         } else {
-            swal("Login Failed", "Invalid credentials or OTP.", "error");
+            Swal.fire('Login Failed', 'Invalid credentials or OTP.', 'error');
         }
         // ------------------------------------------------------------------
     };
@@ -169,13 +170,13 @@ const Login = () => {
     const handleForgotPassword = (e) => {
         e.preventDefault();
         if (!forgotEmail) {
-            swal("Warning", "Please enter your email ID.", "warning");
+            Swal.fire('Warning', 'Please enter your email ID.', 'warning');
             return;
         }
 
         // --- Frontend Simulation of Forgot Password (replace with actual API call) ---
         console.log('Forgot password request for:', forgotEmail);
-        swal("Password Reset Initiated!", "Your password (simulated) has been sent to your email.", "success");
+        Swal.fire('Password Reset Initiated!', 'Your password (simulated) has been sent to your email.', 'success');
         setShowLoginSection(true); // Go back to login after simulation
         // --------------------------------------------------------------------------
     };
