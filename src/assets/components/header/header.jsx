@@ -71,7 +71,7 @@ function Header() {
     },
     { label: "Products", path: "/products" },
     // { label: "Resources", path: "/resource" },
-    { label: "About", path: "/about" },
+    // { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },
     { label: "Careers", path: "/careers" },
   ];

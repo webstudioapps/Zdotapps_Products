@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./footer.module.css";
+import zdotLogo from "../../images/zdot_logo.png";
 //import Zdotapps_Style_Guide from "/Zdotapps_Style_Guide.pdf";
 
 function Footer() {
@@ -57,7 +58,7 @@ function Footer() {
           <div className="row gy-4 align-items-start">
             <div className="col-12 col-lg-6 d-flex align-items-center">
               <img
-                src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png"
+                src={zdotLogo}
                 alt="Z.apps"
                 width={540}
               />
@@ -69,16 +70,7 @@ function Footer() {
                 <div className="col-6 text-start">
                   <h6 className="text-white fw-bold mb-3">Quick Links</h6>
                   <ul className="list-unstyled m-0">
-                    <li className="mb-2">
-                      {/* ✅ Only downloads the file */}
-                      <a
-                        href="/Zdotapps_Style_Guide.pdf"
-                        className={styles.link}
-                        onClick={handleStyleGuideClick}
-                      >
-                        Style Guide
-                      </a>
-                    </li>
+                    <li className="mb-2"><a href="#" className={styles.link}>Home</a></li>
                     <li className="mb-2"><a href="#" className={styles.link}>About Us</a></li>
                     <li className="mb-2"><a href="#" className={styles.link}>Contact Support</a></li>
                     <li className="mb-2"><a href="#" className={styles.link}>Privacy Policy</a></li>

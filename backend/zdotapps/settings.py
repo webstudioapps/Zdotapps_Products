@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-j#oa@1mspgckx+qd9^lqz&y&6_bwrc+g9c6+c!nr2*^uml4qu%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,14 +76,18 @@ WSGI_APPLICATION = 'zdotapps.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zdotapps',        # Your MySQL database name
-        'USER': 'zda_devenviron',            # Your MySQL username
-        'PASSWORD': '7XxqiZw391vCIl6MudTk',  # Your MySQL password
-        'HOST': 'zdotapps-devenviron.cvuouqwaej9d.ap-south-1.rds.amazonaws.com',       # Usually localhost
-        'PORT': '3306',            # Default MySQL port
+        'NAME': 'zdotapps',
+        'USER': 'zda_devenviron',
+        'PASSWORD': '7XxqiZw391vCIl6MudTk',
+        'HOST': 'zdotapps-devenviron.cvuouqwaej9d.ap-south-1.rds.amazonaws.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'ssl_disabled': True,   # <-- This disables SSL in PyMySQL
+        }
     }
 }
 

@@ -21,7 +21,7 @@ from django.conf.urls.static import static # Import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('zdot_app.urls')),
+    path('dev/zdotapps-api/', include('zdot_app.urls')),
     
 ]
 

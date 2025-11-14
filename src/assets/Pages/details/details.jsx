@@ -4,7 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 // Define your API base URL here
 // Make sure this matches the address where your backend server is running
-const API_BASE_URL = "http://localhost:8000";
+// const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "http://3.7.230.156/dev/zdotapps-api";
 
 
 // Inline styles for modern look (move to CSS file in production)
@@ -287,7 +288,8 @@ export default function JobDetails() {
     setSendingOTP(true); // Set loading state
     setOtpError(""); // Clear previous errors
     try {
-      const response = await fetch(`${API_BASE_URL}/api/send-otp/`, {
+      // const response = await fetch(`${API_BASE_URL}/api/send-otp/`, {
+      const response = await fetch('http://3.7.230.156/dev/zdotapps-api/details/send-otp/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
