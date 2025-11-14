@@ -25,7 +25,7 @@ import quiWLogo from '../../images/qui_wlogo.png';
 import raiseWLogo from '../../images/Raise_wlogo.png';
 // images for category flip tiles
 import apexaImg from '../../images/Logos/Logos/apexa_living.png';
-import factopsImg from '../../images/Logos/Logos/Factops.png';
+import factopsImg from '../../images/Logos/Logos/factops.png';
 import kiraaze_appImg from '../../images/kiraaze_app.png';
 import campusImg from '../../images/campus.png';
 import agentsImg from '../../images/agents.png';
