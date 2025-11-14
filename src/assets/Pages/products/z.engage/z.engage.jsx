@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './z.engage.module.css';
+import flowForm from '../z.flow/z.flow.module.css';
+import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 import carelonLogo from './images/carelon_logo.png';
 import campusLifeLogo from './images/campus_life_logo.png';
 import lifeLogo from './images/life_logo.png';
@@ -23,10 +25,11 @@ const cardsData = [
     bgColor: '#7952E0',
     logo: carelonLogo,
     features: [
-      'Track progress visually across stages.',
-      'Customize for sales, marketing, or service.',
-      'Filter opportunities by criteria.',
-      'Collaborate with your team in real-time.',
+      'All-in-one engagement hub.',
+      'Fun, gamified activities & events.',
+      'Wellness + learning boost.',
+      'Real-time insights.',
+      'Rewards & fun recognition.',
     ],
     iosLink: 'https://apps.apple.com/in/app/carelon-engage/id1668110764',
     androidLink: 'https://play.google.com/store/apps/details?id=com.carelon.service.app',
@@ -39,10 +42,11 @@ const cardsData = [
     bgColor: '#5009B5',
     logo: campusLifeLogo,
     features: [
-      'Campus events and updates.',
-      'Student engagement tools.',
-      'Easy club management.',
-      'Connect with campus resources.',
+      'Campus events at your fingertips.',
+      'Tools to boost student engagement.',
+      'Simple and smart club management.',
+      'Easy access to campus resources.',
+      'Engage, Experience and Excel.',
     ],
     iosLink: 'https://apps.apple.com/in/app/campus-life/id6737402090',
     androidLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN',
@@ -54,10 +58,11 @@ const cardsData = [
     bgColor: '#32a739',
     logo: lifeLogo,
     features: [
-      'Track your fitness journey.',
-      'Join community challenges.',
-      'Monitor health stats.',
-      'Share achievements.',
+      'Real-Time Activity Tracking.',
+      'Engagement & Social Interaction.',
+      'Seamless Event & Campaign Execution.',
+      'Smart Analytics & Health Insights.',
+      'Rewards & Recognition System.',  
     ],
     iosLink: 'https://apps.apple.com/in/app/life-cykul/id1410238739',
     androidLink: 'https://play.google.com/store/apps/details?id=life.cykul.com.lifeCykul&hl=en_IN',
@@ -69,10 +74,11 @@ const cardsData = [
     bgColor: '#fe7200',
     logo: swagramLogo,
     features: [
-      'Local community updates.',
-      'Neighborhood events.',
-      'Connect with residents.',
-      'Share resources and info.',
+      'Digital archive of local culture.',
+      'Connecting villagers and youth.',
+      'Uniting people through shared roots.',
+      'Preserving every village’s heritage.',
+      'Our village, our pride.',
     ],
     iosLink: 'https://apps.apple.com/',
     androidLink: 'https://play.google.com/store/apps/details?id=com.swagraam.service.app&hl=en_IN',
@@ -84,10 +90,11 @@ const cardsData = [
     bgColor: '#8b0205',
     logo: yfsLogo,
     features: [
-      'Volunteer opportunities.',
-      'Track your impact.',
-      'Connect with NGOs.',
-      'Organize events and drives.',
+      'Empowering youth to transform society.',
+      'Volunteer today, build a better tomorrow.',
+      'Inspire action, serve with purpose.',
+      'Where compassion meets commitment.',
+      'Early service, lifelong change.',
     ],
 
     iosLink: 'https://apps.apple.com/in/app/youth-for-seva/id6443999296',
@@ -252,28 +259,65 @@ const Zengage = () => {
         </div>
 
         {/* Contact form with chips select */}
-        <div className={`${styles.contactFormWrapper} mt-3`}>
-          <h5 style={{ textAlign: 'center' }}>Begin your Engagement with</h5>
-          <img src={engage} alt="Z.Engage Logo" className={styles.logo} />
+        <div className={`${flowForm.formWrapper}`}>
+          <h5 className="text-black" style={{ textAlign: 'center' }}>Begin your Engagement with</h5>
+          <div className={flowForm.logoContainer}>
+            <img src={engage} alt="Z.Engage Logo" className={flowForm.logoImage} />
+          </div>
 
-<form className={styles.contactForm} onSubmit={handleSubmit}>
-  <label>
-    First Name
-    <input type="text" name="firstName" placeholder="First Name" required />
-  </label>
-  <label>
-    Last Name
-    <input type="text" name="lastName" placeholder="Last Name" required />
-  </label>
-  <label>
-    Email
-    <input type="email" name="email" placeholder="Email ID" required />
-  </label>
-  <label>
-    Message
-    <textarea name="message" placeholder="Share your engagement requirements" style={{ height: "90px" }} />
-  </label>
-  <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
+<form className={`${flowForm.contactForm}`} onSubmit={handleSubmit}>
+  <div className={flowForm.formGroup}>
+    <div className={flowForm.inputContainer}>
+      <FiUser className={flowForm.inputIcon} />
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        required
+        className={flowForm.formInput}
+      />
+    </div>
+  </div>
+
+  <div className={flowForm.formGroup}>
+    <div className={flowForm.inputContainer}>
+      <FiUser className={flowForm.inputIcon} />
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        required
+        className={flowForm.formInput}
+      />
+    </div>
+  </div>
+
+  <div className={flowForm.formGroup}>
+    <div className={flowForm.inputContainer}>
+      <FiMail className={flowForm.inputIcon} />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email ID"
+        required
+        className={flowForm.formInput}
+      />
+    </div>
+  </div>
+
+  <div className={flowForm.formGroup}>
+    <div className={flowForm.inputContainer}>
+      <FiMessageSquare className={`${flowForm.inputIcon} ${flowForm.textareaIcon}`} />
+      <textarea
+        name="message"
+        placeholder="Share your engagement requirements"
+        className={flowForm.formTextarea}
+        rows="4"
+      />
+    </div>
+  </div>
+
+  <button type="submit" className={flowForm.submitButton}>
     Submit
   </button>
 </form>

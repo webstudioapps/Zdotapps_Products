@@ -545,9 +545,7 @@ const styles = `
     color: #FFC94A; /* Highlight active question */
   }
 
-  .faq-item.active .faq-question svg {
-    color: #FFC94A;
-  }
+
 
   /* Plus/Minus Icon Styling */
   .faq-icon {
@@ -840,11 +838,6 @@ const styles = `
     margin-bottom: 1rem;
   }
 
-  .industry-icon svg {
-    width: 30px;
-    height: 30px;
-    color: #1C1A1A;
-  }
 
   .industry-title {
     font-size: 1.1rem;
@@ -867,347 +860,440 @@ const styles = `
   }
 }
 
-/* WhatWeDo.css styles */
-.relative {
+/* WhatWeDo Section Styles */
+:global(.relative) {
   position: relative;
 }
-.isolate {
+
+:global(.isolate) {
   isolation: isolate;
 }
-.bg-black {
+
+:global(.bg-black) {
   background-color: #000;
 }
-.text-white {
+
+:global(.text-white) {
   color: #fff;
 }
-.mx-auto {
+
+:global(.mx-auto) {
   margin-left: auto;
   margin-right: auto;
 }
-.grid {
+
+:global(.grid) {
   display: grid;
 }
-.min-h-screen {
+
+:global(.min-h-screen) {
   min-height: 100vh;
 }
-.w-full {
+
+:global(.w-full) {
   width: 100%;
 }
-.max-w-7xl {
-  max-width: 80rem; /* 1280px */
+
+:global(.max-w-7xl) {
+  max-width: 80rem;
 }
-.grid-cols-1 {
+
+:global(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
-.gap-6 {
+
+:global(.gap-6) {
   gap: 1.5rem;
 }
-.px-4 {
+
+:global(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.py-12 {
+
+:global(.py-12) {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.sm\:gap-8 {
-  gap: 2rem;
-}
-.sm\:px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-.sm\:py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-.md\:grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.md\:gap-12 {
-  gap: 3rem;
-}
-.md\:py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-.lg\:py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-.text-xs {
+
+:global(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.tracking-wide {
+
+:global(.tracking-wide) {
   letter-spacing: 0.025em;
 }
-.text-zinc-400 {
+
+:global(.text-zinc-400) {
   color: #a1a1aa;
 }
-.sm\:text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-.mt-4 {
+
+:global(.mt-4) {
   margin-top: 1rem;
 }
-.text-3xl {
-  font-size: 2.5rem;
-  line-height: 2.25rem;
-}
-.font-semibold {
-  font-weight: 600;
-}
-.leading-\[1\.05\] {
-  line-height: 1.05;
-}
-.text-zinc-50 {
-  color: #fafafa;
-}
-.sm\:mt-6 {
-  margin-top: 1.5rem;
-}
-.sm\:text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-.md\:text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-.lg\:text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-.mt-8 {
-  margin-top: 2rem;
-}
-.space-y-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
-}
-.sm\:mt-12 {
-  margin-top: 3rem;
-}
-.sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-.border {
-  border-width: 1px;
-}
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.duration-300 {
-  transition-duration: 300ms;
-}
-.sm\:rounded-2xl {
-  border-radius: 1rem;
-}
-.border-white/30 {
-  border-color: rgba(255, 255, 255, 0.3);
-}
-.bg-white/\[0\.02\] {
-  background-color: rgba(255, 255, 255, 0.02);
-}
-.border-white/5 {
-  border-color: rgba(255, 255, 255, 0.05);
-}
-.hover\:border-white/20:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.active\:border-white/20:active {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.flex {
-  display: flex;
-}
-.items-center {
-  align-items: center;
-}
-.gap-3 {
-  gap: 0.75rem;
-}
-.p-4 {
-  padding: 1rem;
-}
-.sm\:gap-4 {
-  gap: 1rem;
-}
-.sm\:p-5 {
-  padding: 1.25rem;
-}
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-.sm\:text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.md\:text-3xl {
+
+:global(.text-3xl) {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
-.opacity-70 {
-  opacity: 0.7;
+
+:global(.font-semibold) {
+  font-weight: 600;
 }
-.sm\:w-4 {
-  width: 1rem;
+
+:global(.text-zinc-50) {
+  color: #fafafa;
 }
-.sm\:h-4 {
-  height: 1rem;
+
+:global(.mt-8) {
+  margin-top: 2rem;
 }
-.overflow-hidden {
-  overflow: hidden;
+
+:global(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
+  margin-top: 0.75rem;
 }
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+:global(.rounded-xl) {
+  border-radius: 0.75rem;
 }
-.pb-4 {
-  padding-bottom: 1rem;
+
+:global(.border) {
+  border-width: 1px;
 }
-.sm\:px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+
+:global(.transition-all) {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
-.sm\:pb-6 {
-  padding-bottom: 1.5rem;
+
+:global(.duration-300) {
+  transition-duration: 300ms;
 }
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+:global(.border-white\/30) {
+  border-color: rgba(255, 255, 255, 0.3);
 }
-.gap-4 {
-  gap: 1rem;
+
+:global(.bg-white\/\[0\.02\]) {
+  background-color: rgba(255, 255, 255, 0.02);
 }
-.sm\:gap-6 {
-  gap: 1.5rem;
+
+:global(.border-white\/5) {
+  border-color: rgba(255, 255, 255, 0.05);
 }
-.md\:grid-cols-\[1fr\_auto\_1fr\] {
-  grid-template-columns: 1fr auto 1fr;
+
+:global(.hover\:border-white\/20:hover) {
+  border-color: rgba(255, 255, 255, 0.2);
 }
-.md\:items-start {
-  align-items: flex-start;
+
+:global(.active\:border-white\/20:active) {
+  border-color: rgba(255, 255, 255, 0.2);
 }
-.max-w-prose {
-  max-width: 65ch;
+
+:global(.flex) {
+  display: flex;
 }
-.leading-relaxed {
-  line-height: 1.625;
+
+:global(.items-center) {
+  align-items: center;
 }
-.hidden {
-  display: none;
+
+:global(.gap-3) {
+  gap: 0.75rem;
 }
-.h-full {
-  height: 100%;
+
+:global(.p-4) {
+  padding: 1rem;
 }
-.w-px {
-  width: 1px;
+
+:global(.font-mono) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-.bg-white/10 {
-  background-color: rgba(255, 255, 255, 0.1);
+
+:global(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
-.md\:block {
-  display: block;
-}
-.gap-1\.5 {
-  gap: 0.375rem;
-}
-.sm\:gap-2 {
+
+:global(.gap-2) {
   gap: 0.5rem;
 }
-.text-zinc-200 {
+
+:global(.opacity-70) {
+  opacity: 0.7;
+}
+
+:global(.overflow-hidden) {
+  overflow: hidden;
+}
+
+:global(.pb-4) {
+  padding-bottom: 1rem;
+}
+
+:global(.gap-4) {
+  gap: 1rem;
+}
+
+:global(.max-w-prose) {
+  max-width: 65ch;
+}
+
+:global(.leading-relaxed) {
+  line-height: 1.625;
+}
+
+:global(.hidden) {
+  display: none;
+}
+
+:global(.h-full) {
+  height: 100%;
+}
+
+:global(.w-px) {
+  width: 1px;
+}
+
+:global(.bg-white\/10) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.gap-1\.5) {
+  gap: 0.375rem;
+}
+
+:global(.text-zinc-200) {
   color: #e4e4e7;
 }
-.relative {
-  position: relative;
-}
-.pl-3 {
+
+:global(.pl-3) {
   padding-left: 0.75rem;
 }
-.sm\:pl-4 {
-  padding-left: 1rem;
-}
-.before\:absolute::before {
+
+:global(.before\:absolute::before) {
+  content: "";
   position: absolute;
 }
-.before\:left-0::before {
+
+:global(.before\:left-0::before) {
   left: 0px;
 }
-.before\:top-1\.5::before {
+
+:global(.before\:top-1\.5::before) {
   top: 0.375rem;
 }
-.sm\:before\:top-2::before {
-  top: 0.5rem;
-}
-.before\:h-1::before {
+
+:global(.before\:h-1::before) {
   height: 0.25rem;
 }
-.before\:w-1::before {
+
+:global(.before\:w-1::before) {
   width: 0.25rem;
 }
-.before\:rounded-full::before {
+
+:global(.before\:rounded-full::before) {
   border-radius: 9999px;
 }
-.before\:bg-zinc-500/70::before {
+
+:global(.before\:bg-zinc-500\/70::before) {
   background-color: rgba(113, 113, 122, 0.7);
 }
-.order-first {
+
+:global(.order-first) {
   order: -9999;
 }
-.md\:order-last {
-  order: 9999;
-}
-.h-auto {
+
+:global(.h-auto) {
   height: auto;
 }
-.rounded-2xl {
+
+:global(.rounded-2xl) {
   border-radius: 1rem;
 }
-.sm\:rounded-3xl {
-  border-radius: 1.5rem;
-}
-.md\:rounded-\[48px\] {
-  border-radius: 48px;
-}
-.pointer-events-none {
+
+:global(.pointer-events-none) {
   pointer-events: none;
 }
-.absolute {
+
+:global(.absolute) {
   position: absolute;
 }
-.inset-y-0 {
+
+:global(.inset-y-0) {
   top: 0px;
   bottom: 0px;
 }
-.right-0 {
+
+:global(.right-0) {
   right: 0px;
 }
-.w-24 {
+
+:global(.w-24) {
   width: 6rem;
 }
-.bg-gradient-to-l {
+
+:global(.bg-gradient-to-l) {
   background-image: linear-gradient(to left, var(--tw-gradient-stops));
 }
-.from-black {
+
+:global(.from-black) {
   --tw-gradient-from: #000;
   --tw-gradient-to: rgba(0, 0, 0, 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-/* End WhatWeDo.css styles */
+
+/* Responsive styles */
+@media (min-width: 640px) {
+  :global(.sm\:gap-8) {
+    gap: 2rem;
+  }
+  
+  :global(.sm\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  :global(.sm\:py-16) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  :global(.sm\:text-sm) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  :global(.sm\:mt-6) {
+    margin-top: 1.5rem;
+  }
+  
+  :global(.sm\:text-4xl) {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  :global(.sm\:mt-12) {
+    margin-top: 3rem;
+  }
+  
+  :global(.sm\:space-y-4 > :not([hidden]) ~ :not([hidden])) {
+    margin-top: 1rem;
+  }
+  
+  :global(.sm\:rounded-2xl) {
+    border-radius: 1rem;
+  }
+  
+  :global(.sm\:gap-4) {
+    gap: 1rem;
+  }
+  
+  :global(.sm\:p-5) {
+    padding: 1.25rem;
+  }
+  
+  :global(.sm\:text-2xl) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  :global(.sm\:w-4) {
+    width: 1rem;
+  }
+  
+  :global(.sm\:h-4) {
+    height: 1rem;
+  }
+  
+  :global(.sm\:px-5) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  :global(.sm\:pb-6) {
+    padding-bottom: 1.5rem;
+  }
+  
+  :global(.sm\:gap-6) {
+    gap: 1.5rem;
+  }
+  
+  :global(.sm\:gap-2) {
+    gap: 0.5rem;
+  }
+  
+  :global(.sm\:pl-4) {
+    padding-left: 1rem;
+  }
+  
+  :global(.sm\:before\:top-2::before) {
+    top: 0.5rem;
+  }
+  
+  :global(.sm\:rounded-3xl) {
+    border-radius: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :global(.md\:grid-cols-2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  :global(.md\:gap-12) {
+    gap: 3rem;
+  }
+  
+  :global(.md\:py-20) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  :global(.md\:text-5xl) {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  :global(.md\:text-3xl) {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  :global(.md\:grid-cols-\[1fr_auto_1fr\]) {
+    grid-template-columns: 1fr auto 1fr;
+  }
+  
+  :global(.md\:items-start) {
+    align-items: flex-start;
+  }
+  
+  :global(.md\:block) {
+    display: block;
+  }
+  
+  :global(.md\:order-last) {
+    order: 9999;
+  }
+  
+  :global(.md\:rounded-\[48px\]) {
+    border-radius: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :global(.lg\:py-24) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  :global(.lg\:text-6xl) {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
 `;
 
 // CategoryTile Component
@@ -1318,21 +1404,21 @@ const StudiosSection = () => {
       title: 'Web Studio',
       description: 'Create stunning, fully responsive websites with a wide range of ready-to-use templates. Effortlessly customize layouts, colors, and features to perfectly align with your brand\'s identity, vision, and business goals.',
       imageUrl: studioImage,
-      link: '/studios/web',
+      link: '#',
     },
     app: {
       id: 'app',
       title: 'App Studio',
       description: 'Develop innovative mobile applications for iOS and Android platforms. Our experts guide you from concept to launch, ensuring a seamless user experience and robust performance across all devices.',
       imageUrl: studioImage,
-      link: '/studios/app',
+      link: '#',
     },
     agent: {
       id: 'agent',
       title: 'Agentic Studio',
       description: 'Leverage the power of AI with custom-built intelligent agents and automation solutions. From chatbots to complex AI workflows, we help you integrate cutting-edge AI into your business operations.',
       imageUrl: studioImage,
-      link: '/studios/agent',
+      link: '#',
     }
   };
 
@@ -2044,7 +2130,7 @@ function WhatWeDo() {
     },
   ]
 
-  const [active, setActive] = useState(0) // Set to 0 to have Technology section open by default
+  const [active, setActive] = useState(0)
   const activeSection = sections[active]
 
   // Immediate transitions for smooth, responsive feel
@@ -2056,83 +2142,83 @@ function WhatWeDo() {
   const onLeave = () => {
     if (hoverTimer.current) window.clearTimeout(hoverTimer.current)
   }
-
+  
   // Touch support for mobile
   const handleTouchStart = (i) => {
     setActive(i)
   }
 
   return (
-    <section className="whatwedo relative isolate bg-black text-white min-h-screen flex items-center py-16">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative isolate bg-black text-white min-h-screen flex items-center py-16">
+      <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 items-start h-full">
           <div className="w-full md:w-2/3 pr-0 md:pr-8">
-            <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-              <span className="block">Elegant solutions</span>
-              <span className="block">built on proven</span>
-              <span className="block">methodologies.</span>
-            </h2>
+                    <h2 className="text-center text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
+                      <span className="block">Elegant solutions </span>
+                      <span className="block">built on proven </span>
+                      <span className="block">methodologies.</span>
+                    </h2>
 
-            <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
-              {sections.map((s, i) => {
-                const open = active !== null && i === active
-                return (
-                  <li
-                    key={s.key}
-                    onMouseEnter={() => onEnter(i)}
-                    onTouchStart={() => handleTouchStart(i)}
-                    onFocus={() => setActive(i)}
-                    className={`rounded-xl border transition-all duration-300 sm:rounded-2xl ${
-                      open ? 'border-white/30 bg-white/[0.02]' : 'border-white/5 hover:border-white/20 active:border-white/20'
-                    }`}
-                    tabIndex={0}
-                  >
-                    {/* Header row */}
-                    <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
-                      <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
-                      <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
-                        <span>{s.title}</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                      </div>
-                    </div>
-
-                    {/* Inline expanding content */}
-                    <AnimatePresence initial={false}>
-                      {open && (
-                        <motion.div
-                          key="content"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{
-                            height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
-                            opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
-                          }}
-                          style={{ overflow: 'hidden' }}
-                          className="px-4 pb-4 sm:px-5 sm:pb-6"
+                  <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
+                    {sections.map((s, i) => {
+                      const open = active !== null && i === active
+                      return (
+                        <li
+                          key={s.key}
+                          onMouseEnter={() => onEnter(i)}
+                          onTouchStart={() => handleTouchStart(i)}
+                          onFocus={() => setActive(i)}
+                          className={`rounded-none transition-all duration-500 ease-out ${
+                            open ? 'bg-white/[0.06]' : 'hover:bg-white/[0.03] active:bg-white/[0.03]'
+                          }`}
+                          tabIndex={0}
                         >
-                          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
-                            <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
-                            <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
-                            <ul className="grid gap-2 text-xs text-zinc-300">
-                              {s.services.map((x) => (
-                                <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
-                                  {x}
-                                </li>
-                              ))}
-                            </ul>
+                          {/* Header row */}
+                          <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                            <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
+                            <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
+                              <span>{s.title}</span>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                            </div>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+        
+                          {/* Inline expanding content */}
+                          <AnimatePresence initial={false}>
+                            {open && (
+                              <motion.div
+                                key="content"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{
+                                  height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
+                                  opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
+                                }}
+                                style={{ overflow: 'hidden' }}
+                                className="px-4 pb-4 sm:px-5 sm:pb-6"
+                              >
+                                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
+                                  <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
+                                  <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
+                                  <ul className="grid gap-2 text-xs text-zinc-300">
+                                    {s.services.map((x) => (
+                                      <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
+                                        {x}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  </div>
 
-          {/* Image on the right */}
-          <div className="wwd-right w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
+        {/* RIGHT: image swaps while left expands inline */}
+        <div className="w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection.key}
@@ -2142,7 +2228,7 @@ function WhatWeDo() {
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 className="relative"
               >
-                <div className="wwd-right-inner relative w-100 max-w-md ms-5 mx-auto">
+                <div className="relative w-100 max-w-md ms-5 mx-auto">
                   <img
                     src={activeSection.img}
                     alt={`${activeSection.title} hero`}
@@ -2154,11 +2240,12 @@ function WhatWeDo() {
             </AnimatePresence>
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black md:block"></div>
       </div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black md:block"></div>
     </section>
-  );
+  )
 }
+
 
 // Process Flow Component - Solutions for Every Industry
 const ProcessFlow = () => {

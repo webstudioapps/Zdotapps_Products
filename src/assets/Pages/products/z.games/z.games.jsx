@@ -6,6 +6,8 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/autoplay';
 import styles from './z.games.module.css';
+import flowForm from '../z.flow/z.flow.module.css';
+import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 // Assets
 import TambolaImg from './images/Tambola.jpg';
@@ -157,44 +159,64 @@ const Zgames = () => {
             </Swiper>
           </div>
 
-          {/* Form */}
+          {/* Form (keep Z.Games colors, add Flow-like structure) */}
           <div className={styles.formCard}>
             <h5 style={{ textAlign: 'center' }} className="mt-3">Level Up your Fun and Learn with</h5>
             <div className={styles.logoWrap}>
-            <img src={games_whiteImg} alt="Z.games" className={`${styles.logo}`} />
+              <img src={games_whiteImg} alt="Z.games" className={styles.logo} />
             </div>
             <form onSubmit={handleSubmit} className={styles.form}>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email ID"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows="3"
-              />
+              <div className={styles.inputContainer}>
+                <FiUser className={styles.inputIcon} />
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                  className={styles.withIcon}
+                />
+              </div>
+
+              <div className={styles.inputContainer}>
+                <FiUser className={styles.inputIcon} />
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                  className={styles.withIcon}
+                />
+              </div>
+
+              <div className={styles.inputContainer}>
+                <FiMail className={styles.inputIcon} />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email ID"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className={styles.withIcon}
+                />
+              </div>
+
+              <div className={styles.inputContainer}>
+                <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
+                <textarea
+                  name="message"
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows="4"
+                  className={styles.withIcon}
+                />
+              </div>
+
               <button type="submit" className={`mb-2 ${styles.submitBtn}`}>
                 Submit
               </button>
