@@ -52,7 +52,8 @@ const ContactPage = () => {
         formDataToSend.append('attachment', formData.attachment);
       }
 
-      const response = await fetch('http://127.0.0.1:8000/contact/', {
+      // const response = await fetch('http://127.0.0.1:8000/contact/',
+      const response = await fetch('http://3.7.230.156/dev/zdotapps-api/contact/', {
         method: 'POST',
         body: formDataToSend,
       });

@@ -480,7 +480,7 @@ const styles = `
   /* -----------------------FAQ Section Styles---------------- */
   .faq-section {
     background-color: #1C1A1A;
-    padding: 10rem 1rem;
+    padding: 7rem 1rem;
     color: #FFFFFF;
     overflow-x: hidden;
   }
@@ -498,7 +498,6 @@ const styles = `
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     overflow: hidden;
-    padding: 5px;
   }
 
   .faq-question {
@@ -514,8 +513,10 @@ const styles = `
 
   .faq-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Adjust the gap between items as needed */
+    grid-template-columns: 1fr; /* Single column */
+    max-width: 760px; /* Constrain width */
+    width: 100%;
+    margin: 0 auto; /* Center horizontally */
   }
   @media (max-width: 768px) {
     .faq-list {
@@ -1301,12 +1302,24 @@ const CategoryTile = ({ title_1, images }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/coming-soon');
+    const key = (title_1 || '').toLowerCase();
+    let path = '/coming-soon';
+    if (key === 'websites') path = '/studios/web';
+    else if (key === 'apps') path = '/studios/app_studio';
+    else if (key === 'agents') path = '/studios/agentic-studio';
+    navigate(path);
   };
 
   const isWebsite = (title_1 || '').toLowerCase() === 'websites';
   return (
-    <div className={`cat-tile mt-5 ${isWebsite ? 'web' : ''}`} style={{ '--pane-w': '50%', '--n1': '35px', '--n2': '22px', '--n3': '28px' }}>
+    <div
+      className={`cat-tile mt-5 ${isWebsite ? 'web' : ''}`}
+      style={{ '--pane-w': '50%', '--n1': '35px', '--n2': '22px', '--n3': '28px', cursor: 'pointer' }}
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); } }}
+    >
       <a
         className="cat-title"
         onClick={handleClick}
@@ -1315,7 +1328,7 @@ const CategoryTile = ({ title_1, images }) => {
         {title_1}
       </a>
       <div className="pane" aria-hidden="true">
-        <div className="stack" style={{ '--shot-w': '110px', '--overlap': '28px', '--peek-right': '90px' }}>
+        <div className="stack" style={{ '--shot-w': '110px', '--overlap': '32px', '--peek-right': '82px' }}>
           {images.map((image, index) => (
             <img
               key={index}
@@ -1608,15 +1621,37 @@ const IndustryCards = () => {
     slides.push(industryData.slice(i, i + 8));
   }
 
-  // Auto-advance slides
+  // Track when the section is in view and start the carousel only then
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.isIntersecting && entry.intersectionRatio > 0.4;
+        if (visible) {
+          setCurrentSlide(0); // always reset to first slide when section enters view
+        }
+        setInView(visible);
+      },
+      { threshold: [0, 0.25, 0.4, 0.6, 0.75, 1] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-advance slides only when in view and not hovered
+  useEffect(() => {
+    if (!inView) return;
     const timer = setInterval(() => {
       if (!isHovered) {
-        nextSlide();
+        setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
       }
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentSlide, isHovered]);
+  }, [inView, isHovered, slides.length]);
 
   // Detect mobile to switch to grid view (no carousel)
   useEffect(() => {
@@ -1638,6 +1673,7 @@ const IndustryCards = () => {
         position: 'relative',
         overflow: 'hidden'
       }}
+      ref={sectionRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -2159,7 +2195,7 @@ function WhatWeDo() {
                       <span className="block">methodologies.</span>
                     </h2>
 
-                  <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
+                  <ul className="space-y-0 max-h-[60vh] overflow-y-auto pr-3 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
                     {sections.map((s, i) => {
                       const open = active !== null && i === active
                       return (
@@ -2174,7 +2210,7 @@ function WhatWeDo() {
                           tabIndex={0}
                         >
                           {/* Header row */}
-                          <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                          <div className="flex items-center gap-2 p-3 sm:gap-3 sm:p-4">
                             <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
                             <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
                               <span>{s.title}</span>
@@ -2191,16 +2227,16 @@ function WhatWeDo() {
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{
-                                  height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
-                                  opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
+                                  height: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+                                  opacity: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                                 }}
                                 style={{ overflow: 'hidden' }}
-                                className="px-4 pb-4 sm:px-5 sm:pb-6"
+                                className="px-4 pb-2 sm:px-5 sm:pb-3"
                               >
-                                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
+                                <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-[1fr_auto_1fr] md:items-start">
                                   <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
                                   <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
-                                  <ul className="grid gap-2 text-xs text-zinc-300">
+                                  <ul className="grid gap-1.5 text-xs text-zinc-300">
                                     {s.services.map((x) => (
                                       <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
                                         {x}
@@ -2539,14 +2575,6 @@ const FAQSection = () => {
     {
       question: 'How many days does it take to build a website?',
       answer: 'The timeline for website development varies depending on complexity, but our streamlined process aims for rapid deployment, often delivering an MVP in 4-8 weeks.',
-    },
-    {
-      question: 'How do you handle project management for software development projects?',
-      answer: 'At the core of our operations is a robust project management approach that guarantees not only timely deliveries but also complete transparency. Each project benefits from having a dedicated manager, your go-to person for updates, queries, and coordination across different teams. The manager keeps you in the loop from start to finish, making sure that every phase of the project adheres to high standards for quality and aligns with your goals. Our project managers utilize the latest tools to meticulously monitor progress and resource allocation, enabling us to tackle challenges effectively and keep your project on track and within budget.'
-    },
-    {
-      question: 'Can you integrate AI into my existing legacy software?',
-      answer: 'Yes, and you probably don\'t need to replace everything you\'re already using. We\'ve integrated AI into systems that companies have been running for decades without breaking what already works. Most clients see measurable improvements within a few months without the disruption and expense of rebuilding their entire technology stack.'
     }
   ];
 
@@ -2585,6 +2613,7 @@ const FAQSection = () => {
 
 // Final CTA Section Component
 const FinalCTASection = () => {
+  const navigate = useNavigate();
   const containerStyle = {
     background: '#FFC94A',
     padding: '5rem 1rem',
@@ -2680,7 +2709,11 @@ const FinalCTASection = () => {
         World Class Apps, Built to Last.
       </p>
       <div style={buttonsContainerStyle}>
-        <a href="#" style={primaryButtonStyle}>
+        <a
+          href="/dev/zdotapps_products/contact"
+          onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
+          style={primaryButtonStyle}
+        >
           Get In Touch →
         </a>
         {/* <a href="#" style={secondaryButtonStyle}>
