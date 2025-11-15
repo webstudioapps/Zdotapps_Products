@@ -7,6 +7,38 @@
    padding-left: 0 !important;
    margin-left: 0 !important;
  }
+ /* ensure no bullets/markers/pseudo dots render */
+ :global(.home-wwd li) { list-style: none !important; }
+ :global(.home-wwd li::marker) { content: '' !important; }
+ :global(.home-wwd li::before) { content: none !important; }
+
+ /* Base layout fallbacks for dev builds that ignore inline utility styles */
+ :global(.home-wwd) {
+   background: #000;
+   color: #fff;
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   padding: 4rem 0; /* ~py-16 */
+ }
+ /* container */
+ :global(.home-wwd) > :global(div) {
+   width: 100%;
+   max-width: 80rem; /* ~max-w-7xl */
+   margin-left: auto;
+   margin-right: auto;
+   padding-left: 0.5rem; /* safe small padding */
+   padding-right: 0.5rem;
+ }
+ /* row */
+ :global(.home-wwd) > :global(div) > :global(div) {
+   display: flex;
+   gap: 2rem; /* ~gap-8 */
+   align-items: flex-start;
+ }
+ /* columns */
+ :global(.home-wwd .home-wwd-text) { flex: 1 1 0%; }
+ :global(.home-wwd .home-wwd-image) { flex: 0 0 34%; position: sticky; top: 50%; transform: translateY(-50%); }
 
  @media (max-width: 768px) {
    :global(.home-wwd) { overflow-x: hidden; }

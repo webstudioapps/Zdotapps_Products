@@ -7,3 +7,14 @@
 ::-webkit-scrollbar {
     width: 0;
 }
+
+/* WhatWeDo fallback: normalize list bullets/padding in dev builds */
+.home-wwd ul,
+.home-wwd .home-wwd-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+.home-wwd li { list-style: none !important; }
+.home-wwd li::marker { content: '' !important; }
+.home-wwd li::before { content: none !important; }
