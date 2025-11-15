@@ -1,5 +1,13 @@
  :global(.whatwedo) { overflow-x: hidden; }
 
+ /* Normalize list bullets/padding for WhatWeDo in all envs */
+ :global(.home-wwd ul),
+ :global(.home-wwd .home-wwd-list) {
+   list-style: none !important;
+   padding-left: 0 !important;
+   margin-left: 0 !important;
+ }
+
  @media (max-width: 768px) {
    :global(.home-wwd) { overflow-x: hidden; }
    :global(.home-wwd .home-wwd-text) { order: 1; width: 100%; }
