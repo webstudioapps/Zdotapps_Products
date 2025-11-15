@@ -18,6 +18,21 @@
   text-decoration: underline;
 }
 
+/* Footer brand logo */
+.logo {
+  display: block;
+  height: auto;
+  width: 540px; /* desktop default */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 260px; /* slightly larger on mobile */
+    max-width: 85%;
+    height: auto;
+  }
+}
+
 /* Section Navigator (Floating Arrows) */
 .sectionNavigator {
   position: fixed;

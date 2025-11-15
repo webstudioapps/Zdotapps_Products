@@ -47,10 +47,12 @@ import WelcomeSoon from "./assets/Pages/products/welcomesoon/welcomesoon";
 // ✅ Wrapper to show header/footer everywhere except login page
 const LayoutWrapper = ({ children }) => {
   const location = useLocation();
-  const isLoginPage = location.pathname.endsWith("/login");
-  const isDetailsPage = location.pathname.includes("/careers/details");
+  const path = location.pathname.toLowerCase();
+  const shouldHideChrome = ["/login", "/login/", "/careers/details"].some((p) =>
+    path.includes(p)
+  );
 
-  if (isLoginPage || isDetailsPage) {
+  if (shouldHideChrome) {
     return <>{children}</>;
   }
 

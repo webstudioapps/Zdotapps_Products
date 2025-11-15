@@ -161,6 +161,30 @@ const styles = `
 
   /* WhatWeDo section: avoid horizontal overflow on mobile */
   .whatwedo { overflow-x: hidden; }
+  /* Home-only mobile layout for WhatWeDo to stack image under text */
+  @media (max-width: 768px) {
+    .home-wwd { overflow-x: hidden; }
+    .home-wwd .home-wwd-text { order: 1; width: 100%; }
+    .home-wwd .home-wwd-image {
+      order: 2;
+      position: static !important;
+      transform: none !important;
+      width: 100% !important;
+      margin-top: 12px;
+      display: none !important; /* hide sidebar image on mobile */
+    }
+    .home-wwd .home-wwd-image .relative { position: static !important; }
+    .home-wwd .home-wwd-image .ms-5 { margin-left: 0 !important; }
+    .home-wwd .home-wwd-image .w-100 { width: 100% !important; }
+    .home-wwd .home-wwd-image .max-w-md { max-width: 100% !important; }
+    .home-wwd .home-wwd-image img { display: block; width: 100% !important; height: auto !important; }
+    /* mobile-only image under each expanded item's points */
+    .home-wwd .wwd-inline-per-item { display: block !important; }
+    .home-wwd .wwd-inline-per-item img { width: 100%; height: auto; display: block; border-radius: 12px; margin: 12px 0 8px; }
+    /* allow the list to expand so the per-item image isn't clipped */
+    .home-wwd .home-wwd-list { max-height: none !important; overflow: visible !important; padding-right: 0 !important; }
+  }
+  @media (min-width: 769px) { .home-wwd .wwd-inline-per-item { display: none; } }
   @media (max-width: 768px) {
     .wwd-right { position: static; top: auto; transform: none; }
     .wwd-right-inner { margin-left: 0 !important; max-width: 100% !important; }
@@ -701,11 +725,22 @@ const styles = `
   }
   /* Mobile adjustments for hero and tiles */
   @media (max-width: 768px) {
-    .hero-section-main { padding: 120px 16px; }
+    .hero-section-main { padding: 120px 16px 28px 16px; }
     .hero-title { font-size: 2.6rem; line-height: 1.1; }
     #flip { height: 60px; }
     #flip > div > div { height: 30px; margin-bottom: 30px; font-size: 18px; }
-    .tiles-grid { margin-top: 36px; }
+    .tiles-grid { margin-top: 16px !important; margin-bottom: 8px !important; gap: 10px !important; }
+    .tiles-grid .cat-tile { margin: 0 !important; }
+    /* Mobile: keep title on the image with a readable chip; do not alter image styles */
+    .tiles-grid .cat-tile { position: relative; }
+    .tiles-grid .cat-title {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: block; margin: 0; padding: 10px 14px;
+      color: #fff !important; font-weight: 700; letter-spacing: .2px;
+      background: rgba(0,0,0,0.55);
+      text-shadow: 0 1px 2px rgba(0,0,0,.5);
+      z-index: 3;
+    }
   }
   @media (max-width: 480px) {
     .hero-section-main { padding: 96px 14px; }
@@ -2189,10 +2224,10 @@ function WhatWeDo() {
   }
 
   return (
-    <section className="relative isolate bg-black text-white min-h-screen flex items-center py-16">
+    <section className="relative isolate bg-black text-white min-h-screen flex items-center py-16 home-wwd">
       <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 items-start h-full">
-          <div className="w-full md:w-2/3 pr-0 md:pr-8">
+          <div className="w-full md:w-2/3 pr-0 md:pr-8 home-wwd-text">
                     <h2 className="text-center text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
                       <span className="block">Elegant solutions </span>
                       <span className="block">built on proven </span>
@@ -2247,6 +2282,10 @@ function WhatWeDo() {
                                       </li>
                                     ))}
                                   </ul>
+                                  {/* Mobile-only image under the points for this item */}
+                                  <div className="wwd-inline-per-item">
+                                    <img src={s.img} alt={`${s.title} illustration`} loading="lazy" />
+                                  </div>
                                 </div>
                               </motion.div>
                             )}
@@ -2258,7 +2297,7 @@ function WhatWeDo() {
                   </div>
 
         {/* RIGHT: image swaps while left expands inline */}
-        <div className="w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
+        <div className="w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2 home-wwd-image">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection.key}

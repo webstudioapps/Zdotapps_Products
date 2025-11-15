@@ -60,7 +60,7 @@ function Footer() {
               <img
                 src={zdotLogo}
                 alt="Z.apps"
-                width={540}
+                className={styles.logo}
               />
             </div>
 
