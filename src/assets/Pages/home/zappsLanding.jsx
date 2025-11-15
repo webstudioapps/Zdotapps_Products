@@ -1410,6 +1410,7 @@ const HeroSection = () => {
 // Studios Section Component
 const StudiosSection = () => {
   const [activeStudio, setActiveStudio] = useState('web'); // Default to 'web'
+  const navigate = useNavigate();
 
   const studios = {
     web: {
@@ -1514,11 +1515,14 @@ const StudiosSection = () => {
             };
 
             return (
-              <Link
-                to={studio.link}
+              <div
                 key={studio.id}
                 className={`studio-card ${isActive ? 'active' : ''}`}
                 style={cardStyle}
+                role="link"
+                tabIndex={0}
+                onClick={() => { if (studio.link && studio.link !== '#') navigate(studio.link); }}
+                onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && studio.link && studio.link !== '#') { e.preventDefault(); navigate(studio.link); } }}
               >
                 <div className="studio-content">
                   <h3 className="studio-title">{studio.title}</h3>
@@ -1535,7 +1539,7 @@ const StudiosSection = () => {
                 <div className="studio-image">
                   <img src={studio.imageUrl} alt={`${studio.title} illustration`} />
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
@@ -1786,7 +1790,7 @@ const IndustryCards = () => {
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .industry-carousel {
           position: relative;
           width: 100%;
