@@ -50,6 +50,7 @@ import manufacturingImg from '../../images/manufacturing.avif';
 import ngoImg from '../../images/ngo.avif';
 import lakshminathanImg from '../../images/lakshminathan.jpg';
 import ecommerceImg from '../../images/e-commerce.avif';
+import './zapps.module.css';
 
 // Images for WhatWeDo component - Make sure these paths are correct relative to your project structure
 import techImage from '../../images/1.webp';
