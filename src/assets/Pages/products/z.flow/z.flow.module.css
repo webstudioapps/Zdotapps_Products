@@ -226,13 +226,19 @@
 }
 
 /* Responsive Styles (remain largely the same, but review for consistency) */
-@media (max-width: 1200px) {
-  .hero {
-    padding: 4rem 8%;
-  }
-
+@media (max-width: 768px) {
+  .hero { padding-top: 7.75rem; }
   .title {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
+    margin-top: 1.25rem; /* requested spacing */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero { padding-top: 7rem; }
+  .title {
+    font-size: 2.4rem;
+    margin-top: 1.25rem; /* requested spacing */
   }
 }
 

@@ -254,6 +254,7 @@
 @media (max-width: 768px) {
   .title {
     font-size: 2.8rem;
+    margin-top: 1.25rem;
   }
 
   .subtitle {
@@ -272,6 +273,7 @@
 @media (max-width: 576px) {
   .title {
     font-size: 2.4rem;
+    margin-top: 1.25rem;
   }
 
   .subtitle {

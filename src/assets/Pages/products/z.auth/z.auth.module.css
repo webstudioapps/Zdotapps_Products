@@ -252,8 +252,12 @@
 }
 
 @media (max-width: 768px) {
+  .hero { 
+    padding-top: 6.5rem; 
+  }
   .title {
     font-size: 2.8rem;
+    margin-top: 1.25rem;
   }
 
   .subtitle {
@@ -270,8 +274,12 @@
 }
 
 @media (max-width: 576px) {
+  .hero { 
+    padding-top: 6rem; 
+  }
   .title {
     font-size: 2.4rem;
+    margin-top: 1.25rem;
   }
 
   .subtitle {
