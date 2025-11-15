@@ -37,6 +37,20 @@ import { Link } from 'react-router-dom';
 import group1Img from '../../images/Group 1.jpg';
 import group2Img from '../../images/Group 2.jpg';
 import group3Img from '../../images/Group 3.jpg';
+import web1v2Img from '../../images/web1_v2.jpg';
+import web2v2Img from '../../images/web2v2.jpg';
+import web3v2Img from '../../images/web3_v2.jpg';
+import app1Img from '../../images/app1.jpg';
+import app3Img from '../../images/app2.jpg';
+import app4Img from '../../images/app4.jpg';
+import ai1Img from '../../images/ai1.jpg';
+import ai2Img from '../../images/ai2.jpg';
+import ai3Img from '../../images/ai3.jpg';
+import manufacturingImg from '../../images/manufacturing.avif';
+import ngoImg from '../../images/ngo.avif';
+import lakshminathanImg from '../../images/lakshminathan.jpg';
+import ecommerceImg from '../../images/e-commerce.avif';
+import './zapps.module.css';
 
 // Images for WhatWeDo component - Make sure these paths are correct relative to your project structure
 import techImage from '../../images/1.webp';
@@ -148,6 +162,30 @@ const styles = `
 
   /* WhatWeDo section: avoid horizontal overflow on mobile */
   .whatwedo { overflow-x: hidden; }
+  /* Home-only mobile layout for WhatWeDo to stack image under text */
+  @media (max-width: 768px) {
+    .home-wwd { overflow-x: hidden; }
+    .home-wwd .home-wwd-text { order: 1; width: 100%; }
+    .home-wwd .home-wwd-image {
+      order: 2;
+      position: static !important;
+      transform: none !important;
+      width: 100% !important;
+      margin-top: 12px;
+      display: none !important; /* hide sidebar image on mobile */
+    }
+    .home-wwd .home-wwd-image .relative { position: static !important; }
+    .home-wwd .home-wwd-image .ms-5 { margin-left: 0 !important; }
+    .home-wwd .home-wwd-image .w-100 { width: 100% !important; }
+    .home-wwd .home-wwd-image .max-w-md { max-width: 100% !important; }
+    .home-wwd .home-wwd-image img { display: block; width: 100% !important; height: auto !important; }
+    /* mobile-only image under each expanded item's points */
+    .home-wwd .wwd-inline-per-item { display: block !important; }
+    .home-wwd .wwd-inline-per-item img { width: 100%; height: auto; display: block; border-radius: 12px; margin: 12px 0 8px; }
+    /* allow the list to expand so the per-item image isn't clipped */
+    .home-wwd .home-wwd-list { max-height: none !important; overflow: visible !important; padding-right: 0 !important; }
+  }
+  @media (min-width: 769px) { .home-wwd .wwd-inline-per-item { display: none; } }
   @media (max-width: 768px) {
     .wwd-right { position: static; top: auto; transform: none; }
     .wwd-right-inner { margin-left: 0 !important; max-width: 100% !important; }
@@ -467,7 +505,7 @@ const styles = `
   /* -----------------------FAQ Section Styles---------------- */
   .faq-section {
     background-color: #1C1A1A;
-    padding: 10rem 1rem;
+    padding: 7rem 1rem;
     color: #FFFFFF;
     overflow-x: hidden;
   }
@@ -485,7 +523,6 @@ const styles = `
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     overflow: hidden;
-    padding: 5px;
   }
 
   .faq-question {
@@ -501,8 +538,10 @@ const styles = `
 
   .faq-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Adjust the gap between items as needed */
+    grid-template-columns: 1fr; /* Single column */
+    max-width: 760px; /* Constrain width */
+    width: 100%;
+    margin: 0 auto; /* Center horizontally */
   }
   @media (max-width: 768px) {
     .faq-list {
@@ -532,9 +571,7 @@ const styles = `
     color: #FFC94A; /* Highlight active question */
   }
 
-  .faq-item.active .faq-question svg {
-    color: #FFC94A;
-  }
+
 
   /* Plus/Minus Icon Styling */
   .faq-icon {
@@ -569,7 +606,7 @@ const styles = `
      The .tiles-grid and .cat-tile styles will be used instead. */
 
   :root{
-    --tile-h: 18rem;
+    --tile-h: 12rem;
     --radius: 14px;
     --n1: 10px; --n2: 6px; --n3: 3px;
     --title-x: 24px;
@@ -580,16 +617,16 @@ const styles = `
   /* body styles are already handled globally or by the main body rule */
 
   .tiles-grid { /* Renamed to avoid generic class name conflict */
-    max-width: 1400px; margin:0 auto;
-    display:grid; grid-template-columns: repeat(3, minmax(350px, 1fr)); gap: 20px;
+    max-width: 100%; margin:0 auto;
+    display:grid; grid-template-columns: repeat(3, minmax(300px, 1fr)); gap: 16px;
     padding: 0px; /* Added padding */
     margin-top: 70px; /* Added margin-top for spacing */
   }
 
   .cat-tile{
     position:relative; height:var(--tile-h); width:100%;
-    border-radius:var(--radius); border:1px solid #333;
-    background:#333; overflow:hidden; box-shadow:0 2px 14px rgba(0,0,0,.06);
+    border-radius:var(--radius); border:1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06); overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.12);
   }
 
   /* CLICKABLE title area (covers left side up to the image pane) */
@@ -600,7 +637,7 @@ const styles = `
     top:0; bottom:0;
     display:flex; align-items:center; padding-left:var(--title-x);
     font-size:var(--title-size); letter-spacing:.2px;
-    color:#ffc94a; text-decoration:none; z-index:2;
+    color:#ffffff; text-decoration:none; z-index:2;
   }
   .cat-title:hover{ filter:brightness(0.95); }
   .cat-title:focus-visible{
@@ -626,9 +663,20 @@ const styles = `
     transform:translateY(-50%); z-index:1;
   }
   .shot{
-    position:absolute; top:50%; width:var(--shot-w); height:100%;
-    transform:translateY(-50%); object-fit:cover; border-radius:var(--shot-r);
-    box-shadow:0 6px 18px rgba(0,0,0,.18); background:#ddd;
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:var(--shot-w,120px); height:auto; aspect-ratio:9/16;
+    border-radius:14px; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+  }
+  /* Websites tile should look like desktop windows (no rounded corners on images) */
+  .cat-tile.web .shot{ border-radius:4px; }
+  .cat-tile.web .pane{ background:#e9e9e9; }
+  .shot{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:var(--shot-w,120px); height:auto; aspect-ratio:9/16;
+    border-radius:14px; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+    background:#ddd;
     transition:transform .26s cubic-bezier(.22,.61,.36,1); will-change:transform;
 
   }
@@ -654,23 +702,46 @@ const styles = `
     /* Use grid to avoid horizontal scroll on tablets/phones */
     .tiles-grid{ display:grid; grid-template-columns: 1fr; gap:18px; padding-bottom:0; }
     .cat-tile{ min-width:100%; }
-    .pane{ width:52%; }
-    .stack{ --shot-w:110px; --overlap:42px; --peek-right:55px; }
+    .pane{ width: var(--pane-w, 50%); }
+    .stack{ --shot-w:140px; --overlap:44px; --peek-right:80px; }
     .cat-title{ padding-left:20px; font-size:20px; }
   }
   /* Very small screens: remove horizontal scroll, use single column grid */
   @media (max-width: 640px) {
     .tiles-grid { display: grid; grid-template-columns: 1fr; gap: 14px; padding-bottom: 0; }
     .cat-tile { min-width: 100%; }
-    .pane { width: 48%; }
+    .pane { width: var(--pane-w, 50%); }
+    .stack{ --shot-w:130px; --overlap:40px; --peek-right:70px; }
+  }
+  /* Small phones */
+  @media (max-width: 576px) {
+    .tiles-grid { gap: 12px; }
+    :root{ --tile-h: 11rem; --title-size: 20px; }
+  }
+  /* Extra small phones */
+  @media (max-width: 420px) {
+    :root{ --tile-h: 10rem; --title-size: 18px; }
+    .stack{ --shot-w: 96px; --overlap: 22px; --peek-right: 60px; }
+    .cat-title{ padding-left: 16px; }
   }
   /* Mobile adjustments for hero and tiles */
   @media (max-width: 768px) {
-    .hero-section-main { padding: 120px 16px; }
+    .hero-section-main { padding: 120px 16px 28px 16px; }
     .hero-title { font-size: 2.6rem; line-height: 1.1; }
     #flip { height: 60px; }
     #flip > div > div { height: 30px; margin-bottom: 30px; font-size: 18px; }
-    .tiles-grid { margin-top: 36px; }
+    .tiles-grid { margin-top: 16px !important; margin-bottom: 8px !important; gap: 10px !important; }
+    .tiles-grid .cat-tile { margin: 0 !important; }
+    /* Mobile: keep title on the image with a readable chip; do not alter image styles */
+    .tiles-grid .cat-tile { position: relative; }
+    .tiles-grid .cat-title {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: block; margin: 0; padding: 10px 14px;
+      color: #fff !important; font-weight: 700; letter-spacing: .2px;
+      background: rgba(0,0,0,0.55);
+      text-shadow: 0 1px 2px rgba(0,0,0,.5);
+      z-index: 3;
+    }
   }
   @media (max-width: 480px) {
     .hero-section-main { padding: 96px 14px; }
@@ -678,6 +749,10 @@ const styles = `
     #flip { height: 48px; }
     #flip > div > div { height: 24px; margin-bottom: 24px; font-size: 16px; }
   }
+  /* Studios section spacing to avoid header overlap */
+  .studios-section { padding-top: 7.5rem; }
+  @media (max-width: 992px) { .studios-section { padding-top: 9rem; } }
+  @media (max-width: 576px) { .studios-section { padding-top: 10rem; } }
   /*--------------------------------------------------------------------------------------- */
   @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
@@ -800,11 +875,6 @@ const styles = `
     margin-bottom: 1rem;
   }
 
-  .industry-icon svg {
-    width: 30px;
-    height: 30px;
-    color: #1C1A1A;
-  }
 
   .industry-title {
     font-size: 1.1rem;
@@ -827,347 +897,440 @@ const styles = `
   }
 }
 
-/* WhatWeDo.css styles */
-.relative {
+/* WhatWeDo Section Styles */
+:global(.relative) {
   position: relative;
 }
-.isolate {
+
+:global(.isolate) {
   isolation: isolate;
 }
-.bg-black {
+
+:global(.bg-black) {
   background-color: #000;
 }
-.text-white {
+
+:global(.text-white) {
   color: #fff;
 }
-.mx-auto {
+
+:global(.mx-auto) {
   margin-left: auto;
   margin-right: auto;
 }
-.grid {
+
+:global(.grid) {
   display: grid;
 }
-.min-h-screen {
+
+:global(.min-h-screen) {
   min-height: 100vh;
 }
-.w-full {
+
+:global(.w-full) {
   width: 100%;
 }
-.max-w-7xl {
-  max-width: 80rem; /* 1280px */
+
+:global(.max-w-7xl) {
+  max-width: 80rem;
 }
-.grid-cols-1 {
+
+:global(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
-.gap-6 {
+
+:global(.gap-6) {
   gap: 1.5rem;
 }
-.px-4 {
+
+:global(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.py-12 {
+
+:global(.py-12) {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.sm\:gap-8 {
-  gap: 2rem;
-}
-.sm\:px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-.sm\:py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-.md\:grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.md\:gap-12 {
-  gap: 3rem;
-}
-.md\:py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-.lg\:py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-.text-xs {
+
+:global(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.tracking-wide {
+
+:global(.tracking-wide) {
   letter-spacing: 0.025em;
 }
-.text-zinc-400 {
+
+:global(.text-zinc-400) {
   color: #a1a1aa;
 }
-.sm\:text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-.mt-4 {
+
+:global(.mt-4) {
   margin-top: 1rem;
 }
-.text-3xl {
-  font-size: 2.5rem;
-  line-height: 2.25rem;
-}
-.font-semibold {
-  font-weight: 600;
-}
-.leading-\[1\.05\] {
-  line-height: 1.05;
-}
-.text-zinc-50 {
-  color: #fafafa;
-}
-.sm\:mt-6 {
-  margin-top: 1.5rem;
-}
-.sm\:text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-.md\:text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-.lg\:text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-.mt-8 {
-  margin-top: 2rem;
-}
-.space-y-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
-}
-.sm\:mt-12 {
-  margin-top: 3rem;
-}
-.sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-.border {
-  border-width: 1px;
-}
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.duration-300 {
-  transition-duration: 300ms;
-}
-.sm\:rounded-2xl {
-  border-radius: 1rem;
-}
-.border-white/30 {
-  border-color: rgba(255, 255, 255, 0.3);
-}
-.bg-white/\[0\.02\] {
-  background-color: rgba(255, 255, 255, 0.02);
-}
-.border-white/5 {
-  border-color: rgba(255, 255, 255, 0.05);
-}
-.hover\:border-white/20:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.active\:border-white/20:active {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.flex {
-  display: flex;
-}
-.items-center {
-  align-items: center;
-}
-.gap-3 {
-  gap: 0.75rem;
-}
-.p-4 {
-  padding: 1rem;
-}
-.sm\:gap-4 {
-  gap: 1rem;
-}
-.sm\:p-5 {
-  padding: 1.25rem;
-}
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-.sm\:text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.md\:text-3xl {
+
+:global(.text-3xl) {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
-.opacity-70 {
-  opacity: 0.7;
+
+:global(.font-semibold) {
+  font-weight: 600;
 }
-.sm\:w-4 {
-  width: 1rem;
+
+:global(.text-zinc-50) {
+  color: #fafafa;
 }
-.sm\:h-4 {
-  height: 1rem;
+
+:global(.mt-8) {
+  margin-top: 2rem;
 }
-.overflow-hidden {
-  overflow: hidden;
+
+:global(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
+  margin-top: 0.75rem;
 }
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+:global(.rounded-xl) {
+  border-radius: 0.75rem;
 }
-.pb-4 {
-  padding-bottom: 1rem;
+
+:global(.border) {
+  border-width: 1px;
 }
-.sm\:px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+
+:global(.transition-all) {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
-.sm\:pb-6 {
-  padding-bottom: 1.5rem;
+
+:global(.duration-300) {
+  transition-duration: 300ms;
 }
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+:global(.border-white\/30) {
+  border-color: rgba(255, 255, 255, 0.3);
 }
-.gap-4 {
-  gap: 1rem;
+
+:global(.bg-white\/\[0\.02\]) {
+  background-color: rgba(255, 255, 255, 0.02);
 }
-.sm\:gap-6 {
-  gap: 1.5rem;
+
+:global(.border-white\/5) {
+  border-color: rgba(255, 255, 255, 0.05);
 }
-.md\:grid-cols-\[1fr\_auto\_1fr\] {
-  grid-template-columns: 1fr auto 1fr;
+
+:global(.hover\:border-white\/20:hover) {
+  border-color: rgba(255, 255, 255, 0.2);
 }
-.md\:items-start {
-  align-items: flex-start;
+
+:global(.active\:border-white\/20:active) {
+  border-color: rgba(255, 255, 255, 0.2);
 }
-.max-w-prose {
-  max-width: 65ch;
+
+:global(.flex) {
+  display: flex;
 }
-.leading-relaxed {
-  line-height: 1.625;
+
+:global(.items-center) {
+  align-items: center;
 }
-.hidden {
-  display: none;
+
+:global(.gap-3) {
+  gap: 0.75rem;
 }
-.h-full {
-  height: 100%;
+
+:global(.p-4) {
+  padding: 1rem;
 }
-.w-px {
-  width: 1px;
+
+:global(.font-mono) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-.bg-white/10 {
-  background-color: rgba(255, 255, 255, 0.1);
+
+:global(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
-.md\:block {
-  display: block;
-}
-.gap-1\.5 {
-  gap: 0.375rem;
-}
-.sm\:gap-2 {
+
+:global(.gap-2) {
   gap: 0.5rem;
 }
-.text-zinc-200 {
+
+:global(.opacity-70) {
+  opacity: 0.7;
+}
+
+:global(.overflow-hidden) {
+  overflow: hidden;
+}
+
+:global(.pb-4) {
+  padding-bottom: 1rem;
+}
+
+:global(.gap-4) {
+  gap: 1rem;
+}
+
+:global(.max-w-prose) {
+  max-width: 65ch;
+}
+
+:global(.leading-relaxed) {
+  line-height: 1.625;
+}
+
+:global(.hidden) {
+  display: none;
+}
+
+:global(.h-full) {
+  height: 100%;
+}
+
+:global(.w-px) {
+  width: 1px;
+}
+
+:global(.bg-white\/10) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.gap-1\.5) {
+  gap: 0.375rem;
+}
+
+:global(.text-zinc-200) {
   color: #e4e4e7;
 }
-.relative {
-  position: relative;
-}
-.pl-3 {
+
+:global(.pl-3) {
   padding-left: 0.75rem;
 }
-.sm\:pl-4 {
-  padding-left: 1rem;
-}
-.before\:absolute::before {
+
+:global(.before\:absolute::before) {
+  content: "";
   position: absolute;
 }
-.before\:left-0::before {
+
+:global(.before\:left-0::before) {
   left: 0px;
 }
-.before\:top-1\.5::before {
+
+:global(.before\:top-1\.5::before) {
   top: 0.375rem;
 }
-.sm\:before\:top-2::before {
-  top: 0.5rem;
-}
-.before\:h-1::before {
+
+:global(.before\:h-1::before) {
   height: 0.25rem;
 }
-.before\:w-1::before {
+
+:global(.before\:w-1::before) {
   width: 0.25rem;
 }
-.before\:rounded-full::before {
+
+:global(.before\:rounded-full::before) {
   border-radius: 9999px;
 }
-.before\:bg-zinc-500/70::before {
+
+:global(.before\:bg-zinc-500\/70::before) {
   background-color: rgba(113, 113, 122, 0.7);
 }
-.order-first {
+
+:global(.order-first) {
   order: -9999;
 }
-.md\:order-last {
-  order: 9999;
-}
-.h-auto {
+
+:global(.h-auto) {
   height: auto;
 }
-.rounded-2xl {
+
+:global(.rounded-2xl) {
   border-radius: 1rem;
 }
-.sm\:rounded-3xl {
-  border-radius: 1.5rem;
-}
-.md\:rounded-\[48px\] {
-  border-radius: 48px;
-}
-.pointer-events-none {
+
+:global(.pointer-events-none) {
   pointer-events: none;
 }
-.absolute {
+
+:global(.absolute) {
   position: absolute;
 }
-.inset-y-0 {
+
+:global(.inset-y-0) {
   top: 0px;
   bottom: 0px;
 }
-.right-0 {
+
+:global(.right-0) {
   right: 0px;
 }
-.w-24 {
+
+:global(.w-24) {
   width: 6rem;
 }
-.bg-gradient-to-l {
+
+:global(.bg-gradient-to-l) {
   background-image: linear-gradient(to left, var(--tw-gradient-stops));
 }
-.from-black {
+
+:global(.from-black) {
   --tw-gradient-from: #000;
   --tw-gradient-to: rgba(0, 0, 0, 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-/* End WhatWeDo.css styles */
+
+/* Responsive styles */
+@media (min-width: 640px) {
+  :global(.sm\:gap-8) {
+    gap: 2rem;
+  }
+  
+  :global(.sm\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  :global(.sm\:py-16) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  :global(.sm\:text-sm) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  :global(.sm\:mt-6) {
+    margin-top: 1.5rem;
+  }
+  
+  :global(.sm\:text-4xl) {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  :global(.sm\:mt-12) {
+    margin-top: 3rem;
+  }
+  
+  :global(.sm\:space-y-4 > :not([hidden]) ~ :not([hidden])) {
+    margin-top: 1rem;
+  }
+  
+  :global(.sm\:rounded-2xl) {
+    border-radius: 1rem;
+  }
+  
+  :global(.sm\:gap-4) {
+    gap: 1rem;
+  }
+  
+  :global(.sm\:p-5) {
+    padding: 1.25rem;
+  }
+  
+  :global(.sm\:text-2xl) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  :global(.sm\:w-4) {
+    width: 1rem;
+  }
+  
+  :global(.sm\:h-4) {
+    height: 1rem;
+  }
+  
+  :global(.sm\:px-5) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  :global(.sm\:pb-6) {
+    padding-bottom: 1.5rem;
+  }
+  
+  :global(.sm\:gap-6) {
+    gap: 1.5rem;
+  }
+  
+  :global(.sm\:gap-2) {
+    gap: 0.5rem;
+  }
+  
+  :global(.sm\:pl-4) {
+    padding-left: 1rem;
+  }
+  
+  :global(.sm\:before\:top-2::before) {
+    top: 0.5rem;
+  }
+  
+  :global(.sm\:rounded-3xl) {
+    border-radius: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :global(.md\:grid-cols-2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  :global(.md\:gap-12) {
+    gap: 3rem;
+  }
+  
+  :global(.md\:py-20) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  :global(.md\:text-5xl) {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  :global(.md\:text-3xl) {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  :global(.md\:grid-cols-\[1fr_auto_1fr\]) {
+    grid-template-columns: 1fr auto 1fr;
+  }
+  
+  :global(.md\:items-start) {
+    align-items: flex-start;
+  }
+  
+  :global(.md\:block) {
+    display: block;
+  }
+  
+  :global(.md\:order-last) {
+    order: 9999;
+  }
+  
+  :global(.md\:rounded-\[48px\]) {
+    border-radius: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :global(.lg\:py-24) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  :global(.lg\:text-6xl) {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
 `;
 
 // CategoryTile Component
@@ -1175,24 +1338,24 @@ const CategoryTile = ({ title_1, images }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // Define your custom redirects based on the title_1
-    switch (title_1.toLowerCase()) {
-      case 'websites':
-        navigate('/studios/web');
-        break;
-      case 'apps':
-        navigate('/studios/app_studio');
-        break;
-      case 'agents':
-        navigate('/agent');
-        break;
-      default:
-        navigate('/');
-    }
+    const key = (title_1 || '').toLowerCase();
+    let path = '/coming-soon';
+    if (key === 'websites') path = '/studios/web';
+    else if (key === 'apps') path = '/studios/app_studio';
+    else if (key === 'agents') path = '/studios/agentic-studio';
+    navigate(path);
   };
 
+  const isWebsite = (title_1 || '').toLowerCase() === 'websites';
   return (
-    <div className="cat-tile" style={{ '--pane-w': '40%', '--n1': '30px', '--n2': '15px', '--n3': '15px' }}>
+    <div
+      className={`cat-tile mt-5 ${isWebsite ? 'web' : ''}`}
+      style={{ '--pane-w': '50%', '--n1': '35px', '--n2': '22px', '--n3': '28px', cursor: 'pointer' }}
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); } }}
+    >
       <a
         className="cat-title"
         onClick={handleClick}
@@ -1201,11 +1364,11 @@ const CategoryTile = ({ title_1, images }) => {
         {title_1}
       </a>
       <div className="pane" aria-hidden="true">
-        <div className="stack" style={{ '--shot-w': '110px', '--overlap': '50px', '--peek-right': '100px' }}>
+        <div className="stack" style={{ '--shot-w': '110px', '--overlap': '32px', '--peek-right': '82px' }}>
           {images.map((image, index) => (
             <img
               key={index}
-              className={`shot shot-${index}`}
+              className={`shot shot-${index + 1}`}
               src={image}
               alt={`Screenshot of ${title_1} project ${index + 1}`}
             />
@@ -1222,25 +1385,25 @@ const HeroSection = () => {
     {
       title_1: "Websites",
       images: [
-        group1Img,
-        group2Img,
-        group3Img,
+        web1v2Img,
+        web2v2Img,
+        web3v2Img,
       ]
     },
     {
       title_1: "Apps",
       images: [
-        kiraaze_appImg,
-        life_2Img,
-        campusImg,
+        app1Img,
+        app3Img,
+        app4Img,
       ]
     },
     {
       title_1: "Agents",
       images: [
-        agentsImg,
-        agent2Img,
-        agent3Img,
+        ai1Img,
+        ai2Img,
+        ai3Img,
       ]
     }
   ];
@@ -1283,6 +1446,7 @@ const HeroSection = () => {
 // Studios Section Component
 const StudiosSection = () => {
   const [activeStudio, setActiveStudio] = useState('web'); // Default to 'web'
+  const navigate = useNavigate();
 
   const studios = {
     web: {
@@ -1290,21 +1454,21 @@ const StudiosSection = () => {
       title: 'Web Studio',
       description: 'Create stunning, fully responsive websites with a wide range of ready-to-use templates. Effortlessly customize layouts, colors, and features to perfectly align with your brand\'s identity, vision, and business goals.',
       imageUrl: studioImage,
-      link: '/studios/web',
+      link: '#',
     },
     app: {
       id: 'app',
       title: 'App Studio',
       description: 'Develop innovative mobile applications for iOS and Android platforms. Our experts guide you from concept to launch, ensuring a seamless user experience and robust performance across all devices.',
       imageUrl: studioImage,
-      link: '/studios/app',
+      link: '#',
     },
     agent: {
       id: 'agent',
       title: 'Agentic Studio',
       description: 'Leverage the power of AI with custom-built intelligent agents and automation solutions. From chatbots to complex AI workflows, we help you integrate cutting-edge AI into your business operations.',
       imageUrl: studioImage,
-      link: '/studios/agent',
+      link: '#',
     }
   };
 
@@ -1315,7 +1479,7 @@ const StudiosSection = () => {
   const studioOrder = ['web', 'app', 'agent']; // Define the order for stacking
 
   return (
-    <section className="py-20 px-4 bg-black" style={{ backgroundColor: '#1C1A1A' }}>
+    <section className="py-20 px-4 bg-black studios-section" style={{ backgroundColor: '#1C1A1A' }}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mt-5" style={{ color: '#FFFFFF' }}>
@@ -1387,20 +1551,23 @@ const StudiosSection = () => {
             };
 
             return (
-              <Link
-                to={studio.link}
+              <div
                 key={studio.id}
                 className={`studio-card ${isActive ? 'active' : ''}`}
                 style={cardStyle}
+                role="link"
+                tabIndex={0}
+                onClick={() => { if (studio.link && studio.link !== '#') navigate(studio.link); }}
+                onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && studio.link && studio.link !== '#') { e.preventDefault(); navigate(studio.link); } }}
               >
                 <div className="studio-content">
                   <h3 className="studio-title">{studio.title}</h3>
                   <p className="studio-description">{studio.description}</p>
                   <div className="studio-buttons">
-                    <Link to="/ready" className="studio-button primary">
+                    <Link to="/coming-soon" className="studio-button primary">
                       Ready to use ↗
                     </Link>
-                    <Link to={studio.link} className="studio-button secondary">
+                    <Link to="/coming-soon" className="studio-button secondary">
                       Customize ↗
                     </Link>
                   </div>
@@ -1408,7 +1575,7 @@ const StudiosSection = () => {
                 <div className="studio-image">
                   <img src={studio.imageUrl} alt={`${studio.title} illustration`} />
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
@@ -1494,15 +1661,37 @@ const IndustryCards = () => {
     slides.push(industryData.slice(i, i + 8));
   }
 
-  // Auto-advance slides
+  // Track when the section is in view and start the carousel only then
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.isIntersecting && entry.intersectionRatio > 0.4;
+        if (visible) {
+          setCurrentSlide(0); // always reset to first slide when section enters view
+        }
+        setInView(visible);
+      },
+      { threshold: [0, 0.25, 0.4, 0.6, 0.75, 1] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-advance slides only when in view and not hovered
+  useEffect(() => {
+    if (!inView) return;
     const timer = setInterval(() => {
       if (!isHovered) {
-        nextSlide();
+        setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
       }
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentSlide, isHovered]);
+  }, [inView, isHovered, slides.length]);
 
   // Detect mobile to switch to grid view (no carousel)
   useEffect(() => {
@@ -1524,6 +1713,7 @@ const IndustryCards = () => {
         position: 'relative',
         overflow: 'hidden'
       }}
+      ref={sectionRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -1636,7 +1826,7 @@ const IndustryCards = () => {
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .industry-carousel {
           position: relative;
           width: 100%;
@@ -2040,8 +2230,8 @@ function WhatWeDo() {
         <div className="flex flex-col md:flex-row gap-8 items-start h-full">
           <div className="w-full md:w-2/3 pr-0 md:pr-8">
             <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-              <span className="block">Elegant solutions</span>
-              <span className="block">built on proven</span>
+              <span className="block">Elegant solutions </span>
+              <span className="block">built on proven </span>
               <span className="block">methodologies.</span>
             </h2>
 
@@ -2131,14 +2321,13 @@ function WhatWeDo() {
     </section>
   );
 }
-
 // Process Flow Component - Solutions for Every Industry
 const ProcessFlow = () => {
   const [isScrollingPaused, setIsScrollingPaused] = useState(false);
   const navigate = useNavigate();
 
   const handleClick = (path) => {
-    navigate(path);
+    navigate('/coming-soon');
   };
 
   return (
@@ -2162,7 +2351,7 @@ const ProcessFlow = () => {
             <div className="col-md-6 col-lg-4">
               <div className="h-100 d-flex flex-column">
                 <div 
-                  onClick={() => handleClick('/kiraaze')} 
+                  onClick={() => handleClick('/coming-soon')} 
                   style={{ 
                     cursor: 'pointer',
                     flex: '1 0 auto',
@@ -2171,7 +2360,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={kiraaze_casestudyImg}
+                    src={ecommerceImg}
                     alt="E-commerce case study"
                     className="img-fluid w-100"
                     style={{ 
@@ -2211,7 +2400,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={kiraaze_casestudyImg}
+                    src={ngoImg}
                     alt="NGO case study"
                     className="img-fluid w-100"
                     style={{ 
@@ -2251,7 +2440,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={kiraaze_casestudyImg}
+                    src={manufacturingImg}
                     alt="Manufacturing case study"
                     className="img-fluid w-100"
                     style={{ 
@@ -2299,19 +2488,22 @@ const ProcessFlow = () => {
                   img: phaniImg, 
                   quote: "We love Z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
                   name: 'Sri Phani', 
+                  title: 'Managing Director & CEO',
                   company: 'Ecomall' 
                 },
                 { 
                   img: srinivasImg, 
                   quote: "We love z.apps! Our designers were using it for their projects, so we already knew what kind of design they want.", 
                   name: 'Srinivas', 
+                  title: 'Managing Director & CEO',
                   company: 'Fusion Street' 
                 },
                 { 
-                  img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60', 
+                  img: lakshminathanImg, 
                   quote: "Outstanding quality and great flexibility. It helped our team move much faster.", 
-                  name: 'Courtney Henry', 
-                  company: 'Stark Ltd' 
+                  name: 'Mr. Lakshminathan Manickshaw', 
+                  title: 'Managing Director & CEO',
+                  company: 'Kryon' 
                 }
               ];
 
@@ -2334,13 +2526,24 @@ const ProcessFlow = () => {
                     {[left, right].map((t, i) => (
                       <div key={i} className="col-md-5">
                         <div className="d-flex gap-4 align-items-center">
-                          <img src={t.img} alt={t.name} className="rounded testimonial-img" style={{ width: 230, height: 290, objectFit: 'cover' }} />
+                          <img
+                            src={t.img}
+                            alt={t.name}
+                            className="rounded testimonial-img"
+                            style={{
+                              width: t.name === 'Mr. Lakshminathan Manickshaw' ? 210 : 230,
+                              height: 290,
+                              objectFit: 'cover'
+                            }}
+                          />
                           <div className="text-start">
                             <StarRow />
                             <p className="mb-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
                               "{t.quote}"
                             </p>
-                            <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name} <span className="ms-2" style={{ color: '#F2C94C' }}>{t.company}</span></div>
+                            <div className="fw-bold" style={{ color: '#ffffff' }}>{t.name}</div>
+                            {t.title && <div className="small" style={{ color: 'rgba(255,255,255,0.75)' }}>{t.title}</div>}
+                            {t.company && <div className="mt-1" style={{ color: '#F2C94C', fontWeight: 600 }}>{t.company}</div>}
                           </div>
                         </div>
                       </div>
@@ -2410,14 +2613,6 @@ const FAQSection = () => {
     {
       question: 'How many days does it take to build a website?',
       answer: 'The timeline for website development varies depending on complexity, but our streamlined process aims for rapid deployment, often delivering an MVP in 4-8 weeks.',
-    },
-    {
-      question: 'How do you handle project management for software development projects?',
-      answer: 'At the core of our operations is a robust project management approach that guarantees not only timely deliveries but also complete transparency. Each project benefits from having a dedicated manager, your go-to person for updates, queries, and coordination across different teams. The manager keeps you in the loop from start to finish, making sure that every phase of the project adheres to high standards for quality and aligns with your goals. Our project managers utilize the latest tools to meticulously monitor progress and resource allocation, enabling us to tackle challenges effectively and keep your project on track and within budget.'
-    },
-    {
-      question: 'Can you integrate AI into my existing legacy software?',
-      answer: 'Yes, and you probably don\'t need to replace everything you\'re already using. We\'ve integrated AI into systems that companies have been running for decades without breaking what already works. Most clients see measurable improvements within a few months without the disruption and expense of rebuilding their entire technology stack.'
     }
   ];
 
@@ -2456,6 +2651,7 @@ const FAQSection = () => {
 
 // Final CTA Section Component
 const FinalCTASection = () => {
+  const navigate = useNavigate();
   const containerStyle = {
     background: '#FFC94A',
     padding: '5rem 1rem',
@@ -2551,7 +2747,11 @@ const FinalCTASection = () => {
         World Class Apps, Built to Last.
       </p>
       <div style={buttonsContainerStyle}>
-        <a href="#" style={primaryButtonStyle}>
+        <a
+          href="/dev/zdotapps_products/contact"
+          onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
+          style={primaryButtonStyle}
+        >
           Get In Touch →
         </a>
         {/* <a href="#" style={secondaryButtonStyle}>
