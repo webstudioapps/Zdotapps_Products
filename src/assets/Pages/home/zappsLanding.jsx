@@ -2206,7 +2206,7 @@ function WhatWeDo() {
     },
   ]
 
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(0) // Set to 0 to have Technology section open by default
   const activeSection = sections[active]
 
   // Immediate transitions for smooth, responsive feel
@@ -2218,87 +2218,83 @@ function WhatWeDo() {
   const onLeave = () => {
     if (hoverTimer.current) window.clearTimeout(hoverTimer.current)
   }
-  
+
   // Touch support for mobile
   const handleTouchStart = (i) => {
     setActive(i)
   }
 
   return (
-    <section className="relative isolate bg-black text-white min-h-screen flex items-center py-16 home-wwd">
-      <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <section className="whatwedo relative isolate bg-black text-white min-h-screen flex items-center py-16">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 items-start h-full">
-          <div className="w-full md:w-2/3 pr-0 md:pr-8 home-wwd-text">
-                    <h2 className="text-center text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-                      <span className="block">Elegant solutions </span>
-                      <span className="block">built on proven </span>
-                      <span className="block">methodologies.</span>
-                    </h2>
+          <div className="w-full md:w-2/3 pr-0 md:pr-8">
+            <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
+              <span className="block">Elegant solutions </span>
+              <span className="block">built on proven </span>
+              <span className="block">methodologies.</span>
+            </h2>
 
-                  <ul className="space-y-0 max-h-[60vh] overflow-y-auto pr-3 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
-                    {sections.map((s, i) => {
-                      const open = active !== null && i === active
-                      return (
-                        <li
-                          key={s.key}
-                          onMouseEnter={() => onEnter(i)}
-                          onTouchStart={() => handleTouchStart(i)}
-                          onFocus={() => setActive(i)}
-                          className={`rounded-none transition-all duration-500 ease-out ${
-                            open ? 'bg-white/[0.06]' : 'hover:bg-white/[0.03] active:bg-white/[0.03]'
-                          }`}
-                          tabIndex={0}
+            <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
+              {sections.map((s, i) => {
+                const open = active !== null && i === active
+                return (
+                  <li
+                    key={s.key}
+                    onMouseEnter={() => onEnter(i)}
+                    onTouchStart={() => handleTouchStart(i)}
+                    onFocus={() => setActive(i)}
+                    className={`rounded-xl border transition-all duration-300 sm:rounded-2xl ${
+                      open ? 'border-white/30 bg-white/[0.02]' : 'border-white/5 hover:border-white/20 active:border-white/20'
+                    }`}
+                    tabIndex={0}
+                  >
+                    {/* Header row */}
+                    <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                      <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
+                      <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
+                        <span>{s.title}</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                      </div>
+                    </div>
+
+                    {/* Inline expanding content */}
+                    <AnimatePresence initial={false}>
+                      {open && (
+                        <motion.div
+                          key="content"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            height: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
+                            opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
+                          }}
+                          style={{ overflow: 'hidden' }}
+                          className="px-4 pb-4 sm:px-5 sm:pb-6"
                         >
-                          {/* Header row */}
-                          <div className="flex items-center gap-2 p-3 sm:gap-3 sm:p-4">
-                            <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
-                            <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
-                              <span>{s.title}</span>
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                            </div>
+                          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
+                            <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
+                            <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
+                            <ul className="grid gap-2 text-xs text-zinc-300">
+                              {s.services.map((x) => (
+                                <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
+                                  {x}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-        
-                          {/* Inline expanding content */}
-                          <AnimatePresence initial={false}>
-                            {open && (
-                              <motion.div
-                                key="content"
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{
-                                  height: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-                                  opacity: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
-                                }}
-                                style={{ overflow: 'hidden' }}
-                                className="px-4 pb-2 sm:px-5 sm:pb-3"
-                              >
-                                <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-[1fr_auto_1fr] md:items-start">
-                                  <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
-                                  <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
-                                  <ul className="grid gap-1.5 text-xs text-zinc-300">
-                                    {s.services.map((x) => (
-                                      <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
-                                        {x}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                  {/* Mobile-only image under the points for this item */}
-                                  <div className="wwd-inline-per-item">
-                                    <img src={s.img} alt={`${s.title} illustration`} loading="lazy" />
-                                  </div>
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                  </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
 
-        {/* RIGHT: image swaps while left expands inline */}
-        <div className="w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2 home-wwd-image">
+          {/* Image on the right */}
+          <div className="wwd-right w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection.key}
@@ -2308,7 +2304,7 @@ function WhatWeDo() {
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 className="relative"
               >
-                <div className="relative w-100 max-w-md ms-5 mx-auto">
+                <div className="wwd-right-inner relative w-100 max-w-md ms-5 mx-auto">
                   <img
                     src={activeSection.img}
                     alt={`${activeSection.title} hero`}
@@ -2320,13 +2316,11 @@ function WhatWeDo() {
             </AnimatePresence>
           </div>
         </div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black md:block"></div>
       </div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black md:block"></div>
     </section>
-  )
+  );
 }
-
-
 // Process Flow Component - Solutions for Every Industry
 const ProcessFlow = () => {
   const [isScrollingPaused, setIsScrollingPaused] = useState(false);
