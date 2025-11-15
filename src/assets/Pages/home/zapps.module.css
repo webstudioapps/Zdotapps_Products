@@ -1,0 +1,30 @@
+ :global(.whatwedo) { overflow-x: hidden; }
+
+ @media (max-width: 768px) {
+   :global(.home-wwd) { overflow-x: hidden; }
+   :global(.home-wwd .home-wwd-text) { order: 1; width: 100%; }
+   :global(.home-wwd .home-wwd-image) {
+     order: 2;
+     position: static !important;
+     transform: none !important;
+     width: 100% !important;
+     margin-top: 12px;
+     display: none !important; /* hide sidebar image on mobile */
+   }
+   :global(.home-wwd .home-wwd-image .relative) { position: static !important; }
+   :global(.home-wwd .home-wwd-image .ms-5) { margin-left: 0 !important; }
+   :global(.home-wwd .home-wwd-image .w-100) { width: 100% !important; }
+   :global(.home-wwd .home-wwd-image .max-w-md) { max-width: 100% !important; }
+   :global(.home-wwd .home-wwd-image img) { display: block; width: 100% !important; height: auto !important; }
+
+   /* mobile-only image under each expanded item's points */
+   :global(.home-wwd .wwd-inline-per-item) { display: block !important; }
+   :global(.home-wwd .wwd-inline-per-item img) { width: 100%; height: auto; display: block; border-radius: 12px; margin: 12px 0 8px; }
+
+   /* allow the list to expand so the per-item image isn't clipped */
+   :global(.home-wwd .home-wwd-list) { max-height: none !important; overflow: visible !important; padding-right: 0 !important; }
+ }
+
+ @media (min-width: 769px) {
+   :global(.home-wwd .wwd-inline-per-item) { display: none; }
+ }
