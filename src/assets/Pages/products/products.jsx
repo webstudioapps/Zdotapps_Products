@@ -27,7 +27,7 @@ const productList = [
   },
   {
     name: "z.flow",
-    desc: "Streamlined workflow and project management solutions",
+    desc: "Streamlined tools for managing your projects",
     img: zflowImage,
     btn: "Know More",
     link: "/z.flow",
