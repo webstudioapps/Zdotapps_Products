@@ -228,7 +228,7 @@ const Products = () => {
                   onClick={() => handleClick(product)}
                 >
                   <article
-                    className={`${styles.card} h-100 d-flex flex-column align-items-center text-center`}
+                    className={`${styles.card} d-flex flex-column align-items-center text-center`}
                   >
                     <div className={styles.cardInner}>
                       {product.img && (
