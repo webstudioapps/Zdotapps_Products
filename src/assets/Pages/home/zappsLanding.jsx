@@ -119,7 +119,7 @@ const styles = `
   }
 
   /* Media-safe defaults */
-  img, video { max-width: 100%; height: auto; }
+  img, video { max-width: 90%; height: auto; }
 
   .container {
     max-width: 1300px;
@@ -1057,6 +1057,7 @@ const styles = `
 
 .items-center {
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .gap-3 {
@@ -1312,7 +1313,7 @@ const styles = `
   }
   
   .md\:text-5xl {
-    font-size: 3rem;
+    font-size: 3.15rem;
     line-height: 1;
   }
   
@@ -2166,11 +2167,8 @@ const IndustryCards = () => {
 function WhatWeDo() {
   const sections = [
     {
-      no: '01',
       key: 'technology',
       title: 'Technology',
-      blurb:
-        'We are a leader in building cutting‑edge mobile and web applications that are AI‑driven and intuitive. We push boundaries and solve complex challenges to drive real impact.',
       services: [
         'Mobile App Development',
         'Web Development',
@@ -2181,11 +2179,8 @@ function WhatWeDo() {
       img: techImage,
     },
     {
-      no: '02',
       key: 'experience',
       title: 'Experience',
-      blurb:
-        'Our best‑in‑class Product Designers and Strategists create smart, clear product experiences that keep people engaged through carefully crafted UX, UI, and interaction design.',
       services: [
         'Product Vision',
         'User Research',
@@ -2196,11 +2191,8 @@ function WhatWeDo() {
       img: experienceImage,
     },
     {
-      no: '03',
       key: 'strategy',
       title: 'Strategy',
-      blurb:
-        'We surround clients with leaders from product, design, data, and engineering with relentless focus on product‑market fit, growth potential, monetization, and technical opportunities.',
       services: [
         'Digital Transformation',
         'Product Validation',
@@ -2211,11 +2203,8 @@ function WhatWeDo() {
       img: strategyImage,
     },
     {
-      no: '04',
       key: 'growth',
       title: 'Growth',
-      blurb:
-        'Our PMs, Data Scientists, and Growth Marketers partner to evolve and adopt the product—prioritizing business goals via rapid releases, feedback cycles, and data‑driven experimentation.',
       services: [
         'Ongoing Management',
         'Data & Experimentation',
@@ -2251,9 +2240,7 @@ function WhatWeDo() {
         <div className="flex flex-col md:flex-row gap-8 items-start h-full"> {/* Added md:flex-row to ensure row layout on medium screens */}
           <div className="w-full md:w-2/3 pr-0 md:pr-8"> {/* Added md:w-2/3 for width */}
             <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-              <span className="block">Elegant solutions </span>
-              <span className="block">built on proven </span>
-              <span className="block">methodologies.</span>
+              <span className="block">World-class apps. Business-class results.</span>
             </h2>
 
             <ul className="space-y-2 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
@@ -2269,11 +2256,10 @@ function WhatWeDo() {
                     tabIndex={0}
                   >
                     {/* Header row */}
-                    <div className="flex items-center gap-3 px-4 py-2 sm:gap-4 sm:px-5 sm:py-3">
-                      <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
-                      <div className="flex items-center gap-2 text-3xl sm:text-4xl md:text-5xl">
-                        <span>{s.title}</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-80 sm:w-5 sm:h-5"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                    <div className="flex items-center gap-3 pl-0 pr-4 py-2 sm:gap-4 sm:pl-0 sm:pr-5 sm:py-3">
+                      <span className="font-mono text-sm text-zinc-400 sm:text-base">{s.no}</span>
+                      <div className="flex items-center gap-2 text-3xl sm:text-6xl md:text-7xl">
+                        <span style={{ fontWeight: 500, fontSize: '2.5rem' }}>{s.title}</span>
                       </div>
                     </div>
 
@@ -2292,12 +2278,12 @@ function WhatWeDo() {
                           style={{ overflow: 'hidden' }}
                           className="px-4 pt-0 pb-3 sm:px-5 sm:pt-0 sm:pb-4"
                         >
-                          <div className="grid grid-cols-1 gap-4 sm:grid sm:grid-cols-[1fr_1px_1fr] sm:gap-8 sm:items-start sm:justify-items-start sm:text-left text-left">
-                            <p className="text-sm leading-relaxed text-zinc-400 sm:pr-6 justify-self-start self-start">{s.blurb}</p>
-                            <span className="hidden sm:block w-px bg-white/30 self-stretch" aria-hidden />
-                            <ul className="w-full justify-self-stretch self-start list-none sm:pl-6 pl-4 space-y-2 text-xs text-white font-semibold text-left">
+                          <div className="grid grid-cols-[minmax(28rem,1fr)_1px_minmax(22rem,1fr)] gap-8 items-start justify-items-start text-left">
+                            <p className="text-base md:text-lg leading-relaxed text-zinc-300 pr-8 justify-self-start self-start">{s.blurb}</p>
+                            <span className="w-px bg-white/30 self-stretch" aria-hidden />
+                            <ul className="w-full justify-self-start self-start list-disc list-outside pl-4 space-y-2 text-base sm:text-lg text-white text-left">
                               {s.services.map((x) => (
-                                <li key={x} className="text-left">{x}</li>
+                                <li key={x} className="text-left" style={{ fontWeight: 600 }}>{x}</li>
                               ))}
                             </ul>
                           </div>
