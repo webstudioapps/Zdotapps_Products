@@ -212,7 +212,7 @@ const Products = () => {
       {/* Section 2: Products Grid Section */}
       <section className={styles.productsSection}>
         <div className="container">
-          <div className={styles.gridWrap}>
+          <div className="row g-4 justify-content-center py-5">
             {/* <div className="col-12 text-center">
               <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
                 Explore our <span className={styles.highlightText}>products</span>
@@ -222,7 +222,7 @@ const Products = () => {
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product, idx) => (
                 <div
-                  className={styles.gridItem}
+                  className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
                   key={product.name}
                   style={{
                     animationDelay: `${idx * 0.1}s`,
