@@ -2275,6 +2275,7 @@ function WhatWeDo() {
                       <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
                       <div className="flex items-center gap-2 text-2xl sm:text-4xl md:text-5xl">
                         <span>{s.title}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-80 sm:w-5 sm:h-5"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
                       </div>
                     </div>
 
@@ -2295,8 +2296,8 @@ function WhatWeDo() {
                         >
                           <div className="grid grid-cols-1 gap-4 sm:grid sm:grid-cols-[1fr_1px_1fr] sm:gap-8 sm:items-start sm:justify-items-start sm:text-left text-left">
                             <p className="text-sm leading-relaxed text-zinc-400 sm:pr-6 justify-self-start self-start">{s.blurb}</p>
-                            <span className="hidden sm:block w-px bg-white/20 self-stretch" aria-hidden />
-                            <ul className="w-full justify-self-stretch self-start list-disc list-outside sm:pl-6 pl-4 space-y-2 text-xs text-white font-semibold text-left">
+                            <span className="hidden sm:block w-px bg-white/30 self-stretch" aria-hidden />
+                            <ul className="w-full justify-self-stretch self-start list-none sm:pl-6 pl-4 space-y-2 text-xs text-white font-semibold text-left">
                               {s.services.map((x) => (
                                 <li key={x} className="text-left">{x}</li>
                               ))}
