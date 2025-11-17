@@ -104,15 +104,17 @@ const productList = [
   },
 ];
 
-// ✅ Category Mapping — Custom logic you specified
+// Category Mapping
 const categoryMap = {
   Engagement: ["z.engage"],
-  Productivity: ["z.flow", "giDER"],
+  Productivity: ["z.flow", "giDER", "Z.Box"], // Added Z.Box here
   Merit: ["z.merit", "z.hire"],
   Hiring: ["z.hire", "z.merit"],
-  Security: ["Z.Box", "z.sign"],
+  Security: ["Z.Box", "z.sign", "z.auth"], // Added z.auth here
   Business: ["z.forms", "Kirazee"],
   "E-Commerce": ["Kirazee"],
+  Communication: ["z.qui"], // Added z.qui here
+  Gaming: ["z.games"], // Added z.games here
 };
 
 const Products = () => {
@@ -122,7 +124,7 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState(productList);
   const navigate = useNavigate();
 
-  const categories = ["All", ...Object.keys(categoryMap)];
+  const categories = ["All", ...Object.keys(categoryMap)].sort(); // Sorted categories
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 50);
@@ -174,7 +176,6 @@ const Products = () => {
                 AI that drives your{" "}
                 <span className={styles.highlightText}>business</span>
               </h1>
-            
 
               {/* Search + Filter */}
               <div className={styles.controlsContainer}>
@@ -213,12 +214,6 @@ const Products = () => {
       <section className={styles.productsSection}>
         <div className="container">
           <div className="row g-4 justify-content-center py-5">
-            {/* <div className="col-12 text-center">
-              <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
-                Explore our <span className={styles.highlightText}>products</span>
-              </h1>
-            </div> */}
-
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product, idx) => (
                 <div
@@ -260,7 +255,7 @@ const Products = () => {
                           }}
                         >
                           <span
-                            style={{ color: "#EFC426" }}
+                            style={{ color: "#000000" }} // Changed to black for contrast
                             className={`${styles.icon} ${styles.arrow}`}
                           ></span>
                         </button>
@@ -291,8 +286,6 @@ const Products = () => {
           </div>
         </div>
       </section>
-
-   
     </>
   );
 };
