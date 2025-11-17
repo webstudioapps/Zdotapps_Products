@@ -331,6 +331,28 @@ body {
   .homeSection { height: 300px; }
 }
 
+/* Fine-tune controls/product layout for common laptop widths (Bootstrap-only page) */
+@media (max-width: 1200px) and (min-width: 1101px) {
+  .controlsContainer { gap: 0.75rem; }
+  .searchBox { width: 460px; }
+  .searchInput { width: 100%; max-width: 460px; }
+  .filterSelect { margin-left: 12px; }
+}
+
+@media (max-width: 1100px) and (min-width: 1025px) {
+  .controlsContainer { gap: 0.75rem; flex-wrap: wrap; }
+  .searchBox { width: 420px; }
+  .searchInput { width: 100%; max-width: 420px; }
+  .filterSelect { margin-left: 10px; }
+}
+
+@media (max-width: 1024px) and (min-width: 993px) {
+  .controlsContainer { gap: 0.5rem; flex-wrap: wrap; }
+  .searchBox { width: 380px; }
+  .searchInput { width: 100%; max-width: 380px; }
+  .filterSelect { margin-left: 8px; }
+}
+
 @media (max-width: 992px) {
   .homeSection { 
     padding: 4rem 0 2rem 0; /* Further reduced padding */
@@ -356,6 +378,14 @@ body {
   .filterSelect {
     margin-top: 1rem;
   }
+  /* Grid/card tuning */
+  .productsSection :global(.row.g-4) {
+    --bs-gutter-x: 1.25rem;
+    --bs-gutter-y: 1.5rem;
+  }
+  .imageContainer { height: 100px; }
+  .productImage { max-width: 140px; max-height: 90px; }
+  .description { font-size: 1rem; }
 }
 
 @media (max-width: 768px) {
@@ -391,6 +421,14 @@ body {
   .underline {
     margin-bottom: 1rem;
   }
+  /* Grid/card tuning */
+  .productsSection :global(.row.g-4) {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1.25rem;
+  }
+  .imageContainer { height: 96px; }
+  .productImage { max-width: 132px; max-height: 86px; }
+  .cardInner { padding: 8px; }
 }
 
 @media (max-width: 576px) {
@@ -420,31 +458,51 @@ body {
     left: 10px;
     font-size: 14px;
   }
+  /* Grid/card tuning */
+  .productsSection :global(.row.g-4) {
+    --bs-gutter-x: 0.875rem;
+    --bs-gutter-y: 1rem;
+  }
+  .imageContainer { height: 90px; }
+  .productImage { max-width: 124px; max-height: 80px; }
+  .description { font-size: 0.98rem; }
 }
 
-/* Stable grid for products (ensures same alignment in dev and local) */
-.gridWrap {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(240px, 1fr));
-  gap: 28px;
+/* Very small devices */
+@media (max-width: 420px) {
+  .productsSection :global(.row.g-4) {
+    --bs-gutter-x: 0.75rem;
+    --bs-gutter-y: 0.9rem;
+  }
+  .card { border-radius: 14px; }
+  .ctaCircle { width: 40px; height: 40px; }
+}
+
+@media (max-width: 360px) {
+  .searchInput, .filterSelect { font-size: 0.85rem; }
+  .productImage { max-width: 116px; max-height: 74px; }
+  .description { font-size: 0.95rem; }
+}
+
+/* (Removed custom CSS Grid helpers to keep Bootstrap-only layout) */
+
+/* Scoped Bootstrap grid normalization inside Products only */
+.productsSection :global(.row) {
   align-items: stretch;
-  justify-items: stretch;
-  max-width: 1200px;
-  margin: 0 auto;
+}
+.productsSection :global(.row > [class*="col-"]) {
+  display: flex;
+}
+.productsSection :global(.row > [class*="col-"] > article) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.gridItem {
-  height: 100%;
-}
-
-@media (max-width: 1200px) {
-  .gridWrap { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
-}
-
-@media (max-width: 992px) {
-  .gridWrap { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
-}
-
-@media (max-width: 576px) {
-  .gridWrap { grid-template-columns: repeat(1, minmax(240px, 1fr)); }
+/* Tighter gutters on very small screens for one-view fit */
+@media (max-width: 420px) {
+  .productsSection :global(.row.g-4) {
+    --bs-gutter-x: 0.75rem;
+    --bs-gutter-y: 0.75rem;
+  }
 }

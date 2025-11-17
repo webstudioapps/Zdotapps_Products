@@ -171,7 +171,7 @@ const Products = () => {
           <div className="row justify-content-center text-center">
             <div className="col-lg-10 col-md-11">
               <h1 className={`${styles.homeTitle} display-4 fw-bold mb-4 mt-4 text-white`}>
-                The AI suite that powers your{" "}
+                AI that drives your{" "}
                 <span className={styles.highlightText}>business</span>
               </h1>
             
