@@ -197,9 +197,9 @@ const styles = `
     }
     .wwd-right {
       position: sticky;
-      top: 50%;
-      transform: translateY(-50%);
-      align-self: flex-start; /* Adjust to align with the top of the content */
+      top: 0; /* align with top of left content */
+      transform: none; /* no vertical centering */
+      align-self: flex-start;
     }
     .wwd-right-inner {
       margin-left: 1.25rem; /* ms-5 equivalent */
@@ -2331,7 +2331,7 @@ function WhatWeDo() {
                   <img
                     src={activeSection.img}
                     alt={`${activeSection.title} hero`}
-                    className="w-100 h-auto rounded-xl shadow-2xl mt-2"
+                    className="w-100 h-auto rounded-xl shadow-2xl"
                     loading="lazy"
                   />
                 </div>
