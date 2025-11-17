@@ -978,7 +978,6 @@ const styles = `
 }
 
 .text-xs {
-  font-size: 0.75rem;
   line-height: 1rem;
 }
 
@@ -1000,7 +999,6 @@ const styles = `
 }
 
 .font-semibold {
-  font-weight: 600;
 }
 
 .text-zinc-50 {
@@ -2273,7 +2271,7 @@ function WhatWeDo() {
                     {/* Header row */}
                     <div className="flex items-center gap-3 px-4 py-2 sm:gap-4 sm:px-5 sm:py-3">
                       <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
-                      <div className="flex items-center gap-2 text-2xl sm:text-4xl md:text-5xl">
+                      <div className="flex items-center gap-2 text-3xl sm:text-4xl md:text-5xl">
                         <span>{s.title}</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-80 sm:w-5 sm:h-5"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
                       </div>
