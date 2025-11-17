@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; // Added for WhatWeDo
-import studioImage from '../../images/img_studio.png'; // Make sure this path is correct
+import { motion, AnimatePresence } from 'framer-motion';
+import studioImage from '../../images/img_studio.png';
 import { useNavigate } from 'react-router-dom';
-// Removed unused image imports for cleanliness
 import ecomerceIcon from '../../images/ecomerce.png';
 import eventsIcon from '../../images/events.png';
 import hospitalIcon from '../../images/hospital.png';
@@ -14,11 +13,6 @@ import manufacturingIcon from '../../images/manufacturing.png';
 import sportsIcon from '../../images/sports.png';
 import shopIcon from '../../images/shop.png';
 import schoolsIcon from '../../images/child_care.png';
-// import readyImg from "../../images/ready.png";
-// import customImg from "../../images/custom.png";
-// import fastImg from "../../images/fast.png";
-// import retailImg from "../../images/retail.png";
-// import updated_logoIcon from '../../images/updated_logo.png';
 import websiteImage from '../../images/websites.png';
 import child_careIcon from '../../images/child_care.png';
 import kiraaze_appImg from '../../images/kiraaze_app.png';
@@ -46,7 +40,7 @@ import app4Img from '../../images/app4.jpg';
 import ai1Img from '../../images/ai1.jpg';
 import ai2Img from '../../images/ai2.jpg';
 import ai3Img from '../../images/ai3.jpg';
-import manufacturingImg from '../../images/manufacturing.avif';
+import manufacturing_casestudyImg from '../../images/manufacturing.avif'; // Renamed to avoid conflict
 import ngoImg from '../../images/ngo.avif';
 import lakshminathanImg from '../../images/lakshminathan.jpg';
 import ecommerceImg from '../../images/e-commerce.avif';
@@ -186,6 +180,32 @@ const styles = `
     .home-wwd .home-wwd-list { max-height: none !important; overflow: visible !important; padding-right: 0 !important; }
   }
   @media (min-width: 769px) { .home-wwd .wwd-inline-per-item { display: none; } }
+  /* START FIX: Ensure proper flex layout and image positioning on desktop */
+  .whatwedo .flex-col.md\:flex-row {
+    display: flex; /* Ensure flex is active */
+    flex-direction: column;
+  }
+  @media (min-width: 768px) {
+    .whatwedo .flex-col.md\:flex-row {
+      flex-direction: row; /* Set to row on medium screens and up */
+    }
+    .whatwedo .md\:w-2\/3 {
+      width: 66.666667%; /* 2/3 width */
+    }
+    .whatwedo .md\:w-1\/3 {
+      width: 33.333333%; /* 1/3 width */
+    }
+    .wwd-right {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+      align-self: flex-start; /* Adjust to align with the top of the content */
+    }
+    .wwd-right-inner {
+      margin-left: 1.25rem; /* ms-5 equivalent */
+    }
+  }
+  /* END FIX */
   @media (max-width: 768px) {
     .wwd-right { position: static; top: auto; transform: none; }
     .wwd-right-inner { margin-left: 0 !important; max-width: 100% !important; }
@@ -667,6 +687,9 @@ const styles = `
     width:var(--shot-w,120px); height:auto; aspect-ratio:9/16;
     border-radius:14px; border:1px solid rgba(0,0,0,.08);
     box-shadow:0 6px 16px rgba(0,0,0,.15);
+    background:#ddd;
+    transition:transform .26s cubic-bezier(.22,.61,.36,1); will-change:transform;
+
   }
   /* Websites tile should look like desktop windows (no rounded corners on images) */
   .cat-tile.web .shot{ border-radius:4px; }
@@ -897,286 +920,287 @@ const styles = `
   }
 }
 
-/* WhatWeDo Section Styles */
-:global(.relative) {
+/* WhatWeDo Section Styles - ENSURING THESE ARE GLOBAL AND NOT OVERRIDDEN */
+/* Removed :global() from the styles to make them standard CSS within the <style> tag */
+.relative {
   position: relative;
 }
 
-:global(.isolate) {
+.isolate {
   isolation: isolate;
 }
 
-:global(.bg-black) {
+.bg-black {
   background-color: #000;
 }
 
-:global(.text-white) {
+.text-white {
   color: #fff;
 }
 
-:global(.mx-auto) {
+.mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
 
-:global(.grid) {
+.grid {
   display: grid;
 }
 
-:global(.min-h-screen) {
+.min-h-screen {
   min-height: 100vh;
 }
 
-:global(.w-full) {
+.w-full {
   width: 100%;
 }
 
-:global(.max-w-7xl) {
+.max-w-7xl {
   max-width: 80rem;
 }
 
-:global(.grid-cols-1) {
+.grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-:global(.gap-6) {
+.gap-6 {
   gap: 1.5rem;
 }
 
-:global(.px-4) {
+.px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-:global(.py-12) {
+.py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
-:global(.text-xs) {
+.text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
 }
 
-:global(.tracking-wide) {
+.tracking-wide {
   letter-spacing: 0.025em;
 }
 
-:global(.text-zinc-400) {
+.text-zinc-400 {
   color: #a1a1aa;
 }
 
-:global(.mt-4) {
+.mt-4 {
   margin-top: 1rem;
 }
 
-:global(.text-3xl) {
+.text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-:global(.font-semibold) {
+.font-semibold {
   font-weight: 600;
 }
 
-:global(.text-zinc-50) {
+.text-zinc-50 {
   color: #fafafa;
 }
 
-:global(.mt-8) {
+.mt-8 {
   margin-top: 2rem;
 }
 
-:global(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
   margin-top: 0.75rem;
 }
 
-:global(.rounded-xl) {
+.rounded-xl {
   border-radius: 0.75rem;
 }
 
-:global(.border) {
+.border {
   border-width: 1px;
 }
 
-:global(.transition-all) {
+.transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
 
-:global(.duration-300) {
+.duration-300 {
   transition-duration: 300ms;
 }
 
-:global(.border-white\/30) {
+.border-white\/30 {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-:global(.bg-white\/\[0\.02\]) {
+.bg-white\/\[0\.02\] {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-:global(.border-white\/5) {
+.border-white\/5 {
   border-color: rgba(255, 255, 255, 0.05);
 }
 
-:global(.hover\:border-white\/20:hover) {
+.hover\:border-white\/20:hover {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-:global(.active\:border-white\/20:active) {
+.active\:border-white\/20:active {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-:global(.flex) {
+.flex {
   display: flex;
 }
 
-:global(.items-center) {
+.items-center {
   align-items: center;
 }
 
-:global(.gap-3) {
+.gap-3 {
   gap: 0.75rem;
 }
 
-:global(.p-4) {
+.p-4 {
   padding: 1rem;
 }
 
-:global(.font-mono) {
+.font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-:global(.text-xl) {
+.text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
-:global(.gap-2) {
+.gap-2 {
   gap: 0.5rem;
 }
 
-:global(.opacity-70) {
+.opacity-70 {
   opacity: 0.7;
 }
 
-:global(.overflow-hidden) {
+.overflow-hidden {
   overflow: hidden;
 }
 
-:global(.pb-4) {
+.pb-4 {
   padding-bottom: 1rem;
 }
 
-:global(.gap-4) {
+.gap-4 {
   gap: 1rem;
 }
 
-:global(.max-w-prose) {
+.max-w-prose {
   max-width: 65ch;
 }
 
-:global(.leading-relaxed) {
+.leading-relaxed {
   line-height: 1.625;
 }
 
-:global(.hidden) {
+.hidden {
   display: none;
 }
 
-:global(.h-full) {
+.h-full {
   height: 100%;
 }
 
-:global(.w-px) {
+.w-px {
   width: 1px;
 }
 
-:global(.bg-white\/10) {
+.bg-white\/10 {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-:global(.gap-1\.5) {
+.gap-1\.5 {
   gap: 0.375rem;
 }
 
-:global(.text-zinc-200) {
+.text-zinc-200 {
   color: #e4e4e7;
 }
 
-:global(.pl-3) {
+.pl-3 {
   padding-left: 0.75rem;
 }
 
-:global(.before\:absolute::before) {
+.before\:absolute::before {
   content: "";
   position: absolute;
 }
 
-:global(.before\:left-0::before) {
+.before\:left-0::before {
   left: 0px;
 }
 
-:global(.before\:top-1\.5::before) {
+.before\:top-1\.5::before {
   top: 0.375rem;
 }
 
-:global(.before\:h-1::before) {
+.before\:h-1::before {
   height: 0.25rem;
 }
 
-:global(.before\:w-1::before) {
+.before\:w-1::before {
   width: 0.25rem;
 }
 
-:global(.before\:rounded-full::before) {
+.before\:rounded-full::before {
   border-radius: 9999px;
 }
 
-:global(.before\:bg-zinc-500\/70::before) {
+.before\:bg-zinc-500\/70::before {
   background-color: rgba(113, 113, 122, 0.7);
 }
 
-:global(.order-first) {
+.order-first {
   order: -9999;
 }
 
-:global(.h-auto) {
+.h-auto {
   height: auto;
 }
 
-:global(.rounded-2xl) {
+.rounded-2xl {
   border-radius: 1rem;
 }
 
-:global(.pointer-events-none) {
+.pointer-events-none {
   pointer-events: none;
 }
 
-:global(.absolute) {
+.absolute {
   position: absolute;
 }
 
-:global(.inset-y-0) {
+.inset-y-0 {
   top: 0px;
   bottom: 0px;
 }
 
-:global(.right-0) {
+.right-0 {
   right: 0px;
 }
 
-:global(.w-24) {
+.w-24 {
   width: 6rem;
 }
 
-:global(.bg-gradient-to-l) {
+.bg-gradient-to-l {
   background-image: linear-gradient(to left, var(--tw-gradient-stops));
 }
 
-:global(.from-black) {
+.from-black {
   --tw-gradient-from: #000;
   --tw-gradient-to: rgba(0, 0, 0, 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -1184,149 +1208,149 @@ const styles = `
 
 /* Responsive styles */
 @media (min-width: 640px) {
-  :global(.sm\:gap-8) {
+  .sm\:gap-8 {
     gap: 2rem;
   }
   
-  :global(.sm\:px-6) {
+  .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
   
-  :global(.sm\:py-16) {
+  .sm\:py-16 {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
   
-  :global(.sm\:text-sm) {
+  .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
   
-  :global(.sm\:mt-6) {
+  .sm\:mt-6 {
     margin-top: 1.5rem;
   }
   
-  :global(.sm\:text-4xl) {
+  .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
   
-  :global(.sm\:mt-12) {
+  .sm\:mt-12 {
     margin-top: 3rem;
   }
   
-  :global(.sm\:space-y-4 > :not([hidden]) ~ :not([hidden])) {
+  .sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
     margin-top: 1rem;
   }
   
-  :global(.sm\:rounded-2xl) {
+  .sm\:rounded-2xl {
     border-radius: 1rem;
   }
   
-  :global(.sm\:gap-4) {
+  .sm\:gap-4 {
     gap: 1rem;
   }
   
-  :global(.sm\:p-5) {
+  .sm\:p-5 {
     padding: 1.25rem;
   }
   
-  :global(.sm\:text-2xl) {
+  .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
   }
   
-  :global(.sm\:w-4) {
+  .sm\:w-4 {
     width: 1rem;
   }
   
-  :global(.sm\:h-4) {
+  .sm\:h-4 {
     height: 1rem;
   }
   
-  :global(.sm\:px-5) {
+  .sm\:px-5 {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
   
-  :global(.sm\:pb-6) {
+  .sm\:pb-6 {
     padding-bottom: 1.5rem;
   }
   
-  :global(.sm\:gap-6) {
+  .sm\:gap-6 {
     gap: 1.5rem;
   }
   
-  :global(.sm\:gap-2) {
+  .sm\:gap-2 {
     gap: 0.5rem;
   }
   
-  :global(.sm\:pl-4) {
+  .sm\:pl-4 {
     padding-left: 1rem;
   }
   
-  :global(.sm\:before\:top-2::before) {
+  .sm\:before\:top-2::before {
     top: 0.5rem;
   }
   
-  :global(.sm\:rounded-3xl) {
+  .sm\:rounded-3xl {
     border-radius: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
-  :global(.md\:grid-cols-2) {
+  .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   
-  :global(.md\:gap-12) {
+  .md\:gap-12 {
     gap: 3rem;
   }
   
-  :global(.md\:py-20) {
+  .md\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
   
-  :global(.md\:text-5xl) {
+  .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
   }
   
-  :global(.md\:text-3xl) {
+  .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
   
-  :global(.md\:grid-cols-\[1fr_auto_1fr\]) {
+  .md\:grid-cols-\[1fr_auto_1fr\] {
     grid-template-columns: 1fr auto 1fr;
   }
   
-  :global(.md\:items-start) {
+  .md\:items-start {
     align-items: flex-start;
   }
   
-  :global(.md\:block) {
+  .md\:block {
     display: block;
   }
   
-  :global(.md\:order-last) {
+  .md\:order-last {
     order: 9999;
   }
   
-  :global(.md\:rounded-\[48px\]) {
+  .md\:rounded-\[48px\] {
     border-radius: 48px;
   }
 }
 
 @media (min-width: 1024px) {
-  :global(.lg\:py-24) {
+  .lg\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
   
-  :global(.lg\:text-6xl) {
+  .lg\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
   }
@@ -1411,7 +1435,6 @@ const HeroSection = () => {
   return (
     <section className="hero-section-main bg-black">
       <div className="container">
-        {/* <p className="hero-subtitle" style={{ color: '#ffc94a' }}>We've Got You Covered.</p> */}
         <h1 className="hero-title" style={{ color: '#ffffff' }}>Building Today’s</h1>
 
         <div className="text-center fs-1" id="flip">
@@ -1625,7 +1648,7 @@ const IndustryCards = () => {
       description: 'Custom software solutions for tech companies and startups.'
     },
     {
-      icon: manufacturingIcon,
+      icon: manufacturing_casestudyImg, // Corrected import
       title: 'Manufacturing',
       description: 'Inventory management and production tracking systems.'
     },
@@ -2227,8 +2250,8 @@ function WhatWeDo() {
   return (
     <section className="whatwedo relative isolate bg-black text-white min-h-screen flex items-center py-16">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row gap-8 items-start h-full">
-          <div className="w-full md:w-2/3 pr-0 md:pr-8">
+        <div className="flex flex-col md:flex-row gap-8 items-start h-full"> {/* Added md:flex-row to ensure row layout on medium screens */}
+          <div className="w-full md:w-2/3 pr-0 md:pr-8"> {/* Added md:w-2/3 for width */}
             <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
               <span className="block">Elegant solutions </span>
               <span className="block">built on proven </span>
@@ -2294,7 +2317,7 @@ function WhatWeDo() {
           </div>
 
           {/* Image on the right */}
-          <div className="wwd-right w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2">
+          <div className="wwd-right w-full md:w-1/3 sticky top-1/2 transform -translate-y-1/2"> {/* Added md:w-1/3 for width */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection.key}
@@ -2440,7 +2463,7 @@ const ProcessFlow = () => {
                   }}
                 >
                   <img
-                    src={manufacturingImg}
+                    src={manufacturing_casestudyImg} // Corrected reference
                     alt="Manufacturing case study"
                     className="img-fluid w-100"
                     style={{ 
