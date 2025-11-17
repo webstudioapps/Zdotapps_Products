@@ -2258,7 +2258,7 @@ function WhatWeDo() {
               <span className="block">methodologies.</span>
             </h2>
 
-            <ul className="space-y-3 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
+            <ul className="space-y-2 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
               {sections.map((s, i) => {
                 const open = active !== null && i === active
                 return (
@@ -2267,17 +2267,14 @@ function WhatWeDo() {
                     onMouseEnter={() => onEnter(i)}
                     onTouchStart={() => handleTouchStart(i)}
                     onFocus={() => setActive(i)}
-                    className={`rounded-xl border transition-all duration-300 sm:rounded-2xl ${
-                      open ? 'border-white/30 bg-white/[0.02]' : 'border-white/5 hover:border-white/20 active:border-white/20'
-                    }`}
+                    className={`rounded-xl transition-all duration-300 sm:rounded-2xl`}
                     tabIndex={0}
                   >
                     {/* Header row */}
-                    <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                    <div className="flex items-center gap-3 px-4 py-2 sm:gap-4 sm:px-5 sm:py-3">
                       <span className="font-mono text-xs text-zinc-400 sm:text-sm">{s.no}</span>
-                      <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
+                      <div className="flex items-center gap-2 text-2xl sm:text-4xl md:text-5xl">
                         <span>{s.title}</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 sm:w-4 sm:h-4"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
                       </div>
                     </div>
 
@@ -2294,16 +2291,14 @@ function WhatWeDo() {
                             opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
                           }}
                           style={{ overflow: 'hidden' }}
-                          className="px-4 pb-4 sm:px-5 sm:pb-6"
+                          className="px-4 pt-0 pb-3 sm:px-5 sm:pt-0 sm:pb-4"
                         >
-                          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr] md:items-start">
-                            <p className="max-w-prose text-sm leading-relaxed text-zinc-400">{s.blurb}</p>
-                            <span className="hidden h-full w-px bg-white/10 md:block" aria-hidden />
-                            <ul className="grid gap-2 text-xs text-zinc-300">
+                          <div className="grid grid-cols-1 gap-4 sm:grid sm:grid-cols-[1fr_1px_1fr] sm:gap-8 sm:items-start sm:justify-items-start sm:text-left text-left">
+                            <p className="text-sm leading-relaxed text-zinc-400 sm:pr-6 justify-self-start self-start">{s.blurb}</p>
+                            <span className="hidden sm:block w-px bg-white/20 self-stretch" aria-hidden />
+                            <ul className="w-full justify-self-stretch self-start list-disc list-outside sm:pl-6 pl-4 space-y-2 text-xs text-white font-semibold text-left">
                               {s.services.map((x) => (
-                                <li key={x} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-zinc-400">
-                                  {x}
-                                </li>
+                                <li key={x} className="text-left">{x}</li>
                               ))}
                             </ul>
                           </div>

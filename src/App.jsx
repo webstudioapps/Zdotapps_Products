@@ -96,9 +96,9 @@ function App() {
             <Route path="zapps" element={<ZappsLanding />} />
             <Route path="kiraaze" element={<Kiraaze />} />
             <Route path="ready" element={<Ready/>}/>
-            <Route path="studios/web" element={<WelcomeSoon />} />
+            <Route path="studios/web" element={<WebStudio />} />
             <Route path="studios/web/custom-build" element={<CustomUse />} />
-            <Route path="studios/app_studio" element={<WelcomeSoon />} />
+            <Route path="studios/app_studio" element={<AppStudio />} />
             <Route path="studios/agentic-studio" element={<AgenticStudio />} />
             <Route path="studios/agentic_studio" element={<AgenticStudio />} />
             <Route path="contact" element={<ContactPage />} />
