@@ -422,5 +422,29 @@ body {
   }
 }
 
-/* Keep all your existing smaller breakpoint media queries */
-/* They will work with the reduced heights and padding */
+/* Stable grid for products (ensures same alignment in dev and local) */
+.gridWrap {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(240px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+  justify-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gridItem {
+  height: 100%;
+}
+
+@media (max-width: 1200px) {
+  .gridWrap { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 992px) {
+  .gridWrap { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 576px) {
+  .gridWrap { grid-template-columns: repeat(1, minmax(240px, 1fr)); }
+}
