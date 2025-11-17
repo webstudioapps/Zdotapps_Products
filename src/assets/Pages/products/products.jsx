@@ -213,7 +213,7 @@ const Products = () => {
       {/* Section 2: Products Grid Section */}
       <section className={styles.productsSection}>
         <div className="container">
-          <div className="row g-4 justify-content-center py-5">
+          <div className="row g-4 justify-content-center">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product, idx) => (
                 <div
