@@ -69,7 +69,8 @@ import {
   Star,
   Search,
   Plus,
-  Minus
+  Minus,
+  ArrowUpRight
 } from 'lucide-react';
 
 // Embedded CSS styles
@@ -1057,7 +1058,6 @@ const styles = `
 
 .items-center {
   align-items: center;
-  margin-top: 0.5rem;
 }
 
 .gap-3 {
@@ -1504,7 +1504,7 @@ const StudiosSection = () => {
     <section className="py-20 px-4 bg-black studios-section" style={{ backgroundColor: '#1C1A1A' }}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mt-5" style={{ color: '#FFFFFF' }}>
+          <h2 className="text-3xl font-bold mt-5" style={{ color: '#FFFFFF',fontSize: '2.5rem' }}>
             Your problem-Our <span style={{ color: '#FFC94A' }}>studios</span> for solutions.
           </h2>
           <p className="mx-auto" style={{ fontSize: '1.125rem', maxWidth: '42rem', color: '#888888' }}>
@@ -2158,6 +2158,7 @@ const IndustryCards = () => {
             font-size: 0.95rem;
           }
         }
+          
       `}</style>
     </section>
   );
@@ -2239,12 +2240,53 @@ function WhatWeDo() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 items-start h-full"> {/* Added md:flex-row to ensure row layout on medium screens */}
           <div className="w-full md:w-2/3 pr-0 md:pr-8"> {/* Added md:w-2/3 for width */}
-            <h2 className="wwd-heading text-4xl font-semibold leading-tight text-zinc-50 md:text-5xl mb-8">
-              <span className="block">World-class apps. Business-class results.</span>
+            <h2 className="wwd-heading text-4xl md:text-5xl font-semibold leading-tight mb-2">
+              <span
+                style={{
+                  background: 'linear-gradient(120deg, #ffffff, #facc6b)',
+                  WebkitBackgroundClip: 'text',
+                  color: 'transparent',
+                  display: 'inline-block',
+                }}
+              >
+                World-class apps.
+                <br />
+                Business-class results.
+              </span>
             </h2>
+            <p className="text-sm md:text-base text-zinc-400 mb-4 max-w-prose">
+              Choose a focus area to see the exact services we deliver for your products.
+            </p>
 
-            <ul className="space-y-2 max-h-[60vh] overflow-y-auto pr-4 list-none" onMouseLeave={onLeave} style={{ listStyle: 'none', paddingLeft: 0 }}>
-              {sections.map((s, i) => {
+            {/* Timeline wrapper: single vertical line + list items */}
+            <div
+              style={{
+                position: 'relative',
+                paddingLeft: '17px',
+              }}
+            >
+              {/* Continuous vertical line */}
+              <span
+                aria-hidden
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  bottom: 0,
+                  left: '14px',
+                  width: '2px',
+                  background: 'linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.9))',
+                  boxShadow: '0 0 12px rgba(255,255,255,0.25)',
+                  transition: 'box-shadow 0.3s ease, opacity 0.3s ease',
+                  opacity: 0.85,
+                }}
+              />
+
+              <ul
+                className="space-y-1.5 max-h-[60vh] overflow-y-auto pr-4 list-none"
+                onMouseLeave={onLeave}
+                style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}
+              >
+                {sections.map((s, i) => {
                 const open = active !== null && i === active
                 return (
                   <li
@@ -2252,16 +2294,82 @@ function WhatWeDo() {
                     onMouseEnter={() => onEnter(i)}
                     onTouchStart={() => handleTouchStart(i)}
                     onFocus={() => setActive(i)}
-                    className={`rounded-xl transition-all duration-300 sm:rounded-2xl`}
+                    className={`group transition-all duration-200`}
                     tabIndex={0}
+                    style={{
+                      backgroundColor: open ? 'rgba(24,24,27,0.7)' : 'transparent',
+                      borderRadius: open ? '12px' : '0px',
+                      boxShadow: open ? '0 0 24px rgba(0,0,0,0.6)' : 'none',
+                    }}
                   >
-                    {/* Header row */}
-                    <div className="flex items-center gap-3 pl-0 pr-4 py-2 sm:gap-4 sm:pl-0 sm:pr-5 sm:py-3">
-                      <span className="font-mono text-sm text-zinc-400 sm:text-base">{s.no}</span>
-                      <div className="flex items-center gap-2 text-3xl sm:text-6xl md:text-7xl">
-                        <span style={{ fontWeight: 500, fontSize: '2.5rem' }}>{s.title}</span>
-                        <span aria-hidden className="inline-flex items-center justify-center" style={{ width: 24, height: 24 }}>
-                        </span>
+                    {/* Header row: circle aligned on the global vertical line + texts */}
+                    <div className="flex items-start gap-3 py-2">
+                      <div
+                        className="mr-2"
+                        style={{
+                          width: '24px',
+                          display: 'flex',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            marginTop: '1px',
+                            width: open ? '22px' : '18px',
+                            height: open ? '22px' : '18px',
+                            borderRadius: '9999px',
+                            border: open ? '2px solid #facc6b' : '2px solid #707070',
+                            background: open
+                              ? 'radial-gradient(circle at center, #facc6b, transparent)'
+                              : 'transparent',
+                            boxSizing: 'border-box',
+                            boxShadow: open ? '0 0 18px rgba(250,204,107,0.9)' : 'none',
+                            transition: 'all 0.25s ease',
+                          }}
+                        />
+                      </div>
+                      <div className="flex flex-col gap-0.5 min-w-0">
+                        <div className="flex items-center gap-3">
+                          <span
+                            style={{
+                              fontFamily: 'monospace',
+                              fontSize: '0.75rem',
+                              letterSpacing: '0.16em',
+                              textTransform: 'uppercase',
+                              color: open ? '#9ca3af' : '#4b5563',
+                            }}
+                          >
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <span
+                            style={{
+                              fontSize:
+                                i === 0
+                                  ? '1.6rem'
+                                  : i === 1
+                                  ? '1.35rem'
+                                  : '1.2rem',
+                              fontWeight: open ? 800 : 600,
+                              color: open ? '#facc6b' : '#e5e5e5',
+                              letterSpacing: '0.01em',
+                            }}
+                          >
+                            {s.title}
+                          </span>
+                          {open && (
+                            <ArrowUpRight size={18} color="#facc6b" style={{ marginLeft: '4px' }} />
+                          )}
+                        </div>
+                        <p
+                          className="max-w-2xl"
+                          style={{
+                            fontSize: '0.9rem',
+                            color: open ? '#a1a1aa' : '#71717a',
+                          }}
+                        >
+                          {s.blurb}
+                        </p>
                       </div>
                     </div>
 
@@ -2278,24 +2386,35 @@ function WhatWeDo() {
                             opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
                           }}
                           style={{ overflow: 'hidden' }}
-                          className="px-4 pt-0 pb-3 sm:px-5 sm:pt-0 sm:pb-4"
+                          className="pl-8 pr-4 pt-0 pb-3 sm:pl-9 sm:pr-5 sm:pt-0 sm:pb-4"
                         >
-                          <div className="grid grid-cols-[minmax(28rem,1fr)_1px_minmax(22rem,1fr)] gap-8 items-start justify-items-start text-left">
-                            <p className="text-base md:text-lg leading-relaxed text-zinc-300 pr-8 justify-self-start self-start">{s.blurb}</p>
-                            <span className="w-px bg-white/30 self-stretch" aria-hidden />
-                            <ul className="w-full justify-self-start self-start list-disc list-outside pl-4 space-y-2 text-base sm:text-lg text-white text-left">
-                              {s.services.map((x) => (
-                                <li key={x} className="text-left" style={{ fontWeight: 600 }}>{x}</li>
-                              ))}
-                            </ul>
-                          </div>
+                          <ul className="mt-1 space-y-1.5 text-sm sm:text-base text-zinc-100 text-left">
+                            {s.services.map((x) => (
+                              <li key={x} className="flex items-start gap-2">
+                                <span
+                                  style={{
+                                    marginTop: '6px',
+                                    display: 'inline-block',
+                                    width: '6px',
+                                    height: '6px',
+                                    borderRadius: '9999px',
+                                    backgroundColor: '#9ca3af',
+                                  }}
+                                />
+                                <span className="flex-1">
+                                  {x}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </li>
                 )
               })}
-            </ul>
+              </ul>
+            </div>
           </div>
 
           {/* Image on the right */}
