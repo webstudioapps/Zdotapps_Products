@@ -2240,13 +2240,15 @@ function WhatWeDo() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 items-start h-full"> {/* Added md:flex-row to ensure row layout on medium screens */}
           <div className="w-full md:w-2/3 pr-0 md:pr-8"> {/* Added md:w-2/3 for width */}
-            <h2 className="wwd-heading text-4xl md:text-5xl font-semibold leading-tight mb-2">
+            <h2 className="wwd-heading text-4xl md:text-5xl  leading-tight mb-2">
               <span
                 style={{
                   background: 'linear-gradient(120deg, #ffffff, #facc6b)',
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
                   display: 'inline-block',
+                  fontSize: '3rem',
+                  fontWeight: 'bold',
                 }}
               >
                 World-class apps.
@@ -2254,9 +2256,6 @@ function WhatWeDo() {
                 Business-class results.
               </span>
             </h2>
-            <p className="text-sm md:text-base text-zinc-400 mb-4 max-w-prose">
-              Choose a focus area to see the exact services we deliver for your products.
-            </p>
 
             {/* Timeline wrapper: single vertical line + list items */}
             <div
@@ -2270,7 +2269,7 @@ function WhatWeDo() {
                 aria-hidden
                 style={{
                   position: 'absolute',
-                  top: 0,
+                  top: '4.2rem',
                   bottom: 0,
                   left: '14px',
                   width: '2px',
@@ -2278,13 +2277,14 @@ function WhatWeDo() {
                   boxShadow: '0 0 12px rgba(255,255,255,0.25)',
                   transition: 'box-shadow 0.3s ease, opacity 0.3s ease',
                   opacity: 0.85,
+                  
                 }}
               />
 
               <ul
                 className="space-y-1.5 max-h-[60vh] overflow-y-auto pr-4 list-none"
                 onMouseLeave={onLeave}
-                style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}
+                style={{ listStyle: 'none', paddingLeft: 0, margin: 0, fontSize: '1rem', }}
               >
                 {sections.map((s, i) => {
                 const open = active !== null && i === active
@@ -2300,6 +2300,8 @@ function WhatWeDo() {
                       backgroundColor: open ? 'rgba(24,24,27,0.7)' : 'transparent',
                       borderRadius: open ? '12px' : '0px',
                       boxShadow: open ? '0 0 24px rgba(0,0,0,0.6)' : 'none',
+
+                      
                     }}
                   >
                     {/* Header row: circle aligned on the global vertical line + texts */}
@@ -2346,11 +2348,11 @@ function WhatWeDo() {
                             style={{
                               fontSize:
                                 i === 0
-                                  ? '1.6rem'
+                                  ? '2.5rem'
                                   : i === 1
-                                  ? '1.35rem'
-                                  : '1.2rem',
-                              fontWeight: open ? 800 : 600,
+                                  ? '2.5rem'
+                                  : '2.5rem',
+                              fontWeight: open ? 600 : 400,
                               color: open ? '#facc6b' : '#e5e5e5',
                               letterSpacing: '0.01em',
                             }}
